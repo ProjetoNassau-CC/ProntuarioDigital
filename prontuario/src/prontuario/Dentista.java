@@ -2,7 +2,7 @@ package prontuario;
 
 public class Dentista extends Funcionario {
 	
-	String cro;
+	private String cro;
 
 	public Dentista(int codigo, String nome, String email, String tel, String cel, Endereco endereco,
 			String data_nascimento, String cpf, String rg, String observacao) {

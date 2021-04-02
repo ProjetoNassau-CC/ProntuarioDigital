@@ -2,10 +2,10 @@ package prontuario;
 
 public class Login {
 	
-	int codigo;
-	String usuario;
-	String senha;
-	int tipo_usuario;
+	private int codigo;
+	private String usuario;
+	private String senha;
+	private int tipo_usuario;
 
 	
 	public int getCodigo() {
