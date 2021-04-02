@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;prontuario.Dentista&apos; to &apos;Funcionario&apos;&#x0D;&#x0A;- Original project: &apos;prontuario&apos;&#x0D;&#x0A;- Original element: &apos;prontuario.Dentista&apos;&#x0D;&#x0A;- Renamed element: &apos;prontuario.Funcionario&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Dentista&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;prontuario{Dentista.java[Dentista" matchStrategy="1" name="Funcionario" qualified="false" references="true" similarDeclarations="false" stamp="1617380265732" textual="false" version="1.0"/>
+</session>
