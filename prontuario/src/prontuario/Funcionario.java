@@ -2,20 +2,19 @@ package prontuario;
 
 public class Funcionario {
 	
-	int codigo;
-	String nome;
-	String email;
-	String tel;
-	String cel;
-	Endereco endereco;
-	String data_nascimento;
-	String cpf;
-	String rg;
-	String observacao;
+	private int codigo;
+	private String nome;
+	private String email;
+	private String tel;
+	private String cel;
+	private Endereco endereco;
+	private String data_nascimento;
+	private String cpf;
+	private String rg;
+	private String observacao;
 	
 	public Funcionario(int codigo, String nome, String email, String tel, String cel, Endereco endereco,
 			String data_nascimento, String cpf, String rg, String observacao) {
-		super();
 		this.codigo = codigo;
 		this.nome = nome;
 		this.email = email;

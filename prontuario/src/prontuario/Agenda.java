@@ -2,23 +2,22 @@ package prontuario;
 
 public class Agenda {
 	
-	int codigo;
-	int codigo_ficha;
-	String nome_paciente;
-	String nome_dentista;
-	String plano_tratamento;
-	String tratamento_dente;
-	String data_inclusao;
-	String data_agenda;
-	char concluido;
-	char cancelado;
-	char reagendado;
+	private int codigo;
+	private int codigo_ficha;
+	private String nome_paciente;
+	private String nome_dentista;
+	private String plano_tratamento;
+	private String tratamento_dente;
+	private String data_inclusao;
+	private String data_agenda;
+	private char concluido;
+	private char cancelado;
+	private char reagendado;
 	
 	
 	public Agenda(int codigo, int codigo_ficha, String nome_paciente, String nome_dentista, String plano_tratamento,
 			String tratamento_dente, String data_inclusao, String data_agenda, char concluido, char cancelado,
 			char reagendado) {
-		super();
 	
 		this.codigo = codigo;
 		this.codigo_ficha = codigo_ficha;
@@ -32,6 +31,7 @@ public class Agenda {
 		this.cancelado = cancelado;
 		this.reagendado = reagendado;
 	}
+	
 	public int getCodigo() {
 		return codigo;
 	}
