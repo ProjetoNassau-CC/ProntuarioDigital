@@ -59,7 +59,7 @@ public class Main {
 		String telefone;
 		do {
 			System.out.println("Digite o nome, email e telefone do funcionário: ");
-			nome = sc.next();
+			nome = sc.nextLine();
 			email = sc.next();
 			telefone = sc.next();
 			
@@ -80,7 +80,6 @@ public class Main {
 				}
 			}
 			System.out.println(arrDados[i]);
-			System.out.println();
 		}
 		
 		sc.close();
