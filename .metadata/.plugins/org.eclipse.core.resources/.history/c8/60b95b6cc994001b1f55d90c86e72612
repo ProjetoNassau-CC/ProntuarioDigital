@@ -80,7 +80,6 @@ public class Main {
 				}
 			}
 			System.out.println(arrDados[i]);
-			System.out.println();
 		}
 		
 		sc.close();
