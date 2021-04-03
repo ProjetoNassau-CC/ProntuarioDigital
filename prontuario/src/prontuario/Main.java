@@ -2,29 +2,35 @@ package prontuario;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
 		int opcao;
 		do {
-			Scanner leia = new Scanner(System.in);
 			MenuGeral();
-			opcao = leia.nextInt();
-			System.out.println();
-			System.out.println();
-			switch (opcao) 
-			{
-				case 1:
-					CadastrarPaciente();
-				case 2:
-					continue;
-				case 3:
-					break;
-				default:
-					System.out.println("Opção Inválida");
-			}
-		} while (opcao != 3);
+			System.out.println("O que gostaria de fazer? ");
+			opcao = sc.nextInt();
+			
+		}while(opcao < 1 || opcao > 3);
+		
+		switch(opcao) {
+		case 1:
+			CadastrarPaciente();
+			break;		
+		case 2:
+			break;	
+		case 3:
+			System.out.println("Espero vê-lo novamente mais tarde! Bye.");	
+		default:
+			System.out.println("Opção Inválida");
+		}
+		
+		sc.close();
 	}
 
 	
@@ -44,12 +50,39 @@ public class Main {
 	
 	public static void CadastrarPaciente() 
 	{
-		Scanner leia = new Scanner(System.in);
-		System.out.print("Digite seu nome: ");
-		String nome = leia.nextLine();
-		System.out.print("Digite seu Email: ");
-		String email = leia.nextLine();
-		System.out.print("Digite seu telefone: ");
-		String telefone = leia.nextLine();
+		List<String> dados = new ArrayList<>();
+		Scanner sc = new Scanner(System.in);
+		
+		int resp;
+		String nome;
+		String email;
+		String telefone;
+		do {
+			System.out.println("Digite o nome, email e telefone do funcionário: ");
+			nome = sc.next();
+			email = sc.next();
+			telefone = sc.next();
+			
+			dados.add(nome);
+			dados.add(email);
+			dados.add(telefone);
+			
+			System.out.println("Deseja cadastrar mais alguém? [1-sim] ou [2-não]");
+			resp = sc.nextInt();
+		}while(resp != 2);
+		
+		int[] mylist = {3, 6, 9, 12, 15, 18, 21};
+		Object[] arrDados = dados.toArray();
+		for(int i=0; i < arrDados.length; i++) {
+			for(Integer num: mylist) {
+				if (i == num) {
+					System.out.println("-------------------------------");
+				}
+			}
+			System.out.println(arrDados[i]);
+		}
+		
+		sc.close();
 	}
+	
 }
