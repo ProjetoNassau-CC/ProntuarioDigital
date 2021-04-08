@@ -6,7 +6,7 @@ public class Dentista extends Funcionario {
 
 	public Dentista(int codigo, String nome, String email, String tel, String cel, Endereco endereco,
 			String data_nascimento, String cpf, String rg, String observacao) {
-		super(codigo, nome, email, tel, cel, endereco, data_nascimento, cpf, rg, observacao);
+		super(codigo, nome, email, tel, cel, endereco, data_nascimento, cpf, rg);
 		
 	}
 
