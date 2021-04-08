@@ -17,16 +17,16 @@ public class Anamnese {
 	public Anamnese(Boolean problemaAnestesia, Boolean problemaHemorragia, Boolean febreReumatica,
 			Boolean problemaRenal, Boolean problemaRespitorio, Boolean problemaArticularReumatico,
 			Boolean problemaCardiaco, Boolean problemaGastrico, String antecedenteFamiliar, ArrayList<String> alergia) {
-		this.problemaAnestesia = problemaAnestesia;
-		this.problemaHemorragia = problemaHemorragia;
-		this.febreReumatica = febreReumatica;
-		this.problemaRenal = problemaRenal;
-		this.problemaRespitorio = problemaRespitorio;
-		this.problemaArticularReumatico = problemaArticularReumatico;
-		this.problemaCardiaco = problemaCardiaco;
-		this.problemaGastrico = problemaGastrico;
-		this.antecedenteFamiliar = antecedenteFamiliar;
-		this.alergia = alergia;
+		this.problemaAnestesia =  problemaAnestesia;
+		this.problemaHemorragia =  problemaHemorragia;
+		this.febreReumatica =  febreReumatica;
+		this.problemaRenal =  problemaRenal;
+		this.problemaRespitorio =  problemaRespitorio;
+		this.problemaArticularReumatico =  problemaArticularReumatico;
+		this.problemaCardiaco =  problemaCardiaco;
+		this.problemaGastrico =  problemaGastrico;
+		this.antecedenteFamiliar =  antecedenteFamiliar;
+		this.alergia =  alergia;
 	}
 	
 	
@@ -41,8 +41,8 @@ public class Anamnese {
 		setProblemaArticularReumatico(problemaArticularReumatico);
 		setProblemaCardiaco(problemaCardiaco);
 		setProblemaGastrico(problemaGastrico);
-		this.antecedenteFamiliar = antecedenteFamiliar;
-		this.alergia = alergia;
+		this.antecedenteFamiliar =  antecedenteFamiliar;
+		this.alergia =  alergia;
 	}
 
 	public Boolean getProblemaAnestesia() {
@@ -50,8 +50,8 @@ public class Anamnese {
 	}
 
 	public void setProblemaAnestesia(int problemaAnestesia) {
-		Boolean probAnestesia = problemaAnestesia == 0 ? false : true;
-		this.problemaAnestesia = probAnestesia;
+		Boolean probAnestesia =  problemaAnestesia ==  0 ? true : false;
+		this.problemaAnestesia =  probAnestesia;
 	}
 
 	public Boolean getProblemaHemorragia() {
@@ -59,8 +59,8 @@ public class Anamnese {
 	}
 
 	public void setProblemaHemorragia(int problemaHemorragia) {
-		Boolean probHemorragia = problemaHemorragia == 0 ? false : true;
-		this.problemaHemorragia = probHemorragia;
+		Boolean probHemorragia =  problemaHemorragia ==  0 ? true : false;
+		this.problemaHemorragia =  probHemorragia;
 	}
 
 	public Boolean getFebreReumatica() {
@@ -68,8 +68,8 @@ public class Anamnese {
 	}
 
 	public void setFebreReumatica(int febreReumatica) {
-		Boolean febReumatica = febreReumatica == 0 ? false : true;
-		this.febreReumatica = febReumatica;
+		Boolean febReumatica =  febreReumatica ==  0 ? true : false;
+		this.febreReumatica =  febReumatica;
 	}
 
 	public Boolean getProblemaRenal() {
@@ -77,8 +77,8 @@ public class Anamnese {
 	}
 
 	public void setProblemaRenal(int problemaRenal) {
-		Boolean probRenal = problemaRenal == 0 ? false : true;
-		this.problemaRenal = probRenal;
+		Boolean probRenal =  problemaRenal ==  0 ? true : false;
+		this.problemaRenal =  probRenal;
 	}
 
 	public Boolean getProblemaRespitorio() {
@@ -86,8 +86,8 @@ public class Anamnese {
 	}
 
 	public void setProblemaRespitorio(int problemaRespitorio) {
-		Boolean probRespitorio = problemaRespitorio == 0 ? false : true;
-		this.problemaRespitorio = probRespitorio;
+		Boolean probRespitorio =  problemaRespitorio ==  0 ? true : false;
+		this.problemaRespitorio =  probRespitorio;
 	}
 
 	public Boolean getProblemaArticularReumatico() {
@@ -95,8 +95,8 @@ public class Anamnese {
 	}
 
 	public void setProblemaArticularReumatico(int problemaArticularReumatico) {
-		Boolean probArticularReumatico = problemaArticularReumatico == 0 ? false : true;
-		this.problemaArticularReumatico = probArticularReumatico;
+		Boolean probArticularReumatico =  problemaArticularReumatico ==  0 ? true : false;
+		this.problemaArticularReumatico =  probArticularReumatico;
 	}
 
 	public Boolean getProblemaCardiaco() {
@@ -104,8 +104,8 @@ public class Anamnese {
 	}
 
 	public void setProblemaCardiaco(int problemaCardiaco) {
-		Boolean probCardiaco = problemaCardiaco == 0 ? false : true;
-		this.problemaCardiaco = probCardiaco;
+		Boolean probCardiaco =  problemaCardiaco ==  0 ? true : false;
+		this.problemaCardiaco =  probCardiaco;
 	}
 
 	public Boolean getProblemaGastrico() {
@@ -113,8 +113,8 @@ public class Anamnese {
 	}
 
 	public void setProblemaGastrico(int problemaGastrico) {
-		Boolean probGastrico = problemaGastrico == 0 ? false : true;
-		this.problemaGastrico = probGastrico;
+		Boolean probGastrico =  problemaGastrico ==  0 ? true : false;
+		this.problemaGastrico =  probGastrico;
 	}
 
 	public String getAntecedenteFamiliar() {
@@ -122,15 +122,36 @@ public class Anamnese {
 	}
 
 	public void setAntecedenteFamiliar(String antecedenteFamiliar) {
-		this.antecedenteFamiliar = antecedenteFamiliar;
+		this.antecedenteFamiliar =  antecedenteFamiliar;
 	}
 
-	public ArrayList<String> getAlergia() {
-		return alergia;
+	public String getAlergia() {
+		String alergias = "";
+		if (alergia.size() > 0) {
+			for (String ale : alergia) {
+				alergias += ale + "\n"; 
+			}
+		} else 
+		{
+			alergias = "Não";
+		}
+		return alergias;
 	}
 
 	public void setAlergia(ArrayList<String> alergia) {
-		this.alergia = alergia;
+		this.alergia =  alergia;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Problema Anestesia? " + problemaAnestesia + "\nProblema Hemorragia? " + problemaHemorragia
+				+ "\nFebre Reumatica? " + febreReumatica + "\nProblema Renal? " + problemaRenal + "\nProblema Respitorio? "
+				+ problemaRespitorio + "\nProblema Articular Reumatico? " + problemaArticularReumatico
+				+ "\nProblema Cardíaco? " + problemaCardiaco + "\nProblema Gástrico? " + problemaGastrico
+				+ "\nAntecedente Familiar? " + antecedenteFamiliar + "\nAlergias? " + getAlergia() + "\n";
+	}
+	
+	
 }
 

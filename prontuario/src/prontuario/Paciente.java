@@ -8,5 +8,9 @@ public class Paciente extends Funcionario {
 		
 	}
 	
-	
+	@Override
+	public String toString() 
+	{
+		return super.toString();		
+	}
 }

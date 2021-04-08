@@ -3,7 +3,6 @@ package prontuario;
 import java.util.Scanner;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
@@ -79,7 +78,7 @@ public class Main {
 					antecedenciaFamiliar = sc.nextLine();
 					System.out.print("Alergias? ");
 					intAlergia = Integer.parseInt(sc.nextLine());
-					if (intAlergia != 0) 
+					if (intAlergia == 0) 
 					{
 						String resposta;
 						do {
@@ -103,7 +102,7 @@ public class Main {
 					System.out.print("Digite o orçamento: R$");
 					orcamento = sc.nextLine();
 					
-					String codigoFicha = LocalDateTime.now().toString().replace("/", "").replace(":", "").replace(" ", "");
+					String codigoFicha = LocalDateTime.now().toString().replace("-", "").replace(".", "").replace(":", "");
 					Endereco endereco = new Endereco(logradouro, bairro, cep, cidade, uf, numero, complemento);
 					Paciente paciente = new Paciente(codigoPaciente, nome, email, telefone, telefone, endereco, 
 							dtNascimento, cpf, rg);
@@ -120,8 +119,8 @@ public class Main {
 					{
 						if (ficha_consulta.getPaciente().getCpf().equals(cpf_consulta)) 
 						{
-							System.out.println(ficha_consulta.getPaciente().getNome());
-							// Mostra aqui todas as informações de Paciente incluiindo a Anamnese e Ficha Técnica
+							System.out.println(ficha_consulta);
+							
 						}
 					}
 					break;	
