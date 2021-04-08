@@ -11,10 +11,9 @@ public class Funcionario {
 	private String data_nascimento;
 	private String cpf;
 	private String rg;
-	private String observacao;
 	
 	public Funcionario(int codigo, String nome, String email, String tel, String cel, Endereco endereco,
-			String data_nascimento, String cpf, String rg, String observacao) {
+			String data_nascimento, String cpf, String rg) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.email = email;
@@ -24,7 +23,6 @@ public class Funcionario {
 		this.data_nascimento = data_nascimento;
 		this.cpf = cpf;
 		this.rg = rg;
-		this.observacao = observacao;
 	}
 
 	public int getCodigo() {
@@ -99,11 +97,4 @@ public class Funcionario {
 		this.rg = rg;
 	}
 
-	public String getObservacao() {
-		return observacao;
-	}
-
-	public void setObservacao(String observacao) {
-		this.observacao = observacao;
-	}
 }

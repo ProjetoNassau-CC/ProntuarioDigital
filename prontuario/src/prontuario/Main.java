@@ -1,6 +1,7 @@
 package prontuario;
 
 import java.util.Scanner;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,26 +10,130 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		
+		ArrayList<Ficha_tecnica> dados = new ArrayList<Ficha_tecnica>();
 		int opcao;
+		
 		do {
 			MenuGeral();
 			System.out.print("O que gostaria de fazer? ");
-			opcao = sc.nextInt();
-			
-		}while(opcao < 1 || opcao > 3);
+			opcao = Integer.parseInt(sc.nextLine());
 		
-		switch(opcao) {
-		case 1:
-			CadastrarPaciente();
-			break;		
-		case 2:
-			break;	
-		case 3:
-			System.out.println("Espero vê-lo novamente mais tarde! Bye.");	
-		default:
-			System.out.println("Opção Inválida");
-		}
+			switch(opcao) {
+				case 1:
+					int resp;
+					String nome, email, telefone, cpf, rg, dtNascimento, observacao, logradouro, numero, bairro, cep, cidade, uf, complemento;
+					String antecedenciaFamiliar, nomeDentista, dataConsulta, dataTratamento, planoTratamento, orcamento;
+					int febreReumatica, probAnestesia, probArticularReumatico, probCardiaco, probGastrico, probHemorragia, probRenal, probRespiratorio;
+					int intAlergia, codigoPaciente;
+					ArrayList<String> alergia = new ArrayList<String>();
+					System.out.println("------------------ Informações Pessoais ------------------");
+					System.out.print("Código Paciente: ");
+					codigoPaciente = Integer.parseInt(sc.nextLine());
+					System.out.print("Nome: ");
+					nome = sc.nextLine();
+					System.out.print("Telefone: ");
+					telefone = sc.nextLine();
+					System.out.print("Email: ");
+					email = sc.nextLine();
+					System.out.print("CPF: ");
+					cpf = sc.nextLine();
+					System.out.print("RG: ");
+					rg = sc.nextLine();
+					System.out.print("Data de nascimento (xx/xx/xxxx): ");
+					dtNascimento = sc.nextLine();
+					System.out.print("Logradouro: ");
+					logradouro = sc.nextLine();
+					System.out.print("Endereço: ");
+					numero = sc.nextLine();
+					System.out.print("Cmplemento: ");
+					complemento = sc.nextLine();
+					System.out.print("Bairro: ");
+					bairro = sc.nextLine();
+					System.out.print("Cidade: ");
+					cidade = sc.nextLine();
+					System.out.print("UF: ");
+					uf = sc.nextLine();
+					System.out.print("CEP: ");
+					cep = sc.nextLine();
+					System.out.println("");
+					
+					System.out.println("------------------ Entrevista (Anamnese) ------------------");
+					System.out.println("----------------- Digite [0-sim ou 1-não] -----------------");
+					System.out.print("Problema com Anestesia? ");
+					probAnestesia = Integer.parseInt(sc.nextLine());
+					System.out.print("Problema de Febre Reumática? ");
+					febreReumatica = Integer.parseInt(sc.nextLine());
+					System.out.print("Problema Cardíaco? ");
+					probCardiaco = Integer.parseInt(sc.nextLine());
+					System.out.print("Problema Gástrico? ");
+					probGastrico = Integer.parseInt(sc.nextLine());
+					System.out.print("Problema de Hemorragia? ");
+					probHemorragia = Integer.parseInt(sc.nextLine());
+					System.out.print("Problema Renal? ");
+					probRenal = Integer.parseInt(sc.nextLine());
+					System.out.print("Problema Respiratório? ");
+					probRespiratorio = Integer.parseInt(sc.nextLine());
+					System.out.print("Problema com Articulação? ");
+					probArticularReumatico = Integer.parseInt(sc.nextLine());
+					System.out.print("Antecedentes Familiar? (Doenças, etc...) Se sim, Quais? ");
+					antecedenciaFamiliar = sc.nextLine();
+					System.out.print("Alergias? ");
+					intAlergia = Integer.parseInt(sc.nextLine());
+					if (intAlergia != 0) 
+					{
+						String resposta;
+						do {
+							System.out.print("Informe a alergia (Digite uma por vez e 0 para sair): ");
+							resposta = sc.nextLine().trim();
+							if (resposta.equals("0")) { alergia.add(resposta); }
+						} while (!resposta.equals("0"));
+						
+					}
+					
+					System.out.println("");
+					System.out.println("------------------ Ficha Técnica ------------------");
+					System.out.print("Nome do dentista: ");
+					nomeDentista = sc.nextLine();
+					System.out.print("Data da consulta (xx/xx/xxxx): ");
+					dataConsulta = sc.nextLine();
+					System.out.print("Data do tratamento (xx/xx/xxxx): ");
+					dataTratamento = sc.nextLine();
+					System.out.print("Plano do tratamento: ");
+					planoTratamento = sc.nextLine();
+					System.out.print("Digite o orçamento: R$");
+					orcamento = sc.nextLine();
+					
+					String codigoFicha = LocalDateTime.now().toString().replace("/", "").replace(":", "").replace(" ", "");
+					Endereco endereco = new Endereco(logradouro, bairro, cep, cidade, uf, numero, complemento);
+					Paciente paciente = new Paciente(codigoPaciente, nome, email, telefone, telefone, endereco, 
+							dtNascimento, cpf, rg);
+					Anamnese perguntas = new Anamnese(probAnestesia, probHemorragia, febreReumatica, probRenal, probRespiratorio, 
+							probArticularReumatico, probCardiaco, probGastrico, antecedenciaFamiliar, alergia);
+					Ficha_tecnica ficha = new Ficha_tecnica(codigoFicha, paciente, nomeDentista, dataConsulta, perguntas, planoTratamento,
+							dataTratamento, orcamento);
+					dados.add(ficha);
+					break;	
+				case 2:
+					System.out.print("CPF: ");
+					String cpf_consulta = sc.nextLine();
+					for(Ficha_tecnica ficha_consulta : dados) 
+					{
+						if (ficha_consulta.getPaciente().getCpf().equals(cpf_consulta)) 
+						{
+							System.out.println(ficha_consulta.getPaciente().getNome());
+							// Mostra aqui todas as informações de Paciente incluiindo a Anamnese e Ficha Técnica
+						}
+					}
+					break;	
+				case 3:
+					System.out.println("Espero vê-lo novamente mais tarde! Bye.");	
+					break;
+				default:
+					System.out.println("--------------------------------------");
+					System.out.println("Opção Inválida");
+					System.out.println("--------------------------------------");
+			}
+		} while(opcao != 3);
 		
 		sc.close();
 	}
@@ -46,112 +151,6 @@ public class Main {
 		System.out.println("--------------------------------------");
 		System.out.print("-> ");
 
-	}
-	
-	public static void CadastrarPaciente() 
-	{
-		List<String> dados = new ArrayList<>();
-		Scanner sc = new Scanner(System.in);
-		
-		int resp;
-		String nome, email, telefone, cpf, rg, dtNascimento, observacao, logradouro, numero, bairro, cep, cidade, uf, complemento;
-		String antecedenciaFamiliar;
-		int febreReumatica, probAnestesia, probArticularReumatico, probCardiaco, probGastrico, probHemorragia, probRenal, probRespiratorio;
-		int intAlergia;
-		ArrayList<String> alergia = new ArrayList<String>();
-		do {
-			System.out.println("------------------ Informações Pessoais ------------------");
-			System.out.print("Nome: ");
-			nome = sc.nextLine();
-			System.out.print("Telefone: ");
-			telefone = sc.nextLine();
-			System.out.print("Email: ");
-			email = sc.nextLine();
-			System.out.print("CPF: ");
-			cpf = sc.nextLine();
-			System.out.print("RG: ");
-			rg = sc.nextLine();
-			System.out.print("Data de nascimento (xx/xx/xxxx): ");
-			dtNascimento = sc.nextLine();
-			System.out.print("Logradouro: ");
-			logradouro = sc.nextLine();
-			System.out.print("Endereço: ");
-			numero = sc.nextLine();
-			System.out.print("Cmplemento: ");
-			complemento = sc.nextLine();
-			System.out.print("Bairro: ");
-			bairro = sc.nextLine();
-			System.out.print("Cidade: ");
-			cidade = sc.nextLine();
-			System.out.print("UF: ");
-			uf = sc.nextLine();
-			System.out.print("CEP: ");
-			cep = sc.nextLine();
-			System.out.println("");
-			
-			System.out.println("------------------ Entrevista (Anamnese) ------------------");
-			System.out.println("------------------    [0-não ou 1-sim]   ------------------");
-			
-			System.out.print("Problema com Anestesia? ");
-			probAnestesia = sc.nextInt();
-			System.out.print("Problema de Febre Reumática ?");
-			febreReumatica = sc.nextInt();
-			System.out.print("Problema Cardíaco? ");
-			probCardiaco = sc.nextInt();
-			System.out.print("Problema Gástrico? ");
-			probGastrico = sc.nextInt();
-			System.out.print("Problema de Hemorragia? ");
-			probHemorragia = sc.nextInt();
-			System.out.print("Problema Renal? ");
-			probRenal = sc.nextInt();
-			System.out.print("Problema Respiratório? ");
-			probRespiratorio = sc.nextInt();
-			System.out.print("Problema com Articulação? ");
-			probArticularReumatico = sc.nextInt();
-			System.out.print("Antecedentes Familiar? (Doenças, etc...) Se sim, Quais? ");
-			antecedenciaFamiliar = sc.nextLine();
-			System.out.print("Alergias? ");
-			intAlergia = sc.nextInt();
-			if (intAlergia != 0) 
-			{
-				String resposta;
-				do {
-					System.out.print("Informe a alergia (Digite uma por vez e 0 para sair): ");
-					resposta = sc.nextLine();
-					if (resposta != "0") { alergia.add(resposta); }
-				} while (resposta == "0");
-				
-			}
-			System.out.println("");
-			System.out.println("------------------ Ficha Técnica ------------------");
-			System.out.print("Nome do dentista: ");
-			nome = sc.nextLine();
-			System.out.print("Data da consulta (xx/xx/xxxx): ");
-			nome = sc.nextLine();
-			System.out.print("Data do tratamento (xx/xx/xxxx): ");
-			nome = sc.nextLine();
-			System.out.print("Plano do tratamento: ");
-			nome = sc.nextLine();
-			System.out.print("Digite o orçamento: R$");
-			nome = sc.nextLine();
-			
-			
-			System.out.println("Deseja cadastrar mais alguém? [1-sim] ou [2-não]");
-			resp = sc.nextInt();
-		} while(resp != 2);
-		
-		int[] mylist = {3, 6, 9, 12, 15, 18, 21};
-		Object[] arrDados = dados.toArray();
-		for(int i=0; i < arrDados.length; i++) {
-			for(Integer num: mylist) {
-				if (i == num) {
-					System.out.println("-------------------------------");
-				}
-			}
-			System.out.println(arrDados[i]);
-		}
-		
-		sc.close();
 	}
 	
 }

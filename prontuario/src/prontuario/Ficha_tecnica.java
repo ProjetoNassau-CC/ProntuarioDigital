@@ -1,7 +1,7 @@
 package prontuario;
 
 public class Ficha_tecnica {
-	private int codigo;
+	private String codigo;
 	private Paciente paciente;
 	private String nome_dentista;
 	private String data_consulta;
@@ -10,7 +10,7 @@ public class Ficha_tecnica {
 	private String data_tratamento;
 	private String gera_orcamento;
 	
-	public Ficha_tecnica(int codigo, Paciente paciente, String nome_dentista, String data_consulta, Anamnese perguntas, 
+	public Ficha_tecnica(String codigo, Paciente paciente, String nome_dentista, String data_consulta, Anamnese perguntas, 
 			String plano_tratamento, String data_tratamento, String gera_orcamento) {
 		this.codigo = codigo;
 		this.paciente = paciente;
@@ -22,11 +22,11 @@ public class Ficha_tecnica {
 		this.gera_orcamento = gera_orcamento;
 	}
 
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 
