@@ -85,4 +85,12 @@ public class Ficha_tecnica {
 	public void setGera_orcamento(String gera_orcamento) {
 		this.gera_orcamento = gera_orcamento;
 	}
+
+	@Override
+	public String toString() {
+		return "Código Ficha Técnica: " + codigo + "\nInformações do Paciente:\n" + paciente + "\nNome do dentista: " + nome_dentista
+				+ "\nData da consulta: " + data_consulta + "\nAnamnese:\n" + perguntas + "\nPlano de Tratamento: "
+				+ plano_tratamento + "\nData do tratamento: " + data_tratamento + "\nOrçamento: " + gera_orcamento;
+	}
+	
 }
