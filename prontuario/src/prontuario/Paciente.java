@@ -1,16 +1,95 @@
 package prontuario;
 
-public class Paciente extends Funcionario {
+import java.util.ArrayList;
+import java.util.Scanner;
 
-	public Paciente(int codigo, String nome, String email, String tel, String cel, Endereco endereco,
-			String data_nascimento, String cpf, String rg) {
-		super(codigo, nome, email, tel, cel, endereco, data_nascimento, cpf, rg);
+public class Paciente extends Funcionario {
+	Scanner input = new Scanner(System.in);
+
+	public Paciente(int codigo, String nome, String email, String tel, String cel,
+			String data_nascimento, String cpf, String rg, Endereco endereco) {
+		super(codigo, nome, email, tel, cel, data_nascimento, cpf, rg, endereco);
 		
 	}
 	
-	@Override
-	public String toString() 
-	{
-		return super.toString();		
+	
+	public Paciente() {	
 	}
+	
+	ArrayList<Paciente> dados;
+	
+	public void CadastrarPaciente(){
+		
+		this.dados = new ArrayList<Paciente>();
+		
+		Endereco endc = new Endereco();
+		Paciente p = new Paciente();
+
+				
+		System.out.println("\n==========================================================");
+		System.out.println("XXXXXXXXXXXXXXXXXXXX Dados do Paciente XXXXXXXXXXXXXXXXXXX");	
+		System.out.println("==========================================================\n");
+		
+		System.out.print("Codigo: ");
+		p.setCodigo(input.nextInt());		
+		System.out.print("Nome: ");
+		p.setNome(input.nextLine());
+		p.setNome(input.nextLine());
+		System.out.print("Email: ");
+		p.setEmail(input.nextLine());
+		System.out.print("Telefone: ");
+		p.setTel(input.nextLine());
+		System.out.print("Celular: ");
+		p.setCel(input.nextLine());
+		System.out.print("Data de Nascimento: ");
+		p.setData_nascimento(input.nextLine());
+		System.out.print("CPF: ");
+		p.setCpf(input.nextLine());
+		System.out.print("RG: ");
+		p.setRg(input.nextLine());
+		
+		System.out.print("Rua: ");
+		endc.setRua(input.nextLine());	
+		
+		System.out.print("Bairro: ");
+		endc.setBairro(input.nextLine());	
+		
+		System.out.print("CEP: ");
+		endc.setCep(input.nextLine());	
+		
+		System.out.print("Cidade: ");
+		endc.setCidade(input.nextLine());	
+		
+		System.out.print("UF: ");
+		endc.setUf(input.nextLine());	
+		
+		System.out.print("Numero: ");
+		endc.setNumero(input.nextLine());	
+		
+		System.out.print("Complemento: ");
+		endc.setComplemento(input.nextLine());	
+		
+		Ficha_tecnica ficha = new Ficha_tecnica();
+		
+		ficha.Perguntas();
+		
+		dados.add(p);
+	
+	}
+	
+	public  void Buscar() {
+		
+		System.out.println("\nDigite o CPF para Buscar: ");
+		String buscarCpf = input.next();
+		for (Paciente p : dados) {
+			if(p.getCpf().equals(buscarCpf)) {
+				System.out.println("\nNome: " +p.getNome() + "\nEmail: " +p.getEmail() +"\nTelefone: " + p.getTel() 
+				+"\nCelular: " + p.getCel() +"\nData de Nascimento: " + p.getData_nascimento() 
+				+"\nCpf: " + p.getCpf() +"\nRg: " + p.getRg());
+			}
+		}
+			
+		}	
+
+	
 }

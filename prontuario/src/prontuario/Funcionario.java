@@ -1,8 +1,9 @@
 package prontuario;
 
+
 public class Funcionario {
 	
-	private int codigo;
+	protected int codigo;
 	private String nome;
 	private String email;
 	private String tel;
@@ -11,18 +12,23 @@ public class Funcionario {
 	private String data_nascimento;
 	private String cpf;
 	private String rg;
+
 	
-	public Funcionario(int codigo, String nome, String email, String tel, String cel, Endereco endereco,
-			String data_nascimento, String cpf, String rg) {
-		this.codigo =  codigo;
-		this.nome =  nome;
-		this.email =  email;
-		this.tel =  tel;
-		this.cel =  cel;
-		this.endereco =  endereco;
-		this.data_nascimento =  data_nascimento;
-		this.cpf =  cpf;
-		this.rg =  rg;
+	//Refencia a Class Funcionario
+	public Funcionario(int codigo, String nome, String email, String tel, String cel,
+			String data_nascimento, String cpf, String rg, Endereco endereco) {
+		this.codigo = codigo;
+		this.nome = nome;
+		this.email = email;
+		this.tel = tel;
+		this.cel = cel;
+		this.endereco = endereco;
+		this.data_nascimento = data_nascimento;
+		this.cpf = cpf;
+		this.rg = rg;
+	}
+
+	public Funcionario() {		
 	}
 
 	public int getCodigo() {
@@ -30,7 +36,7 @@ public class Funcionario {
 	}
 
 	public void setCodigo(int codigo) {
-		this.codigo =  codigo;
+		this.codigo = codigo;
 	}
 
 	public String getNome() {
@@ -38,7 +44,7 @@ public class Funcionario {
 	}
 
 	public void setNome(String nome) {
-		this.nome =  nome;
+		this.nome = nome;
 	}
 
 	public String getEmail() {
@@ -46,7 +52,7 @@ public class Funcionario {
 	}
 
 	public void setEmail(String email) {
-		this.email =  email;
+		this.email = email;
 	}
 
 	public String getTel() {
@@ -54,7 +60,7 @@ public class Funcionario {
 	}
 
 	public void setTel(String tel) {
-		this.tel =  tel;
+		this.tel = tel;
 	}
 
 	public String getCel() {
@@ -62,7 +68,7 @@ public class Funcionario {
 	}
 
 	public void setCel(String cel) {
-		this.cel =  cel;
+		this.cel = cel;
 	}
 
 	public Endereco getEndereco() {
@@ -70,7 +76,7 @@ public class Funcionario {
 	}
 
 	public void setEndereco(Endereco endereco) {
-		this.endereco =  endereco;
+		this.endereco = endereco;
 	}
 
 	public String getData_nascimento() {
@@ -78,7 +84,7 @@ public class Funcionario {
 	}
 
 	public void setData_nascimento(String data_nascimento) {
-		this.data_nascimento =  data_nascimento;
+		this.data_nascimento = data_nascimento;
 	}
 
 	public String getCpf() {
@@ -86,7 +92,7 @@ public class Funcionario {
 	}
 
 	public void setCpf(String cpf) {
-		this.cpf =  cpf;
+		this.cpf = cpf;
 	}
 
 	public String getRg() {
@@ -94,14 +100,13 @@ public class Funcionario {
 	}
 
 	public void setRg(String rg) {
-		this.rg =  rg;
+		this.rg = rg;
 	}
-
-	@Override
+	
+	//Refencia ao Contrutor Funcionario que converte todas info em String
 	public String toString() {
-		return "Código: " + codigo + "\nNome: " + nome + "\nCPF: " + cpf + "\nRG: " + rg + "\nEmail: " + email + 
-				"\nTelefone: " + tel + "\nData de nascimento: " + data_nascimento + "\nInformações de endereço:\n" 
-				+ endereco + "\n"; 
-
+	return "\nNome: "+ nome +"\nEmail: "+ email +"\nTelefone: "+ tel +"\nCelular: "+ cel 
+			+"\nEndereço: "+ endereco +"\nData de Nascimento: "+ data_nascimento 
+			+"\nCPF: "+ cpf +"\nRG: "+ rg + endereco;
 	}
 }
