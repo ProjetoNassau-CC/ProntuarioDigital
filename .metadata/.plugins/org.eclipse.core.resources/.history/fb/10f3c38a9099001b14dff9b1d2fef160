@@ -16,9 +16,11 @@ public class Paciente extends Funcionario {
 	public Paciente() {	
 	}
 	
-	ArrayList<Paciente> dados = new ArrayList<Paciente>();;
+	ArrayList<Paciente> dados;
 	
 	public void CadastrarPaciente(){
+		
+		this.dados = new ArrayList<Paciente>();
 		
 		Endereco endc = new Endereco();
 		Paciente p = new Paciente();
