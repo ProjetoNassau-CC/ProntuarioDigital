@@ -27,6 +27,8 @@ public class Login {
 		
 	}
 
+
+	@SuppressWarnings("unlikely-arg-type")
 	public void telaLogin() {
 		
 		Locale.setDefault(Locale.US);

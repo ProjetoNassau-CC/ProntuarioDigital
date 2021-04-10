@@ -30,10 +30,11 @@ public class Ficha_tecnica {
 	public Ficha_tecnica() {
 		
 	}
-
-	ArrayList<Ficha_tecnica> fichas = new ArrayList <Ficha_tecnica>();
-	public void Perguntas() {		
 	
+	ArrayList<Ficha_tecnica> fichas;
+	public void Perguntas() {
+		
+		this.fichas = new ArrayList<Ficha_tecnica>();
 		Ficha_tecnica fic= new Ficha_tecnica();
 		
 		Anamnese anam = new	Anamnese();	
