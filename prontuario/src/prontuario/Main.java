@@ -5,21 +5,20 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		
 		int opcao;
 		
 		Paciente pac = new Paciente();
-		Login log = new Login();
+		Login tela_login = new Login();
 		
-		log.telaLogin();	
+		tela_login.telaLogin();	
 		
 		do {
-				
-			
-			System.out.println("\n1- xxxxxxx \n2- Cadastrar \n3- Buscar \n0- Finalizar \n");
-			System.out.print("Opção: ");
-			opcao = input.nextInt();
+
+			System.out.println("\n1- Cadastrar Dentista \n2- Cadastrar Paciente \n3- Buscar \n0- Finalizar \n");
+			System.out.print("O que deseja fazer? ");
+			opcao = sc.nextInt();
 
 			switch(opcao) {	
 			case 1:
@@ -32,15 +31,12 @@ public class Main {
 			case 3:
 				pac.Buscar();
 				break;
-			case 4:
-				
-					
-				
-		}	
+							
+			}	
 		
 		}while(opcao != 0);
 				
-		input.close();
+		sc.close();
 	}
 	
 }
