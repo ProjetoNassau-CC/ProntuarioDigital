@@ -3,91 +3,227 @@ package prontuario;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Paciente extends Funcionario {
+public class Paciente {
 	Scanner input = new Scanner(System.in);
+	
+	protected int codigo;
+	private String nome;
+	private String email;
+	private String tel;
+	private String cel;
+	private Endereco endereco;
+	private String data_nascimento;
+	private String cpf;
+	private String rg;
 
 	public Paciente(int codigo, String nome, String email, String tel, String cel,
 			String data_nascimento, String cpf, String rg, Endereco endereco) {
-		super(codigo, nome, email, tel, cel, data_nascimento, cpf, rg, endereco);
-		
+		this.codigo = codigo;
+		this.nome = nome;
+		this.email = email;
+		this.tel = tel;
+		this.cel = cel;
+		this.endereco = endereco;
+		this.data_nascimento = data_nascimento;
+		this.cpf = cpf;
+		this.rg = rg;
 	}
 	
 	
 	public Paciente() {	
+		
 	}
 	
-	ArrayList<Paciente> dados = new ArrayList<Paciente>();;
+
+	
+	ArrayList<Paciente> dados = new ArrayList<Paciente>();
+
 	
 	public void CadastrarPaciente(){
-		
-		Endereco endc = new Endereco();
 		Paciente p = new Paciente();
-
-				
+		Endereco end = new Endereco();
+		Ficha_tecnica ficha = new Ficha_tecnica();
+	    Anamnese anamnese = new Anamnese();
+	    
 		System.out.println("\n==========================================================");
 		System.out.println("XXXXXXXXXXXXXXXXXXXX Dados do Paciente XXXXXXXXXXXXXXXXXXX");	
 		System.out.println("==========================================================\n");
 		
-		System.out.print("Codigo: ");
-		p.setCodigo(input.nextInt());		
-		System.out.print("Nome: ");
-		p.setNome(input.nextLine());
-		p.setNome(input.nextLine());
-		System.out.print("Email: ");
-		p.setEmail(input.nextLine());
-		System.out.print("Telefone: ");
-		p.setTel(input.nextLine());
-		System.out.print("Celular: ");
-		p.setCel(input.nextLine());
-		System.out.print("Data de Nascimento: ");
-		p.setData_nascimento(input.nextLine());
-		System.out.print("CPF: ");
-		p.setCpf(input.nextLine());
-		System.out.print("RG: ");
-		p.setRg(input.nextLine());
 		
-		System.out.print("Rua: ");
-		endc.setRua(input.nextLine());	
-		
-		System.out.print("Bairro: ");
-		endc.setBairro(input.nextLine());	
-		
-		System.out.print("CEP: ");
-		endc.setCep(input.nextLine());	
-		
-		System.out.print("Cidade: ");
-		endc.setCidade(input.nextLine());	
-		
-		System.out.print("UF: ");
-		endc.setUf(input.nextLine());	
-		
-		System.out.print("Numero: ");
-		endc.setNumero(input.nextLine());	
-		
-		System.out.print("Complemento: ");
-		endc.setComplemento(input.nextLine());	
-		
-		Ficha_tecnica ficha = new Ficha_tecnica();
-		
-		ficha.Perguntas();
-		
-		dados.add(p);
+		System.out.println("Codigo: [" + codigo +"]");
 	
+		System.out.print("Nome: ");
+		p.setNome(input.next());
+	
+		System.out.print("Email: ");
+		p.setEmail(input.next());
+		
+		System.out.print("Telefone: ");
+		p.setTel(input.next());
+		
+		System.out.print("Celular: ");
+		p.setCel(input.next());
+		
+		System.out.print("Data de Nascimento: ");
+		p.setData_nascimento(input.next());
+		
+		System.out.print("CPF: ");
+		p.setCpf(input.next());
+		
+		System.out.print("RG: ");
+		p.setRg(input.next());
+		
+		end.dadosEndereco();
+		
+		//CODIGO A BAIXO TEMPORARIO
+		//REMOVER DEPOS DE RESOLVER OS BUGS
+		String resp;
+		System.out.print("\nIniciar perguntas S/N? ");
+		resp = input.next();
+		
+		if(resp.equalsIgnoreCase("S")){
+			ficha.dadosFichaTecnica();
+	    	anamnese.dadosAnamnese();
+		}
+		
+		//ADICIONA DADOS A ARRAY DADOS
+		dados.add(p);
+					
 	}
 	
+	
 	public  void Buscar() {
-		
-		System.out.println("\nDigite o CPF para Buscar: ");
+				
+		System.out.print("\nDigite o CPF para fazer Buscar");
+		System.out.print("\nCPF: ");
 		String buscarCpf = input.next();
-		for (Paciente p : dados) {
-			if(p.getCpf().equals(buscarCpf)) {
-				System.out.println("\nNome: " +p.getNome() + "\nEmail: " +p.getEmail() +"\nTelefone: " + p.getTel() 
-				+"\nCelular: " + p.getCel() +"\nData de Nascimento: " + p.getData_nascimento() 
-				+"\nCpf: " + p.getCpf() +"\nRg: " + p.getRg());
+		for (Paciente p : dados) {				
+					if(p.getCpf().equals(buscarCpf)) {
+					System.out.print("\nNome: "+ p.getNome());						
+					}	
 			}
-		}
-			
-		}	
 
+	}
+	
+	public  void Buscar2() {
+			
+			
+	
+	
+	}
+				
+		
+
+	
+	public Scanner getInput() {
+		return input;
+	}
+
+
+	public void setInput(Scanner input) {
+		this.input = input;
+	}
+
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getTel() {
+		return tel;
+	}
+
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+
+	public String getCel() {
+		return cel;
+	}
+
+
+	public void setCel(String cel) {
+		this.cel = cel;
+	}
+
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+
+	public String getData_nascimento() {
+		return data_nascimento;
+	}
+
+
+	public void setData_nascimento(String data_nascimento) {
+		this.data_nascimento = data_nascimento;
+	}
+
+
+	public String getCpf() {
+		return cpf;
+	}
+
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+
+	public String getRg() {
+		return rg;
+	}
+
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
+
+	public ArrayList<Paciente> getDados() {
+		return dados;
+	}
+
+
+	public void setDados(ArrayList<Paciente> dados) {
+		this.dados = dados;
+	};
+	
+	
 	
 }

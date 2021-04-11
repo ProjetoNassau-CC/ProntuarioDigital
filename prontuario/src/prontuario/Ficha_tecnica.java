@@ -31,12 +31,9 @@ public class Ficha_tecnica {
 		
 	}
 
-	ArrayList<Ficha_tecnica> fichas = new ArrayList <Ficha_tecnica>();
-	public void Perguntas() {		
+	ArrayList<Ficha_tecnica> fichatecnica = new ArrayList<Ficha_tecnica>();
 	
-		Ficha_tecnica fic= new Ficha_tecnica();
-		
-		Anamnese anam = new	Anamnese();	
+	public void dadosFichaTecnica() {			
 		Dentista dentista = new Dentista();		
 		Ficha_tecnica ficha = new Ficha_tecnica();
 		
@@ -44,61 +41,24 @@ public class Ficha_tecnica {
 		System.out.println("XXXXXXXXXXXXXXXXXXXXXX Ficha Técnica XXXXXXXXXXXXXXXXXXXXX\n");	
 
 		System.out.print("Nome do dentista: ");
-		dentista.setNome(input.nextLine());
+		dentista.setNome(input.next());
 		
 		System.out.print("Data da consulta (xx/xx/xxxx): ");
-		ficha.setData_consulta(input.nextLine());
+		setData_consulta(input.next());
 		
 		System.out.print("Data do tratamento (xx/xx/xxxx): ");
-		ficha.setData_tratamento(input.nextLine());
+		setData_tratamento(input.next());
 		
 		System.out.print("Plano do tratamento: ");
-		ficha.setPlano_tratamento(input.nextLine());
+		setPlano_tratamento(input.next());
 		
 		System.out.print("Digite o orçamento: R$");
-		ficha.setGera_orcamento(input.nextLine());		
+		setGera_orcamento(input.next());	
 		
-		System.out.println("\n==========================================================");
-		System.out.println("                  Entrevista (Anamnese)");
-		System.out.println("                    Digite [S ou N]\n");
-		
-		System.out.print("Problema com Anestesia? ");
-		anam.setProblemaAnestesia(input.nextLine());
-		
-		System.out.print("Problema de Hemorragia? ");
-		anam.setProblemaHemorragia (input.nextLine());
-		
-		System.out.print("Problema de Febre Reumática? ");
-		anam.setFebreReumatica(input.nextLine());
-
-		System.out.print("Problema Renal? ");
-		anam.setProblemaRenal (input.nextLine());	
-		
-		System.out.print("Problema Respiratório? ");
-		anam.setProblemaRespitorio (input.nextLine());
-		
-		System.out.print("Problema Cardíaco? ");
-		anam.setProblemaCardiaco (input.nextLine());
-		
-		System.out.print("Problema Gástrico? ");
-		anam.setProblemaGastrico (input.nextLine());
-		
-		System.out.print("Problema com Articulação? ");
-		anam.setProblemaArticular (input.nextLine());
-		
-		System.out.print("Antecedentes Familiar, se sim, Quais? ");
-		anam.setAntecedenteFamiliar (input.nextLine());
-		
-		System.out.print("Alergias, se sim, Quais? ");
-		anam.setAlergia (input.nextLine());
-		
-		System.out.println("\n==========================================================");
-		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-		System.out.println("==========================================================\n");
-		
-		fichas.add(fic);
+		fichatecnica.add(ficha);
 		
 	}
+	
 	
 
 	public int getCodigo() {

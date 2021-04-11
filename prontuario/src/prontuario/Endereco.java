@@ -1,6 +1,10 @@
 package prontuario;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Endereco {
+	Scanner input = new Scanner(System.in);
 	
 	private String rua;
 	private String bairro;
@@ -24,8 +28,39 @@ public class Endereco {
 	
 	public Endereco() {		
 		
-		
 	}
+
+	ArrayList<Endereco> enderecos = new ArrayList<Endereco>();
+	
+	public void dadosEndereco() {
+		Endereco e = new Endereco();
+		System.out.print("Rua: ");
+		e.setRua(input.next());	
+		
+		System.out.print("Bairro: ");
+		e.setBairro(input.next());	
+		
+		System.out.print("CEP: ");
+		e.setCep(input.next());	
+		
+		System.out.print("Cidade: ");
+		e.setCidade(input.next());	
+		
+		System.out.print("UF: ");
+		e.setUf(input.next());	
+		
+		System.out.print("Numero: ");
+		e.setNumero(input.next());	
+		
+		System.out.print("Complemento: ");
+		e.setComplemento(input.next());	
+		
+
+	
+	}
+	
+
+	
 	public String getRua() {
 		return rua;
 	}
@@ -70,8 +105,8 @@ public class Endereco {
 	}
 
 	public String toString() {
-		return "\nRua: " + rua + "\nBairro: " + bairro + "\nCep: " + cep + "\nCidade:" + cidade + "\nUf: " + uf
-				+ "\nNumero: " + numero + "\nComplemento: " + complemento;
+		return "\nRua: " + getRua() + "\nBairro: " + getBairro() + "\nCep: " + getCep() + "\nCidade:" + getCidade() 
+				+ "\nUf: " + getUf() + "\nNumero: " + getNumero() + "\nComplemento: " + getComplemento();
 	}
 	
 	

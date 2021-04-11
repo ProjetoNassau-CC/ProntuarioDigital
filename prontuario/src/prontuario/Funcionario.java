@@ -12,9 +12,10 @@ public class Funcionario {
 	private String data_nascimento;
 	private String cpf;
 	private String rg;
+	private String carteira_trabalho;
+	private String grau_de_ensino;
 
-	
-	//Refencia a Class Funcionario
+
 	public Funcionario(int codigo, String nome, String email, String tel, String cel,
 			String data_nascimento, String cpf, String rg, Endereco endereco) {
 		this.codigo = codigo;
