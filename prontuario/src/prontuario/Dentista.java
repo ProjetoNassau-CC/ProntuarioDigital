@@ -15,10 +15,10 @@ public class Dentista extends Funcionario {
 		
 	}
 	
-	ArrayList<Dentista> dentistas = new ArrayList();
+	ArrayList<Dentista> dentistas = new ArrayList<Dentista>();
 	public void CadastrarDentista(){
-		Dentista dent = new Dentista();
-		Endereco end = new Endereco();
+		Dentista dentista = new Dentista();
+		Endereco endereco = new Endereco();
 
 
 		System.out.println("\n==========================================================");
@@ -44,30 +44,30 @@ public class Dentista extends Funcionario {
 		String rg1 = sc.next();
 		System.out.print("Rua: ");
 		sc.nextLine();
-		end.setRua(sc.nextLine());	
+		endereco.setRua(sc.nextLine());	
 		System.out.print("Bairro: ");
-		end.setBairro(sc.nextLine());	
+		endereco.setBairro(sc.nextLine());	
 		
 		System.out.print("CEP: ");
-		end.setCep(sc.next());	
+		endereco.setCep(sc.next());	
 		
 		System.out.print("Cidade: ");
-		end.setCidade(sc.next());	
+		endereco.setCidade(sc.next());	
 		
 		System.out.print("UF: ");
-		end.setUf(sc.next());	
+		endereco.setUf(sc.next());	
 		
 		System.out.print("Numero: ");
-		end.setNumero(sc.next());	
+		endereco.setNumero(sc.next());	
 		
 		System.out.print("Complemento: ");
-		end.setComplemento(sc.next());
+		endereco.setComplemento(sc.next());
 		
 		
 		System.out.print("CRO:");
 		String cro = sc.next();
 		
-		Dentista Dentistas = new Dentista(codigo1,nome1,email1,tel1,cel1,data_nasc1,cpf1,rg1,cro, end);
+		Dentista Dentistas = new Dentista(codigo1,nome1,email1,tel1,cel1,data_nasc1,cpf1,rg1,cro, endereco);
 		dentistas.add(Dentistas);
 		
 		
@@ -81,7 +81,7 @@ public class Dentista extends Funcionario {
 			if(d.getCpf().equals(buscarCpfd)) {
 				System.out.println("\nNome: " +d.getNome() + "\nEmail: " +d.getEmail() +"\nTelefone: " + d.getTel() 
 				+"\nCelular: " + d.getCel() +"\nData de Nascimento: " + d.getData_nascimento() 
-				+"\nCpf: " + d.getCpf() +"\nRg: " + d.getRg());
+				+"\nCpf: " + d.getCpf() +"\nRg: " + d.getRg() + "\nEndereco: "+  d.getEndereco());
 			}
 		}
 			
