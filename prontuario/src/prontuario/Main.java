@@ -9,6 +9,7 @@ public class Main {
 		
 		int opcao;
 		
+		Dentista dentista = new Dentista();
 		Paciente pac = new Paciente();
 		Login tela_login = new Login();
 		
@@ -16,22 +17,25 @@ public class Main {
 		
 		do {
 
-			System.out.println("\n1- Cadastrar Dentista \n2- Cadastrar Paciente \n3- Buscar \n0- Finalizar \n");
+			System.out.println("\n1- Cadastrar Dentista \n2- Cadastrar Paciente \n3- Buscar Dentista \n4- Buscar Paciente \n0- Finalizar");
 			System.out.print("O que deseja fazer? ");
 			opcao = sc.nextInt();
 
 			switch(opcao) {	
 			case 1:
-				
+				dentista.CadastrarDentista();
 				break;
 			case 2:
 				pac.CadastrarPaciente();
 				break;
 				
 			case 3:
+				dentista.BuscarDentista();
+				break;
+			
+			case 4:
 				pac.Buscar();
 				break;
-							
 			}	
 		
 		}while(opcao != 0);

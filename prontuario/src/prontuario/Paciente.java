@@ -38,8 +38,8 @@ public class Paciente {
 
 	
 	public void CadastrarPaciente(){
-		Paciente p = new Paciente();
-		Endereco end = new Endereco();
+		Paciente paciente = new Paciente();
+		Endereco endereco = new Endereco();
 		Ficha_tecnica ficha = new Ficha_tecnica();
 	    Anamnese anamnese = new Anamnese();
 	    
@@ -51,27 +51,27 @@ public class Paciente {
 		System.out.println("Codigo: [" + codigo +"]");
 	
 		System.out.print("Nome: ");
-		p.setNome(input.next());
+		paciente.setNome(input.next());
 	
 		System.out.print("Email: ");
-		p.setEmail(input.next());
+		paciente.setEmail(input.next());
 		
 		System.out.print("Telefone: ");
-		p.setTel(input.next());
+		paciente.setTel(input.next());
 		
 		System.out.print("Celular: ");
-		p.setCel(input.next());
+		paciente.setCel(input.next());
 		
 		System.out.print("Data de Nascimento: ");
-		p.setData_nascimento(input.next());
+		paciente.setData_nascimento(input.next());
 		
 		System.out.print("CPF: ");
-		p.setCpf(input.next());
+		paciente.setCpf(input.next());
 		
 		System.out.print("RG: ");
-		p.setRg(input.next());
+		paciente.setRg(input.next());
 		
-		end.dadosEndereco();
+		endereco.dadosEndereco();
 		
 		//CODIGO A BAIXO TEMPORARIO
 		//REMOVER DEPOS DE RESOLVER OS BUGS
@@ -85,7 +85,7 @@ public class Paciente {
 		}
 		
 		//ADICIONA DADOS A ARRAY DADOS
-		dados.add(p);
+		dados.add(paciente);
 					
 	}
 	
@@ -95,14 +95,16 @@ public class Paciente {
 		System.out.print("\nDigite o CPF para fazer Buscar");
 		System.out.print("\nCPF: ");
 		String buscarCpf = input.next();
-		for (Paciente p : dados) {				
-					if(p.getCpf().equals(buscarCpf)) {
-					System.out.print("\nNome: "+ p.getNome());						
-					}	
+		for (Paciente paciente : dados) {				
+					if(paciente.getCpf().equals(buscarCpf)) {
+					System.out.print("\nNome: "+ paciente.getNome() + "\nEmail: "+ paciente.getEmail() +"\nTelefone: "+ paciente.getTel()
+					+"\nCelular: "+ paciente.getCel() + "\nData Nascimento: "+ paciente.getData_nascimento() + "\nCPF: "+ paciente.getCpf()
+					+"\nRG: "+ paciente.getRg() +"\nEndereco: "+ paciente.getEndereco());		
+					}
 			}
-
-	}	
 		
+	}	
+
 
 	
 	public Scanner getInput() {
