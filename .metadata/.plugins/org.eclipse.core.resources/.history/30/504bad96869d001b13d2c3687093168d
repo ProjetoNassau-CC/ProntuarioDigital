@@ -1,0 +1,122 @@
+package prontuario;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		
+		int opcao;
+		
+		Login tela_login = new Login();
+		Paciente paciente = new Paciente();
+		Endereco endereco = new Endereco();
+		Ficha_tecnica fichaTecnica = new Ficha_tecnica();
+	    Anamnese anamnese = new Anamnese();
+	    
+	    
+		ArrayList<Paciente> dados = new ArrayList<Paciente>();
+		
+		
+		
+		tela_login.telaLogin();	
+		
+		do {
+
+			System.out.println(""
+					+ "\n1- Cadastrar Dentista "
+					+ "\n2- Cadastrar Paciente "
+					+ "\n3- Dados do Paciente"
+					+ "\n4- Dados do Dentista "
+					+ "\n5- Finalizar"
+					+ "");
+			System.out.print("O que deseja fazer? ");
+			opcao = input.nextInt();
+
+			
+			switch(opcao) {	
+			case 1:
+				
+				break;
+			case 2:					    
+				System.out.println("\n==========================================================");
+				System.out.println("XXXXXXXXXXXXXXXXXXXX Dados do Paciente XXXXXXXXXXXXXXXXXXX");	
+				System.out.println("==========================================================\n");
+				
+				
+				System.out.print("Codigo: ");
+				int codigo = input.nextInt();
+			
+				System.out.print("Nome: ");
+				String nome = input.next();
+			
+				System.out.print("Email: ");
+				String email = input.next();
+				
+				System.out.print("Telefone: ");
+				String tel = input.next();
+				
+				System.out.print("Celular: ");
+				String cel = input.next();
+				
+				System.out.print("Data de Nascimento: ");
+				String data_nascimento = input.next();
+				
+				System.out.print("CPF: ");
+				String cpf = input.next();
+				
+				System.out.print("RG: ");
+				String rg = input.next();
+				
+				
+				System.out.println("\n=-=-=-=-=-=-=-=-=-=-=-=   Endereco  =-=-=-=-=-=-=-=-=-=-=-=\n");
+				
+				System.out.print("Rua: ");
+				endereco.setRua(input.next());	
+				
+				System.out.print("Bairro: ");
+				endereco.setBairro(input.next());	
+				
+				System.out.print("CEP: ");
+				endereco.setCep(input.next());	
+				
+				System.out.print("Cidade: ");
+				endereco.setCidade(input.next());	
+				
+				System.out.print("UF: ");
+				endereco.setUf(input.next());	
+				
+				System.out.print("Numero: ");
+				endereco.setNumero(input.next());	
+				
+				System.out.print("Complemento: ");
+				endereco.setComplemento(input.next());	
+				Paciente pac;
+				
+				pac = new Paciente(codigo, nome, email, tel, cel, data_nascimento, cpf, rg, endereco);
+				
+				dados.add(pac);
+				
+				break;
+				
+			case 3:
+				System.out.println("\nDigite o CPF para Buscar: ");
+				String buscarCpf = input.next();
+				for (Paciente p : dados) {
+					if(p.getCpf().equals(buscarCpf)) {
+						System.out.println(p.toString());
+					}
+				}
+				
+				break;
+							
+			}	
+		
+		}while(opcao != 0);
+				
+		input.close();
+	}
+	
+}

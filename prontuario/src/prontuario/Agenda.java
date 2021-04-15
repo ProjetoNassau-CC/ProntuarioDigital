@@ -2,7 +2,6 @@ package prontuario;
 
 public class Agenda {
 	
-	private int codigo;
 	private int codigo_ficha;
 	private String nome_paciente;
 	private String nome_dentista;
@@ -15,11 +14,10 @@ public class Agenda {
 	private char reagendado;
 	
 	
-	public Agenda(int codigo, int codigo_ficha, String nome_paciente, String nome_dentista, String plano_tratamento,
+	public Agenda(int codigo_ficha, String nome_paciente, String nome_dentista, String plano_tratamento,
 			String tratamento_dente, String data_inclusao, String data_agenda, char concluido, char cancelado,
 			char reagendado) {
 	
-		this.codigo = codigo;
 		this.codigo_ficha = codigo_ficha;
 		this.nome_paciente = nome_paciente;
 		this.nome_dentista = nome_dentista;
@@ -32,12 +30,12 @@ public class Agenda {
 		this.reagendado = reagendado;
 	}
 	
-	public int getCodigo() {
-		return codigo;
+
+	public Agenda() {
+		
 	}
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+
+
 	public int getCodigo_ficha() {
 		return codigo_ficha;
 	}
@@ -98,6 +96,22 @@ public class Agenda {
 	public void setReagendado(char reagendado) {
 		this.reagendado = reagendado;
 	}
+
+
+	@Override
+	public String toString() {
+		return "codigo_ficha: " + getCodigo_ficha()
+				+ "\nNome do paciente: " + getNome_paciente()
+				+ "\nNome do dentista: " + getNome_dentista()
+				+ "\nPlano de tratamento: " + getPlano_tratamento() 
+				+ "\nTratamento do dente: " + getTratamento_dente()
+				+ "\nData de inclusao: " + getData_inclusao()
+				+ "\nData do agendamento: " + getData_agenda()
+				+ "\nConcluido: " + getConcluido()
+				+ "\nCancelado: " + getCancelado()
+				+ "\nReagendado: " + getReagendado();
+	}
+	
 	
 
 }

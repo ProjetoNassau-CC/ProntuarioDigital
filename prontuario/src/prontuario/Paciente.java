@@ -1,6 +1,5 @@
 package prontuario;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Paciente {
@@ -10,108 +9,33 @@ public class Paciente {
 	private String nome;
 	private String email;
 	private String tel;
-	private String cel;
-	private Endereco endereco;
+	private String cel;	
 	private String data_nascimento;
 	private String cpf;
 	private String rg;
-
+	private Endereco endereco;
+	private Anamnese anamnese;
+	private Ficha_clinica ficha_tecnica;
+	
 	public Paciente(int codigo, String nome, String email, String tel, String cel,
-			String data_nascimento, String cpf, String rg, Endereco endereco) {
+			String data_nascimento, String cpf, String rg, Endereco endereco, 
+			Anamnese anamnese, Ficha_clinica ficha_tecnica) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.email = email;
 		this.tel = tel;
-		this.cel = cel;
-		this.endereco = endereco;
+		this.cel = cel;		
 		this.data_nascimento = data_nascimento;
 		this.cpf = cpf;
 		this.rg = rg;
+		this.endereco = endereco;		
+		this.anamnese = anamnese;
+		this.ficha_tecnica = ficha_tecnica;
 	}
 	
 	
-	public Paciente() {	
+	public Paciente() {
 		
-	}
-	
-	ArrayList<Paciente> dados = new ArrayList<Paciente>();
-
-	
-	public void CadastrarPaciente(){
-		Paciente p = new Paciente();
-		Endereco end = new Endereco();
-		Ficha_tecnica ficha = new Ficha_tecnica();
-	    Anamnese anamnese = new Anamnese();
-	    
-		System.out.println("\n==========================================================");
-		System.out.println("XXXXXXXXXXXXXXXXXXXX Dados do Paciente XXXXXXXXXXXXXXXXXXX");	
-		System.out.println("==========================================================\n");
-		
-		
-		System.out.println("Codigo: [" + codigo +"]");
-	
-		System.out.print("Nome: ");
-		p.setNome(input.next());
-	
-		System.out.print("Email: ");
-		p.setEmail(input.next());
-		
-		System.out.print("Telefone: ");
-		p.setTel(input.next());
-		
-		System.out.print("Celular: ");
-		p.setCel(input.next());
-		
-		System.out.print("Data de Nascimento: ");
-		p.setData_nascimento(input.next());
-		
-		System.out.print("CPF: ");
-		p.setCpf(input.next());
-		
-		System.out.print("RG: ");
-		p.setRg(input.next());
-		
-		end.dadosEndereco();
-		
-		//CODIGO A BAIXO TEMPORARIO
-		//REMOVER DEPOS DE RESOLVER OS BUGS
-		String resp;
-		System.out.print("\nIniciar perguntas S/N? ");
-		resp = input.next();
-		
-		if(resp.equalsIgnoreCase("S")){
-			ficha.dadosFichaTecnica();
-	    	anamnese.dadosAnamnese();
-		}
-		
-		//ADICIONA DADOS A ARRAY DADOS
-		dados.add(p);
-					
-	}
-	
-	
-	public  void Buscar() {
-				
-		System.out.print("\nDigite o CPF para fazer Buscar");
-		System.out.print("\nCPF: ");
-		String buscarCpf = input.next();
-		for (Paciente p : dados) {				
-					if(p.getCpf().equals(buscarCpf)) {
-					System.out.print("\nNome: "+ p.getNome());						
-					}	
-			}
-
-	}	
-		
-
-	
-	public Scanner getInput() {
-		return input;
-	}
-
-
-	public void setInput(Scanner input) {
-		this.input = input;
 	}
 
 
@@ -204,16 +128,33 @@ public class Paciente {
 		this.rg = rg;
 	}
 
-
-	public ArrayList<Paciente> getDados() {
-		return dados;
+	public Ficha_clinica getFicha_tecnica() {
+		return ficha_tecnica;
 	}
 
 
-	public void setDados(ArrayList<Paciente> dados) {
-		this.dados = dados;
-	};
+	public void setFicha_tecnica(Ficha_clinica ficha_tecnica) {
+		this.ficha_tecnica = ficha_tecnica;
+	}
 	
+
+	public Anamnese getAnamnese() {
+		return anamnese;
+	}
+
+
+	public void setAnamnese(Anamnese anamnese) {
+		this.anamnese = anamnese;
+	}
+	
+	public String toString() {
+		return 	"\n\n\n                      Dados do Paciente\n" 
+				+ "\nNº Prontuário: " + getCodigo() + "\nNome: " + getNome() 
+				+ "\nEmail: " + getEmail() + "\nTelefone: "	+ getTel() 
+				+ "\nCelular: " + getCel() + "\nData de nascimento: " + getData_nascimento() 
+				+ "\nCpf: " + getCpf() + "\nRg: " + getRg() 
+				+ getEndereco() + getAnamnese() + getFicha_tecnica();
+	}
 	
 	
 }

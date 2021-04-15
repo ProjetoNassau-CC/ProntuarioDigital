@@ -1,7 +1,6 @@
 package prontuario;
 
-import java.util.Locale;
-import java.util.Scanner;
+
 
 
 public class Login {
@@ -22,39 +21,8 @@ public class Login {
 	}
 
 
-	public Login() {
-		
+	public Login() {		
 	}
-
-	public void telaLogin() {
-		
-		Locale.setDefault(Locale.US);
-		Scanner sc = new Scanner(System.in);
-
-		boolean condicao = false;
-	
-	do {
-		System.out.println("=-=-=-=-=-=-=-=-=-=-= Faça seu Loguin =-=-=-=-=-=-=-=-=-=-=");
-
-		System.out.print("Login: ");
-		String login = sc.next();
-		
-		System.out.print("Senha: ");
-		String senha = sc.next();
-		
-		if (login.equals("admin") && senha.equals("1234")) {
-			condicao = true;
-		}
-	
-	}while(condicao != true);
-		
-	System.out.println("\n==========================================================");
-	System.out.println("                 Login efetuado com sucesso");
-	System.out.println("==========================================================");
-	
-	
-	}
-
 
 	public int getCodigo() {
 		return codigo;

@@ -1,0 +1,314 @@
+package prontuario;
+
+import java.util.Locale;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		Locale.setDefault(Locale.US);
+		int opcao1;
+		int opcao2;
+		
+
+		
+		
+	    
+	   
+		ArrayList<Dentista> DadosDentista = new ArrayList<Dentista>();
+		ArrayList<Paciente> DadosPaciente = new ArrayList<Paciente>();
+		
+		
+		
+			
+	
+		boolean condicao = false;
+		
+		do {
+			System.out.println("=-=-=-=-=-=-=-=-=-=-= Faça seu Loguin =-=-=-=-=-=-=-=-=-=-=");
+	
+			System.out.print("Login: ");
+			String login = input.next();
+			
+			System.out.print("Senha: ");
+			String senha = input.next();
+			
+			if (login.equals("admin") && senha.equals("1234")) {
+				condicao = true;
+			}
+		
+		}while(condicao != true);
+			
+		System.out.println("\n==========================================================");
+		System.out.println("                 Login efetuado com sucesso");
+		System.out.print("==========================================================");
+	
+
+		
+		do {
+			
+			System.out.print("\n==========================================================");
+			System.out.print(""
+					+ "\n1- Dentista Atual"
+					+ "\n2- Cadastrar Prontuario"
+					+ "\n3- Fazer Busca/Exibir"
+					+ "\n4- Finalizar"
+					+ "");
+			System.out.println("\n==========================================================");
+			System.out.print("O que deseja fazer? ");
+			opcao1 = input.nextInt();
+			System.out.println("==========================================================\n");
+					
+			
+			switch(opcao1) {	
+			case 1:				
+				Endereco endereco1 = new Endereco();
+
+
+				System.out.println("\n==========================================================");
+				System.out.println("XXXXXXXXXXXXXXXXXXXX Dados do Dentista XXXXXXXXXXXXXXXXXXX");	
+				System.out.println("==========================================================\n");
+				
+				System.out.print("                   Dados do Dentista\n");
+				
+				System.out.print("Codigo: ");
+				int D_codigo = input.nextInt();
+				
+				System.out.print("CRO: ");
+				int D_cro = input.nextInt();
+				
+				System.out.print("Nome: ");				
+				String D_nome = input.next();
+				
+				System.out.print("Email: ");				
+				String D_email = input.next();
+				
+				System.out.print("Telefone: ");			
+				String D_tel = input.next();
+				
+				System.out.print("celular: ");				
+				String D_cel = input.next();
+				
+				System.out.print("Data de nascimento: ");			
+				String D_data_nascimento = input.next();
+				
+				System.out.print("CPF: ");				
+				String D_cpf = input.next();
+				
+				System.out.print("RG: ");			
+				String D_rg = input.next();
+				
+				
+				
+				System.out.println("\n                      Endereço\n");
+				
+				System.out.print("Rua: ");						
+				endereco1.setRua(input.next());	
+				
+				System.out.print("Bairro: ");
+				endereco1.setBairro(input.next());	
+				
+				System.out.print("CEP: ");
+				endereco1.setCep(input.next());	
+				
+				System.out.print("Cidade: ");
+				endereco1.setCidade(input.next());	
+				
+				System.out.print("UF: ");
+				endereco1.setUf(input.next());	
+				
+				System.out.print("Numero: ");
+				endereco1.setNumero(input.next());	
+				
+				System.out.print("Complemento: ");
+				endereco1.setComplemento(input.next());
+				
+					
+				Dentista dentista = new Dentista(D_codigo, D_cro, D_nome, D_email, D_tel, D_cel, D_data_nascimento, D_cpf, D_rg, endereco1);
+				DadosDentista.add(dentista);
+				
+				
+				break;
+			case 2:						
+				Endereco endereco = new Endereco();
+				Ficha_tecnica fichaTecnica = new Ficha_tecnica();
+			    Anamnese anamnese = new Anamnese();
+			    Paciente pac;
+			    
+				System.out.println("\n==========================================================");
+				System.out.println("XXXXXXXXXXXXXXXXXXXXXXX Prontuário XXXXXXXXXXXXXXXXXXXXXXX");	
+				System.out.println("==========================================================\n");
+				
+				System.out.print("                   Dados do Paciente\n");
+				
+				System.out.print("Codigo: ");
+				int P_codigo = input.nextInt();
+			
+				System.out.print("Nome: ");
+				String P_nome = input.next();
+			
+				System.out.print("Email: ");
+				String P_email = input.next();
+				
+				System.out.print("Telefone: ");
+				String P_tel = input.next();
+				
+				System.out.print("Celular: ");
+				String P_cel = input.next();
+				
+				System.out.print("Data de Nascimento: ");
+				String P_data_nascimento = input.next();
+				
+				System.out.print("CPF: ");
+				String P_cpf = input.next();
+				
+				System.out.print("RG: ");
+				String P_rg = input.next();
+				
+				
+				
+				System.out.println("\n                      Endereço\n");
+				
+				System.out.print("Rua: ");
+				endereco.setRua(input.next());	
+				
+				System.out.print("Bairro: ");
+				endereco.setBairro(input.next());	
+				
+				System.out.print("CEP: ");
+				endereco.setCep(input.next());	
+				
+				System.out.print("Cidade: ");
+				endereco.setCidade(input.next());	
+				
+				System.out.print("UF: ");
+				endereco.setUf(input.next());	
+				
+				System.out.print("Numero: ");
+				endereco.setNumero(input.next());	
+				
+				System.out.print("Complemento: ");
+				endereco.setComplemento(input.next());		
+				
+				System.out.println("\n\n                  Entrevista (Anamnese)");
+				System.out.println("                    Digite [S ou N]\n");
+				
+				System.out.print("Problema com Anestesia? ");
+				anamnese.setProblemaAnestesia(input.nextLine());
+				
+				System.out.print("Problema de Hemorragia? ");
+				anamnese.setProblemaHemorragia(input.nextLine());
+				
+				System.out.print("Problema de Febre Reumática? ");
+				anamnese.setFebreReumatica(input.nextLine());
+
+				System.out.print("Problema Renal? ");
+				anamnese.setProblemaRenal(input.nextLine());	
+				
+				System.out.print("Problema Respiratório? ");
+				anamnese.setProblemaRespitorio(input.nextLine());
+				
+				System.out.print("Problema Cardíaco? ");
+				anamnese.setProblemaCardiaco(input.nextLine());
+				
+				System.out.print("Problema Gástrico? ");
+				anamnese.setProblemaGastrico(input.nextLine());
+				
+				System.out.print("Problema com Articulação? ");
+				anamnese.setProblemaArticular(input.nextLine());
+				
+				System.out.print("Antecedentes Familiar, se sim, Quais? ");
+				anamnese.setAntecedenteFamiliar(input.nextLine());
+				
+				System.out.print("Alergias, se sim, Quais? ");
+				anamnese.setAlergia(input.nextLine());
+				
+				System.out.println("\n==========================================================");				
+				System.out.println("\n                    Ficha Técnica\n");	
+			
+				
+				//Mostrar nome da dentista atual
+				for(Dentista d : DadosDentista) {
+			
+					System.out.println("Nome do dentista: " + d.getNome());
+					
+				}
+				
+				System.out.print("Data da consulta (xx/xx/xxxx): ");
+				fichaTecnica.setData_consulta(input.next());
+				
+				System.out.print("Data do tratamento (xx/xx/xxxx): ");
+				fichaTecnica.setData_tratamento(input.next());
+				
+				System.out.print("Plano do tratamento: ");
+				fichaTecnica.setPlano_tratamento(input.next());
+				
+				System.out.print("Digite o orçamento: R$");
+				fichaTecnica.setGera_orcamento(input.next());
+				
+				System.out.println("\n==========================================================");
+				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+				System.out.println("==========================================================\n");
+				
+				
+				
+				pac = new Paciente(P_codigo, P_nome, P_email, P_tel, P_cel,	P_data_nascimento, P_cpf, P_rg, endereco, anamnese, fichaTecnica);
+				
+				DadosPaciente.add(pac);
+				
+				break;
+				
+			case 3:	
+				do {
+					System.out.print("\n==========================================================");
+					System.out.print(""
+							+ "\n1- Mostrar Dados do Dentista"							
+							+ "\n2- Buscar Prontuário"
+							+ "\n3- Mostrar Todos Prontuários"
+							+ "\n0- Voltar"
+							+ "");
+					System.out.print("\n==========================================================");
+					System.out.print("\nO que deseja fazer? ");					
+					opcao2 = input.nextInt();
+					System.out.print("==========================================================\n");
+					
+					switch(opcao2){
+					
+						
+					case 1:
+						for (Dentista d : DadosDentista) {							
+								System.out.println(d.toString());
+						}
+						
+						break;
+					case 2:
+						System.out.print("Digite o CPF para Buscar: ");
+						String BuscarPaciente = input.next();
+						System.out.println("==========================================================");
+						for (Paciente p : DadosPaciente) {
+							if(p.getCpf().equals(BuscarPaciente)) {
+								System.out.println(p.toString());
+							}
+						}
+						break;
+					case 3:
+						for (Paciente p : DadosPaciente) {							
+								System.out.println(p.toString());
+						}
+						break;
+					}
+					
+				}while(opcao2 != 0);	
+				
+			case 4:
+			}	
+		
+		}while(opcao1 != 0);
+				
+		input.close();
+	}
+	
+}
