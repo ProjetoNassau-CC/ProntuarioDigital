@@ -1,6 +1,5 @@
 package prontuario;
 
-
 public class Funcionario {
 	
 	protected int codigo;

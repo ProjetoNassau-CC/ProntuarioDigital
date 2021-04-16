@@ -2,27 +2,24 @@ package prontuario;
 
 public class Agenda {
 	
-	private int codigo;
 	private int codigo_ficha;
-	private String nome_paciente;
 	private String nome_dentista;
+	private String nome_paciente;	
 	private String plano_tratamento;
 	private String tratamento_dente;
 	private String data_inclusao;
 	private String data_agenda;
-	private char concluido;
-	private char cancelado;
-	private char reagendado;
+	private String concluido;
+	private String cancelado;
+	private String reagendado;
+		
+	public Agenda(int codigo_ficha, String nome_dentista, String nome_paciente, String plano_tratamento,
+			String tratamento_dente, String data_inclusao, String data_agenda, String concluido, String cancelado,
+			String reagendado) {
 	
-	
-	public Agenda(int codigo, int codigo_ficha, String nome_paciente, String nome_dentista, String plano_tratamento,
-			String tratamento_dente, String data_inclusao, String data_agenda, char concluido, char cancelado,
-			char reagendado) {
-	
-		this.codigo = codigo;
 		this.codigo_ficha = codigo_ficha;
-		this.nome_paciente = nome_paciente;
 		this.nome_dentista = nome_dentista;
+		this.nome_paciente = nome_paciente;		
 		this.plano_tratamento = plano_tratamento;
 		this.tratamento_dente = tratamento_dente;
 		this.data_inclusao = data_inclusao;
@@ -32,17 +29,20 @@ public class Agenda {
 		this.reagendado = reagendado;
 	}
 	
-	public int getCodigo() {
-		return codigo;
+	public Agenda() {		
 	}
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
-	}
+
 	public int getCodigo_ficha() {
 		return codigo_ficha;
 	}
 	public void setCodigo_ficha(int codigo_ficha) {
 		this.codigo_ficha = codigo_ficha;
+	}
+	public void setNome_dentista(String nome_dentista) {
+		this.nome_dentista = nome_dentista;
+	}
+	public String getPlano_tratamento() {
+		return plano_tratamento;
 	}
 	public String getNome_paciente() {
 		return nome_paciente;
@@ -52,12 +52,6 @@ public class Agenda {
 	}
 	public String getNome_dentista() {
 		return nome_dentista;
-	}
-	public void setNome_dentista(String nome_dentista) {
-		this.nome_dentista = nome_dentista;
-	}
-	public String getPlano_tratamento() {
-		return plano_tratamento;
 	}
 	public void setPlano_tratamento(String plano_tratamento) {
 		this.plano_tratamento = plano_tratamento;
@@ -80,24 +74,37 @@ public class Agenda {
 	public void setData_agenda(String data_agenda) {
 		this.data_agenda = data_agenda;
 	}
-	public char getConcluido() {
+	public String getConcluido() {
 		return concluido;
 	}
-	public void setConcluido(char concluido) {
+	public void setConcluido(String concluido) {
 		this.concluido = concluido;
 	}
-	public char getCancelado() {
+	public String getCancelado() {
 		return cancelado;
 	}
-	public void setCancelado(char cancelado) {
+	public void setCancelado(String cancelado) {
 		this.cancelado = cancelado;
 	}
-	public char getReagendado() {
+	public String getReagendado() {
 		return reagendado;
 	}
-	public void setReagendado(char reagendado) {
+	public void setReagendado(String reagendado) {
 		this.reagendado = reagendado;
 	}
+
+	public String toString() {
+		return "codigo_ficha: " + getCodigo_ficha()
+				+ "\nNome do dentista: " + getNome_dentista()
+				+ "\nNome do paciente: " + getNome_paciente()				
+				+ "\nPlano de tratamento: " + getPlano_tratamento() 
+				+ "\nTratamento do dente: " + getTratamento_dente()
+				+ "\nData de inclusao: " + getData_inclusao()
+				+ "\nData do agendamento: " + getData_agenda()
+				+ "\nConcluido: " + getConcluido()
+				+ "\nCancelado: " + getCancelado()
+				+ "\nReagendado: " + getReagendado();
+	}	
 	
 
 }
