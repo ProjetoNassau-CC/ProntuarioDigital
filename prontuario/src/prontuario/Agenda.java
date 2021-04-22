@@ -96,8 +96,8 @@ public class Agenda {
 	public String toString() {
 		return "codigo_ficha: " + getCodigo_ficha()
 				+ "\nNome do dentista: " + getNome_dentista()
-				+ "\nNome do paciente: " + getNome_paciente()				
-				+ "\nPlano de tratamento: " + getPlano_tratamento() 
+				+ "\nNome do paciente: " + getNome_paciente()			
+				+ "\nPlano de tratamento: " + getPlano_tratamento()
 				+ "\nTratamento do dente: " + getTratamento_dente()
 				+ "\nData de inclusao: " + getData_inclusao()
 				+ "\nData do agendamento: " + getData_agenda()

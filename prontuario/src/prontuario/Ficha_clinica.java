@@ -71,7 +71,7 @@ public class Ficha_clinica {
 		this.gera_orcamento = gera_orcamento;
 	}
 
-	Dentista dentista = new Dentista();
+	
 	public String toString() {
 		return  "\n\n=========================================================="
 				+"\n                        Ficha Clinica\n"			

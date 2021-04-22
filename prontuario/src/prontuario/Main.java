@@ -8,6 +8,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
+		Ficha_clinica fichaClinica = new Ficha_clinica();
 		Locale.setDefault(Locale.US);
 		int opcao1;
 		int opcao2;	    
@@ -122,7 +123,6 @@ public class Main {
 				break;
 			case 2:						
 				Endereco endereco = new Endereco();
-				Ficha_clinica fichaClinica = new Ficha_clinica();
 			    Anamnese anamnese = new Anamnese();
 			    
 			    
@@ -256,7 +256,7 @@ public class Main {
 				Agenda agenda = new Agenda();
 				
 				System.out.println("\n                         Agendamento\n");				
-				System.out.print("Digite o CPF para ver o Agendamento: ");
+				System.out.print("CPF do Paciente: ");
 				String BuscarPaciente = input.next();
 				System.out.println("==========================================================");
 				for(Paciente p : DadosPaciente) {
@@ -265,13 +265,11 @@ public class Main {
 						System.out.println("Nº Prontuário: " + p.getCodigo());						
 						agenda.setCodigo_ficha(p.getCodigo());
 						
-						for(Dentista d : DadosDentista) {
-							System.out.println("Nome do Dentista: " + d.getNome());
-							agenda.setNome_dentista(p.getNome());
-						}
-						
 						System.out.println("Nome do paciente: " + p.getNome());
-						agenda.setNome_paciente(p.getNome());		
+						agenda.setNome_paciente(p.getNome());
+
+						System.out.println("Nome do dentista: "+fichaClinica.getNome_dentista());
+						agenda.setNome_dentista(fichaClinica.getNome_dentista());
 						
 						System.out.print("Plano de tratamento: ");
 						agenda.setPlano_tratamento(input.next());
@@ -292,7 +290,7 @@ public class Main {
 						agenda.setCancelado(input.next());
 						
 						System.out.print("Reagendado? ");
-						agenda.setReagendado(input.next());		
+						agenda.setReagendado(input.next());
 						
 						DadosAgenda.add(agenda);
 						
@@ -349,7 +347,7 @@ public class Main {
 						}						
 						break;
 					case 4:
-						// Buscar Agendamento
+						//buscar agendamento
 						System.out.print("Digitar o CPF do paciente para buscar o agendamento");
 						System.out.println("CPF: ");
 						String BuscarAgenda = input.next();
