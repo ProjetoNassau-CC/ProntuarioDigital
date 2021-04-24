@@ -1,9 +1,0 @@
-package prontuario;
-
-public class Login {
-	
-	int codigo;
-	String usuario;
-	String senha;
-	int tipo_usuario;
-}

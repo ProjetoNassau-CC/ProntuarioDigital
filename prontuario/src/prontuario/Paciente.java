@@ -126,8 +126,7 @@ public class Paciente {
 	}
 	
 	public String toString() {
-		return 	"\n\n\n                      Dados do Paciente\n" 
-				+ "\nNº Prontuário: " + getCodigo() 
+		return    "\nNº Prontuário: " + getCodigo() 
 				+ "\nNome: " + getNome() 
 				+ "\nEmail: " + getEmail()
 				+ "\nTelefone: "	+ getTel() 
