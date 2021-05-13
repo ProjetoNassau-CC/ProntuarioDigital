@@ -15,11 +15,11 @@ public class Paciente {
 	private String rg;
 	private Endereco endereco;
 	private Anamnese anamnese;
-	private Ficha_clinica ficha_tecnica;
+	private Ficha_clinica ficha_clinica ;
 	
 	public Paciente(int codigo, String nome, String email, String tel, String cel,
 			String data_nascimento, String cpf, String rg, Endereco endereco, 
-			Anamnese anamnese, Ficha_clinica ficha_tecnica) {
+			Anamnese anamnese, Ficha_clinica ficha_clinica ) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.email = email;
@@ -30,7 +30,7 @@ public class Paciente {
 		this.rg = rg;
 		this.endereco = endereco;		
 		this.anamnese = anamnese;
-		this.ficha_tecnica = ficha_tecnica;
+		this.ficha_clinica = ficha_clinica ;
 	}
 	
 	public Paciente() {		
@@ -109,12 +109,12 @@ public class Paciente {
 		this.rg = rg;
 	}
 
-	public Ficha_clinica getFicha_tecnica() {
-		return ficha_tecnica;
+	public Ficha_clinica getFicha_clinica () {
+		return ficha_clinica ;
 	}
 
-	public void setFicha_tecnica(Ficha_clinica ficha_tecnica) {
-		this.ficha_tecnica = ficha_tecnica;
+	public void setFicha_clinica (Ficha_clinica ficha_clinica ) {
+		this.ficha_clinica  = ficha_clinica;
 	}
 
 	public Anamnese getAnamnese() {
@@ -126,15 +126,17 @@ public class Paciente {
 	}
 	
 	public String toString() {
-		return 	"\n\n\n                      Dados do Paciente\n" 
-				+ "\nNº Prontuário: " + getCodigo() 
-				+ "\nNome: " + getNome() 
-				+ "\nEmail: " + getEmail()
-				+ "\nTelefone: "	+ getTel() 
-				+ "\nCelular: " + getCel() 
-				+ "\nData de nascimento: " + getData_nascimento() 
-				+ "\nCpf: " + getCpf() 
-				+ "\nRg: " + getRg() 
-				+ getEndereco() + getAnamnese() + getFicha_tecnica();
+		return  "                          Paciente\n" 
+				+  "\nNº Prontuário: " + codigo
+				+ "\nNome: " + nome 
+				+ "\nEmail: " + email
+				+ "\nTelefone: " + tel
+				+ "\nCelular: " + cel 
+				+ "\nData de nascimento: " + data_nascimento
+				+ "\nCpf: " + cpf
+				+ "\nRg: " + rg
+				+ endereco.toString() 
+				+ anamnese.toString() 
+				+ ficha_clinica.toString();
 	}	
 }

@@ -12,9 +12,13 @@ public class Dentista extends Funcionario {
 		this.cro = cro;		
 	}	
 	
-	public Dentista() {	
+	public Dentista(Dentista dentista1, Endereco endereco1) {	
 	}	
 	
+	public Dentista() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getCro() {
 		return cro;
 	}
@@ -24,17 +28,10 @@ public class Dentista extends Funcionario {
 
 	}
 	public String toString() {
-		return 	"\n\n\n                      Dados do Dentista\n" 
-				+ "\nCodigo: " + getCodigo() 
-				+ "\nCRO: "+ getCro() 
-				+ "\nNome: " + getNome() 
-				+ "\nEmail: " + getEmail() 
-				+ "\nTelefone: "	+ getTel() 
-				+ "\nCelular: " + getCel() 
-				+ "\nData de nascimento: "	+ getData_nascimento() 
-				+ "\nCpf: " + getCpf() 
-				+ "\nRg: " 
-				+ getRg() + getEndereco();
+		return 	"                          Dentista\n" 
+				+ "\nCRO: "+ cro
+				+ super.toString();								
+
 	}	
 
 }

@@ -101,11 +101,16 @@ public class Funcionario {
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
-	
-	//Refencia ao Contrutor Funcionario que converte todas info em String
 	public String toString() {
-	return "\nNome: "+ nome +"\nEmail: "+ email +"\nTelefone: "+ tel +"\nCelular: "+ cel 
-			+"\nEndereço: "+ endereco +"\nData de Nascimento: "+ data_nascimento 
-			+"\nCPF: "+ cpf +"\nRG: "+ rg + endereco;
+		return  "\nCodigo: " + codigo				
+				+ "\nNome: " + nome
+				+ "\nEmail: " + email
+				+ "\nTelefone: "	+ tel
+				+ "\nCelular: " + cel
+				+ "\nData de nascimento: "	+ data_nascimento 
+				+ "\nCpf: " + cpf
+				+ "\nRg: " + rg
+				+ endereco.toString();
 	}
+	
 }
