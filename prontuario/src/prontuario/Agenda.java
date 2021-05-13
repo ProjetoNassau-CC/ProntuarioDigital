@@ -94,16 +94,16 @@ public class Agenda {
 	}
 
 	public String toString() {
-		return "codigo_ficha: " + getCodigo_ficha()
-				+ "\nNome do dentista: " + getNome_dentista()
-				+ "\nNome do paciente: " + getNome_paciente()			
-				+ "\nPlano de tratamento: " + getPlano_tratamento()
-				+ "\nTratamento do dente: " + getTratamento_dente()
-				+ "\nData de inclusao: " + getData_inclusao()
-				+ "\nData do agendamento: " + getData_agenda()
-				+ "\nConcluido: " + getConcluido()
-				+ "\nCancelado: " + getCancelado()
-				+ "\nReagendado: " + getReagendado();
+		return "Nº Prontuario: " + codigo_ficha
+				+ "\nNome do dentista: " + nome_dentista
+				+ "\nNome do paciente: " + nome_paciente			
+				+ "\nPlano de tratamento: " + plano_tratamento
+				+ "\nTratamento do dente: " + tratamento_dente
+				+ "\nData de inclusao: " + data_inclusao
+				+ "\nData do agendamento: " + data_agenda
+				+ "\nConcluido: " + concluido
+				+ "\nCancelado: " + cancelado
+				+ "\nReagendado: " + reagendado;
 	}	
 	
 

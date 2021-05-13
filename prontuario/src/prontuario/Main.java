@@ -8,19 +8,18 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
-		Ficha_clinica fichaClinica = new Ficha_clinica();
 		Locale.setDefault(Locale.US);
 		int opcao1;
-		int opcao2;	    
-	   
+		int opcao2;	    			
+		
 		ArrayList<Dentista> DadosDentista = new ArrayList<Dentista>();
 		ArrayList<Paciente> DadosPaciente = new ArrayList<Paciente>();		
 		ArrayList<Agenda> DadosAgenda = new ArrayList<Agenda>();	
 		
 		boolean condicao = false;
 		
-		do {
-			System.out.println("=-=-=-=-=-=-=-=-=-=-= Faça seu Loguin =-=-=-=-=-=-=-=-=-=-=");
+		do {			
+			System.out.println("=-=-=-=-=-=-=-=-=-=-= Faça seu Login =-=-=-=-=-=-=-=-=-=-=\n");
 	
 			System.out.print("Login: ");
 			String login = input.next();
@@ -36,153 +35,155 @@ public class Main {
 			
 		System.out.println("\n==========================================================");
 		System.out.println("                 Login efetuado com sucesso");
-		System.out.print("==========================================================");
+		System.out.println("==========================================================\n");
 		
 		do {
-			
-			System.out.print("\n==========================================================");
-			System.out.print("\n      (Obs: registrar primeiro o Dentista(apenas 1)\n");			
-			System.out.print(""
-					+ "\n1- Dentista Atual"
+			System.out.println("\n==========================================================");
+			System.out.println("=-=-=-=-=-=-=-=-=-= Painel de Controle =-=-=-=-=-=-=-=-=-=");
+			System.out.println(
+					  "\n1- Registra Funcionário"
 					+ "\n2- Cadastrar Prontuario"
 					+ "\n3- Agendamento"
 					+ "\n4- Fazer Busca/Exibir"
-					+ "\n0- Finalizar"
-					+ "");
-			System.out.println("\n==========================================================");
-			System.out.print("O que deseja fazer? ");
+					+ "\n0- Finalizar");			
+			
+			System.out.print("\nO que deseja fazer? ");
 			opcao1 = input.nextInt();
 			System.out.println("==========================================================\n");					
 			
 			switch(opcao1) {	
-			case 1:				
-				Endereco endereco1 = new Endereco();			
-
-				System.out.println("\n==========================================================");
-				System.out.println("XXXXXXXXXXXXXXXXXXXX Dados do Dentista XXXXXXXXXXXXXXXXXXX");	
-				System.out.println("==========================================================\n");
+			case 1:	
+				Funcionario dentista = new Dentista();
+				Endereco endDentista = new Endereco();	
 				
-				System.out.print("                      Dados do Dentista\n");
+				System.out.println("\n==========================================================");							
+				System.out.println("XXXXXXXXXXXXXXXXX Registrar Funcionários XXXXXXXXXXXXXXXXX\n");		
 				
 				System.out.print("Codigo: ");
-				int Dentista_codigo = input.nextInt();
+				((Dentista) dentista).setCodigo(input.nextInt());
 				
 				System.out.print("CRO: ");
-				int Dentista_cro = input.nextInt();	
+				((Dentista) dentista).setCro(input.nextInt());
 								
-				System.out.print("Nome: ");				
-				String Dentista_nome = input.next();
+				System.out.print("Nome: ");	
+				((Dentista) dentista).setNome(input.next());
+			
+				System.out.print("Email: ");		
+				((Dentista) dentista).setEmail(input.next());
+			
+				System.out.print("Telefone: ");	
+				((Dentista) dentista).setTel(input.next());
 				
-				System.out.print("Email: ");				
-				String Dentista_email = input.next();
+				System.out.print("celular: ");	
+				((Dentista) dentista).setCel(input.next());
+			
+				System.out.print("Data de nascimento: ");
+				((Dentista) dentista).setData_nascimento(input.next());
 				
-				System.out.print("Telefone: ");			
-				String Dentista_tel = input.next();
+				System.out.print("CPF: ");	
+				((Dentista) dentista).setCpf(input.next());
 				
-				System.out.print("celular: ");				
-				String Dentista_cel = input.next();
-				
-				System.out.print("Data de nascimento: ");			
-				String Dentista_data_nascimento = input.next();
-				
-				System.out.print("CPF: ");				
-				String Dentista_cpf = input.next();
-				
-				System.out.print("RG: ");			
-				String Dentista_rg = input.next();				
+				System.out.print("RG: ");
+				((Dentista) dentista).setRg(input.next());
+								
 				
 				System.out.println("\n                          Endereço\n");
 				
 				System.out.print("Rua: ");						
-				endereco1.setRua(input.next());	
+				endDentista.setRua(input.next());	
 				
 				System.out.print("Bairro: ");
-				endereco1.setBairro(input.next());	
+				endDentista.setBairro(input.next());	
 				
 				System.out.print("CEP: ");
-				endereco1.setCep(input.next());	
+				endDentista.setCep(input.next());	
 				
 				System.out.print("Cidade: ");
-				endereco1.setCidade(input.next());	
+				endDentista.setCidade(input.next());	
 				
 				System.out.print("UF: ");
-				endereco1.setUf(input.next());	
+				endDentista.setUf(input.next());	
 				
 				System.out.print("Numero: ");
-				endereco1.setNumero(input.next());	
+				endDentista.setNumero(input.next());	
 				
 				System.out.print("Complemento: ");
-				endereco1.setComplemento(input.next());
+				endDentista.setComplemento(input.next());				
+					
+			
+				dentista.setEndereco(endDentista);
 				
-				Dentista dentista;
+				DadosDentista.add((Dentista) dentista); //Adicionando objeto no ArrayList		
 				
-				dentista = new Dentista(Dentista_codigo, Dentista_nome, Dentista_email, Dentista_tel, 
-						Dentista_cel, Dentista_data_nascimento, Dentista_cpf, Dentista_rg, endereco1, Dentista_cro);
-				DadosDentista.add(dentista);				
+				System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+				System.out.println("==========================================================\n");
 				
 				break;
-			case 2:						
-				Endereco endereco = new Endereco();
+			case 2:	
+				Paciente paciente = new Paciente();
+				Endereco endPaciente = new Endereco();				
 			    Anamnese anamnese = new Anamnese();
+			    Ficha_clinica fichaClinica = new Ficha_clinica();
 			    
 			    
 				System.out.println("\n==========================================================");
-				System.out.println("XXXXXXXXXXXXXXXXXXXXXXX Prontuário XXXXXXXXXXXXXXXXXXXXXXX");	
-				System.out.println("==========================================================\n");
+				System.out.println("XXXXXXXXXXXXXXXXXXXXXXX Prontuário XXXXXXXXXXXXXXXXXXXXXXX\n");	
 				
-				System.out.print("                      Dados do Paciente\n");				
+				
+				System.out.println("                      Dados do Paciente\n");				
 				
 				System.out.print("Nº Prontuário: ");
-				int Paciente_codigo = input.nextInt();
+				paciente.setCodigo(input.nextInt());				
 			
 				System.out.print("Nome: ");
-				String Paciente_nome = input.next();
+				paciente.setNome(input.next());
 			
 				System.out.print("Email: ");
-				String Paciente_email = input.next();
+				paciente.setEmail(input.next());
 				
 				System.out.print("Telefone: ");
-				String Paciente_tel = input.next();
+				paciente.setTel(input.next());
 				
 				System.out.print("Celular: ");
-				String Paciente_cel = input.next();
+				paciente.setCel(input.next());
 				
 				System.out.print("Data de Nascimento: ");
-				String Paciente_data_nascimento = input.next();
+				paciente.setData_nascimento(input.next());
 				
 				System.out.print("CPF: ");
-				String Paciente_cpf = input.next();
+				paciente.setCpf(input.next());
 				
 				System.out.print("RG: ");
-				String Paciente_rg = input.next();						
+				paciente.setRg(input.next());					
 				
 				System.out.println("\n                          Endereço\n");
 				
 				System.out.print("Rua: ");
-				endereco.setRua(input.next());	
+				endPaciente.setRua(input.next());	
 				
 				System.out.print("Bairro: ");
-				endereco.setBairro(input.next());	
+				endPaciente.setBairro(input.next());	
 				
 				System.out.print("CEP: ");
-				endereco.setCep(input.next());	
+				endPaciente.setCep(input.next());	
 				
 				System.out.print("Cidade: ");
-				endereco.setCidade(input.next());	
+				endPaciente.setCidade(input.next());	
 				
 				System.out.print("UF: ");
-				endereco.setUf(input.next());	
+				endPaciente.setUf(input.next());	
 				
 				System.out.print("Numero: ");
-				endereco.setNumero(input.next());	
+				endPaciente.setNumero(input.next());	
 				
 				System.out.print("Complemento: ");
-				endereco.setComplemento(input.next());		
+				endPaciente.setComplemento(input.next());		
 
 				System.out.println("\n                          Anamnese");
 				System.out.println("                       Digite [S ou N]\n");
 				
 				System.out.print("Problema com Anestesia? ");
+				anamnese.setProblemaAnestesia(input.nextLine());
 				anamnese.setProblemaAnestesia(input.nextLine());
 				
 				System.out.print("Problema de Hemorragia? ");
@@ -212,17 +213,16 @@ public class Main {
 				System.out.print("Alergias, se sim, Quais? ");
 				anamnese.setAlergia(input.nextLine());
 				
-				System.out.println("\n==========================================================");				
-				System.out.println("\n                        Ficha Técnica\n");	
-			
-				//Mostrar nome da dentista atual	
-				
-				//For usado para trazer o nome do dentista e adicionar em DadosPaciente para ser utilizado em outra ocasião
-				for(Dentista d : DadosDentista) {
-			
-					System.out.println("Nome do dentista: " + d.getNome());		
 					
-					fichaClinica.setNome_dentista(d.getNome());
+				System.out.println("\n                        Ficha Clinica\n");	
+			
+				System.out.print("CPF do dentista: ");
+				String BuscarDentista = input.next();					
+				for(Dentista buscaDentista : DadosDentista) {			
+					if(buscaDentista.getCpf().equals(BuscarDentista)) { //Se Cpf do dentista for igual o digitado pelo usuario
+					System.out.println("Nome do dentista: " + buscaDentista.getNome()); //mostrar nome do dentista					
+					fichaClinica.setNome_dentista(buscaDentista.getNome()); //adicionar nome do dentista em fichaClinica
+					}
 				}
 				
 				System.out.print("Data da consulta (xx/xx/xxxx): ");
@@ -235,27 +235,26 @@ public class Main {
 				fichaClinica.setPlano_tratamento(input.next());
 				
 				System.out.print("Digite o orçamento: R$");
-				fichaClinica.setGera_orcamento(input.next());
+				fichaClinica.setGera_orcamento(input.next());								
 				
-				System.out.println("\n==========================================================");
-				System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+				paciente.setEndereco(endPaciente);
+				paciente.setAnamnese(anamnese);
+				paciente.setFicha_clinica(fichaClinica);
+				
+				DadosPaciente.add(paciente); //Adicionando objeto no ArrayList
+				
+				System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 				System.out.println("==========================================================\n");
-				
-				
-				Paciente pac;
-				
-				pac = new Paciente(Paciente_codigo, Paciente_nome, Paciente_email, Paciente_tel, Paciente_cel, Paciente_data_nascimento, 
-						Paciente_cpf, Paciente_rg, endereco, anamnese, fichaClinica);
-				
-				DadosPaciente.add(pac);
 				
 				break;				
 			
 			case 3:
-				//Agendamento
+				//Agendamento				
 				Agenda agenda = new Agenda();
 				
-				System.out.println("\n                         Agendamento\n");				
+				System.out.println("\n==========================================================");
+				System.out.println("XXXXXXXXXXXXXXXXXXXXXXX Agendamento XXXXXXXXXXXXXXXXXXXXXX\n");	
+						
 				System.out.print("CPF do Paciente: ");
 				String BuscarPaciente = input.next();
 				System.out.println("==========================================================");
@@ -266,10 +265,13 @@ public class Main {
 						agenda.setCodigo_ficha(p.getCodigo());
 						
 						System.out.println("Nome do paciente: " + p.getNome());
-						agenda.setNome_paciente(p.getNome());
-
-						System.out.println("Nome do dentista: "+fichaClinica.getNome_dentista());
-						agenda.setNome_dentista(fichaClinica.getNome_dentista());
+						agenda.setNome_paciente(p.getNome());						
+						
+						System.out.println("Nome do Dentista: " + p.getFicha_clinica().getNome_dentista());
+						agenda.setNome_dentista(p.getFicha_clinica().getNome_dentista());
+						
+						}
+				}
 						
 						System.out.print("Plano de tratamento: ");
 						agenda.setPlano_tratamento(input.next());
@@ -290,18 +292,21 @@ public class Main {
 						agenda.setCancelado(input.next());
 						
 						System.out.print("Reagendado? ");
-						agenda.setReagendado(input.next());
+						agenda.setReagendado(input.next());								
+							
+						DadosAgenda.add(agenda); //Adicionando objeto no ArrayList		
 						
-						DadosAgenda.add(agenda);
-						
-					}
-				}
+						System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+						System.out.println("==========================================================\n");
+					
+				
 				 
 				break;
 				
 			case 4:	
 				do {
-					System.out.print("\n==========================================================");
+					System.out.println("\n==========================================================");
+					System.out.println("=-=-=-=-=-=-=-=-=-=-=-= Busca/Exibir =-=-=-=-=-=-=-=-=-=-=");
 					System.out.print(""
 							+ "\n1- Mostrar Dados do Dentista"							
 							+ "\n2- Buscar Prontuário"
@@ -310,64 +315,77 @@ public class Main {
 							+ "\n5- Mostrar todos Agendamentos"
 							+ "\n0- Voltar"
 							+ "");
-					System.out.print("\n==========================================================");
-					System.out.print("\nO que deseja fazer? ");					
+					
+					System.out.print("\n\nO que deseja fazer? ");					
 					opcao2 = input.nextInt();
-					System.out.print("==========================================================\n");
+					System.out.println("==========================================================\n");	
 					
 					switch(opcao2){
 					
 						
-					case 1:
-						// Mostrar Dados do Dentista
-						for (Dentista d : DadosDentista) {		
-							System.out.println("==========================================================");
-							System.out.println(d.toString());
+					case 1:	// Mostrar Dados do Dentista
+						
+						System.out.println("\n==========================================================");
+						System.out.println("XXXXXXXXXXXXXXX Dados de Todos Funcionários XXXXXXXXXXXXXX\n");				
+						
+						for (Dentista mostrarDentista : DadosDentista) {		
+							System.out.println(d.toString());								
+							System.out.println("==========================================================\n");
 						}
 						
 						break;
 					case 2:
 						// Buscar Prontuário
-						System.out.print("Digitar o CPF do paciente para buscar um prontuario");
-						System.out.println("CPF: ");
+						System.out.println("Digitar o CPF do paciente para buscar o prontuario");
+						System.out.print("\nCPF: ");
 						String BuscarPaciente1 = input.next();
-						System.out.println("==========================================================");
+						System.out.println("==========================================================\n");
+						
 						for (Paciente p : DadosPaciente) {
 							if(p.getCpf().equals(BuscarPaciente1)) {
-								System.out.println("==========================================================");
+								System.out.println("\n==========================================================");
+								System.out.println("XXXXXXXXXXXXXXXXXXXXXXX Prontuário XXXXXXXXXXXXXXXXXXXXXXX");
 								System.out.println(p.toString());
+								System.out.println("==========================================================\n");
 							}
 						}
 						break;
-					case 3:
-						// Mostrar Todos os prontuários
-						for (Paciente p : DadosPaciente) {		
-							System.out.println("==========================================================");
-							System.out.println(p.toString());
+					case 3:	// Mostrar Todos os prontuários
+						
+						System.out.println("\n==========================================================");
+						System.out.println("XXXXXXXXXXXXXXXX Dados de Todos Pacientes XXXXXXXXXXXXXXXX");
+						
+						for (Paciente paciente1 : DadosPaciente) {									
+							System.out.println(paciente1.toString());
+							System.out.println("==========================================================\n");
 						}						
 						break;
-					case 4:
-						//buscar agendamento
-						System.out.print("Digitar o CPF do paciente para buscar o agendamento");
-						System.out.println("CPF: ");
+					case 4:	// Buscar Agendamento
+						System.out.println("Digitar o CPF do paciente para buscar o agendamento");
+						System.out.print("\nCPF: ");
 						String BuscarAgenda = input.next();
-						System.out.println("==========================================================");
-						for(Agenda a : DadosAgenda) { 
-							for(Paciente p : DadosPaciente) {
-								if(p.getCpf().equals(BuscarAgenda)) {
-									if(p.getNome()  == a.getNome_paciente()){
-									System.out.println("==========================================================");
-									System.out.println(a.toString());
+						System.out.println("==========================================================\n");
+						
+						for(Agenda agenda1 : DadosAgenda) { 
+							for(Paciente paciente1 : DadosPaciente) {
+								if(paciente1.getCpf().equals(BuscarAgenda)) {
+									if(paciente1.getNome()  == agenda1.getNome_paciente()){
+										System.out.println("\n==========================================================");
+										System.out.println("XXXXXXXXXXXXXXXXXXXXXX Ficha Clinica XXXXXXXXXXXXXXXXXXXXXXX\n");
+										System.out.println(agenda1.toString());
+										System.out.println("==========================================================\n");
 									}
 								}
 							}
 						}
 						break;
-					case 5:
-						// Mostrar todos Agendamentos
-						for (Agenda a : DadosAgenda) {		
-							System.out.println("==========================================================");
+					case 5:	// Mostrar todos Agendamentos
+						System.out.println("\n==========================================================");
+						System.out.println("XXXXXXXXXXXXXXXXXXX Todos Agendamento XXXXXXXXXXXXXXXXXXXX\n");
+						
+						for (Agenda a : DadosAgenda) {									
 							System.out.println(a.toString());
+							System.out.println("==========================================================\n");
 						}
 						break;
 					}					

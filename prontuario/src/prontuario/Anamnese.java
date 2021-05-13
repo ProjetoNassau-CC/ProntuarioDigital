@@ -113,11 +113,16 @@ public class Anamnese {
 	
 	public String toString() {
 		return  "\n\n                          Anamnese\n" 
-				+"\nProblema com Anestesia? " + getProblemaAnestesia() + "\nProblema de Hemorragia? " + getProblemaHemorragia()
-				+ "\nProblema de Febre Reumática? " + getFebreReumatica() + "\nProblema Renal? " + getProblemaRenal() + "\nProblema Respiratório? "
-				+ getProblemaRespitorio() + "\nProblema com Articulação? " + getProblemaArticular()
-				+ "\nProblema Cardíaco? " + getProblemaCardiaco() + "\nProblema Gástrico? " + getProblemaGastrico()
-				+ "\nAntecedentes Familiar?" + getAntecedenteFamiliar() + "\nAlergia? " + getAlergia();
+				+ "\nProblema com Anestesia? " + problemaAnestesia
+				+ "\nProblema de Hemorragia? " + problemaHemorragia
+				+ "\nProblema de Febre Reumática? " + febreReumatica
+				+ "\nProblema Renal? " + problemaRenal
+				+ "\nProblema Respiratório? " + problemaRespitorio
+				+ "\nProblema com Articulação? " + problemaArticular
+				+ "\nProblema Cardíaco? " + problemaCardiaco 
+				+ "\nProblema Gástrico? " + problemaGastrico
+				+ "\nAntecedentes Familiar?" + antecedenteFamiliar
+				+ "\nAlergia? " + alergia;
 	}
 	
 }

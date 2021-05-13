@@ -70,10 +70,13 @@ public class Endereco {
 
 	public String toString() {
 		return "\n\n                          Endereço\n"
-				+ "\nRua: " + getRua() + "\nBairro: " + getBairro() 
-				+ "\nCep: " + getCep() + "\nCidade:" + getCidade() 
-				+ "\nUf: " + getUf() + "\nNumero: " + getNumero() 
-				+ "\nComplemento: " + getComplemento();
+				+ "\nRua: " + rua
+				+ "\nBairro: " + bairro
+				+ "\nCep: " + cep
+				+ "\nCidade:" + cidade
+				+ "\nUf: " + uf
+				+ "\nNumero: " + numero
+				+ "\nComplemento: " + complemento;
 	}
 
 }

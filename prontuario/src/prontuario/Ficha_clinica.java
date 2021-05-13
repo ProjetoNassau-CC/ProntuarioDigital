@@ -73,13 +73,12 @@ public class Ficha_clinica {
 
 	
 	public String toString() {
-		return  "\n\n=========================================================="
-				+"\n                        Ficha Clinica\n"			
-				+ "\nNome do Dentista: " + getNome_dentista() 
-				+ "\nData da Consulta: " + getData_consulta()
-				+ "\nPlano Tratamento: " + getPlano_tratamento() 
-				+ "\nData do tratamento: " + getData_tratamento() 
-				+ "\nOrçamento: R$" + getGera_orcamento();
+		return  "\n\n                        Ficha Clinica\n"				
+				+ "\nNome do Dentista: " + nome_dentista
+				+ "\nData da Consulta: " + data_consulta
+				+ "\nPlano Tratamento: " + plano_tratamento 
+				+ "\nData do tratamento: " + data_tratamento 
+				+ "\nOrçamento: R$" + gera_orcamento;
 	}
 		
 }
