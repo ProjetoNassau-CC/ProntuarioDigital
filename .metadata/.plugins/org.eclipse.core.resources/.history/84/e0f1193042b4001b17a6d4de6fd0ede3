@@ -329,7 +329,7 @@ public class Main {
 						System.out.println("XXXXXXXXXXXXXXX Dados de Todos Funcionários XXXXXXXXXXXXXX\n");				
 						
 						for (Dentista mostrarDentista : DadosDentista) {		
-							System.out.println(mostrarDentista.toString());								
+							System.out.println(d.toString());								
 							System.out.println("==========================================================\n");
 						}
 						
