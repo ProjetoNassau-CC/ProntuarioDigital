@@ -1,0 +1,488 @@
+package prontuario;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+import dados.RepositorioAgendaArrayList;
+import dados.RepositorioDentistaArrayList;
+import dados.RepositorioRecepcionistaArrayList;
+import dados.RepositorioPacienteArrayList;
+
+public class Main {
+	
+	static Scanner input = new Scanner(System.in);
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		int opcao1;
+		int opcao2;
+		//DUVIDAS
+		//PERGUNTAR A PROFESSORA SE TEM COMO INSTANCIAR APENAS A INTERFACE;
+		RepositorioFuncionario repDentista = new RepositorioDentistaArrayList();
+		RepositorioFuncionario repRecepcionista = new RepositorioRecepcionistaArrayList();
+		RepositorioPaciente repPac = new RepositorioPacienteArrayList();
+		//int opcao2;	    			
+		
+		//ArrayList<Paciente> DadosPaciente = new ArrayList<Paciente>();		
+		//ArrayList<Agenda> DadosAgenda = new ArrayList<Agenda>();	
+		
+		
+		TelaLogin();
+		
+		do {
+			System.out.println(
+					  "\n=========================================================="
+					+ "\n=-=-=-=-=-=-=-=-=-= Painel de Controle =-=-=-=-=-=-=-=-=-=\n"
+					+ "\n1- Registrar Dentista"
+					+ "\n2- Registrar Recepcionista"					
+					+ "\n3- Registrar Prontuario"
+					+ "\n4- Agendamento"
+					+ "\n5- Buscar e Remover"
+					+ "\n0- Finalizar");			
+			
+			System.out.print("\nO que deseja fazer? ");
+			opcao1 = input.nextInt();				
+			
+			switch(opcao1) {	
+			
+			case 1:	//Inserir Dentista				
+				repDentista = CaseDentista(repDentista);								
+				break;
+				
+			case 2:	//Inserir Recepcionista			
+				repRecepcionista = CaseRecepcionista(repRecepcionista);				
+				break;
+				
+			case 3: //InserirPaciente
+				repPac = CasePaciente(repPac);
+				break;
+				
+			case 4:	//InserirAgenda			
+				CaseAgenda();					 
+				break;
+			case 5:	
+				do {
+
+					System.out.print(
+					  "\n=========================================================="
+					+ "\n==-=-=-=-=-=-=-=-=-= Buscar e Remover =-=-=-=-=-=-=-=-=-==\n"
+					+ "\n1- Buscar Funcionario"
+					+ "\n2- Remover Funcionario"
+					+ "\n3- Buscar Paciente"
+					+ "\n4- Remover Paciente"
+					+ "\n5- Buscar Prontuario"
+					+ "\n6- Remover Prontuario"
+					+ "\n0- Voltar"
+					
+					+ "\n\nO que deseja fazer? ");					
+					opcao2 = input.nextInt();
+					System.out.println("==========================================================\n");					
+					
+					switch(opcao2) {
+					
+					case 1: //Buscar Funcionario
+						System.out.println(	
+								  "\n=========================================================="
+								+ "\n=-=-=-=-=-=-=-=-=-= Buscar Funcionario =-=-=-=-=-=-=-=-=-=\n"
+								+ "\n         Escolha a função que você quer buscar!"
+								+ "\n             Dentista [D]  Recepcionista[R]");
+						
+						System.out.print("\n\nFunção: ");
+						String escolhaBusca = input.next();
+						
+						if(escolhaBusca.equalsIgnoreCase("d")) {
+							System.out.print("Cpf: ");
+							String BuscaFunc = input.next();										
+							System.out.println(repDentista.procurar(BuscaFunc).toString());
+							
+						}else if(repDentista.procurar(escolhaBusca) == null) {
+								System.out.println("Função não encontrada!");					
+						
+						}else if(escolhaBusca.equalsIgnoreCase("r")) {
+							System.out.print("Cpf: ");
+							String BuscaFunc = input.next();										
+							System.out.println(repRecepcionista.procurar(BuscaFunc).toString());
+							
+						} else {
+							System.out.println("Função ou cpf inválido!");
+						}
+						break;
+					
+					case 2: //Remover Funcionario
+						System.out.print(	
+								  "\n=========================================================="
+								+ "\n=-=-=-=-=-=-=-=-=-= Buscar Funcionario =-=-=-=-=-=-=-=-=-=\n"
+								+ "\n         Escolha a função que você quer remover!          "
+								+ "\n             Dentista [D]  Recepcionista[R]");
+						
+						System.out.print("\n\nFunção: ");
+						String escolhaRemove = input.next();							
+						
+						if(escolhaRemove.equalsIgnoreCase("d")) {	
+							System.out.print("Cpf: ");						
+							String RemoveFunc = input.next();
+							repDentista.remover(RemoveFunc);
+							
+						}else if(escolhaRemove.equalsIgnoreCase("r")) {
+							System.out.print("Cpf: ");						
+							String RemoveFunc = input.next();
+							repRecepcionista.remover(RemoveFunc);		
+							
+						}else {
+							System.out.println("Função não encontrada!");
+						}
+						break;					
+						
+					case 3: //Buscar Paciente
+						System.out.print("Cpf: ");
+						String BuscaPaciente = input.next();						
+
+						System.out.println(repPac.procurar(BuscaPaciente).toString());	
+						break;
+						
+					case 4: //Remover Paciente
+						System.out.println("Cpf: ");
+						String RemovePac = input.next();
+										
+						repPac.remover(RemovePac);
+						break;
+					
+					case 5:
+						
+						break;		
+					}
+				}while(opcao2 != 0);
+	
+			}
+		
+		}while(opcao1 != 0);
+				
+		input.close();
+	}	
+	
+	public static void TelaLogin(){
+		boolean condicao = false;
+		do {			
+			System.out.println("=-=-=-=-=-=-=-=-=-=-= Faça seu Login =-=-=-=-=-=-=-=-=-=-=\n");
+	
+			System.out.print("Login: ");
+			String login = input.next();
+			
+			System.out.print("Senha: ");
+			String senha = input.next();
+			
+			if (login.equals("admin") && senha.equals("1234")) {
+				condicao = true;
+				System.out.println("\nLogin efetuado com sucesso!");
+			} else {
+				System.out.println(
+					  "\nSenha ou Login incorreto!" 
+					+ "\nPor favor, digite novamente.\n");
+			}
+		
+		}while(condicao != true);			
+		
+		
+	}
+	
+	public static RepositorioFuncionario CaseDentista(RepositorioFuncionario repDentista){
+	
+		Funcionario dentista = new Dentista();
+		Endereco endDentista = new Endereco();				
+		System.out.println(
+				  "\n=========================================================="
+				+ "\n=-=-=-=-=-=-=-=-=-= Registrar Dentista =-=-=-=-=-=-=-=-=-=\n");
+		
+		System.out.print("Codigo: ");
+		((Dentista) dentista).setCodigo(input.nextInt());
+		
+		System.out.print("CRO: ");
+		((Dentista) dentista).setCro(input.nextInt());
+						
+		System.out.print("Nome: ");	
+		((Dentista) dentista).setNome(input.next());
+	
+		System.out.print("Email: ");		
+		((Dentista) dentista).setEmail(input.next());
+					
+		System.out.print("celular: ");	
+		((Dentista) dentista).setCel(input.next());
+	
+		System.out.print("Data de nascimento: ");
+		((Dentista) dentista).setData_nascimento(input.next());
+		
+		System.out.print("CPF: ");	
+		((Dentista) dentista).setCpf(input.next());
+		
+		System.out.print("RG: ");
+		((Dentista) dentista).setRg(input.next());
+						
+		
+		System.out.println("\n                          Endereço\n");
+		
+		System.out.print("Rua: ");						
+		endDentista.setRua(input.next());	
+		
+		System.out.print("Bairro: ");
+		endDentista.setBairro(input.next());	
+		
+		System.out.print("CEP: ");
+		endDentista.setCep(input.next());	
+		
+		System.out.print("Cidade: ");
+		endDentista.setCidade(input.next());	
+		
+		System.out.print("UF: ");
+		endDentista.setUf(input.next());	
+		
+		System.out.print("Numero: ");
+		endDentista.setNumero(input.next());	
+		
+		System.out.print("Complemento: ");
+		endDentista.setComplemento(input.next());	
+			
+		System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+		System.out.println("==========================================================\n");	
+		
+		dentista.setEndereco(endDentista);
+				
+		repDentista.inserir(dentista);
+		
+		return repDentista;
+		
+	}
+
+	public static RepositorioFuncionario CaseRecepcionista(RepositorioFuncionario repRecepcionista){
+		
+		Funcionario recepcionista = new Recepcionista();
+		Endereco endRecepcionista = new Endereco();
+		
+		System.out.print("Codigo: ");
+		((Recepcionista) recepcionista).setCodigo(input.nextInt());				
+						
+		System.out.print("Nome: ");	
+		((Recepcionista) recepcionista).setNome(input.next());
+	
+		System.out.print("Email: ");		
+		((Recepcionista) recepcionista).setEmail(input.next());
+					
+		System.out.print("celular: ");	
+		((Recepcionista) recepcionista).setCel(input.next());
+	
+		System.out.print("Data de nascimento: ");
+		((Recepcionista) recepcionista).setData_nascimento(input.next());
+		
+		System.out.print("CPF: ");	
+		((Recepcionista) recepcionista).setCpf(input.next());
+		
+		System.out.print("Ramal: ");
+		((Recepcionista) recepcionista).setRamal(input.next());
+		
+		System.out.println("\n                          Endereço\n");
+		
+		System.out.print("Rua: ");						
+		endRecepcionista.setRua(input.next());	
+		
+		System.out.print("Bairro: ");
+		endRecepcionista.setBairro(input.next());	
+		
+		System.out.print("CEP: ");
+		endRecepcionista.setCep(input.next());	
+		
+		System.out.print("Cidade: ");
+		endRecepcionista.setCidade(input.next());	
+		
+		System.out.print("UF: ");
+		endRecepcionista.setUf(input.next());	
+		
+		System.out.print("Numero: ");
+		endRecepcionista.setNumero(input.next());	
+		
+		System.out.print("Complemento: ");
+		endRecepcionista.setComplemento(input.next());	
+		
+		recepcionista.setEndereco(endRecepcionista);
+		repRecepcionista.inserir(recepcionista);
+		
+		return repRecepcionista;
+	}
+	
+	public static RepositorioPaciente CasePaciente(RepositorioPaciente repPac){
+
+		Paciente paciente = new Paciente();
+		Endereco endPaciente = new Endereco();				
+	    Anamnese anamnese = new Anamnese();
+	    Ficha_clinica fichaClinica = new Ficha_clinica();
+	    
+	    
+		System.out.println("\n==========================================================");
+		System.out.println("XXXXXXXXXXXXXXXXXXXXXXX Prontuário XXXXXXXXXXXXXXXXXXXXXXX\n");	
+		
+		
+		System.out.println("                      Dados do Paciente\n");				
+		
+		System.out.print("Nº Prontuário: ");
+		paciente.setCodigo(input.nextInt());				
+	
+		System.out.print("Nome: ");
+		paciente.setNome(input.next());
+	
+		System.out.print("Email: ");
+		paciente.setEmail(input.next());
+						
+		System.out.print("Celular: ");
+		paciente.setCel(input.next());
+		
+		System.out.print("Data de Nascimento: ");
+		paciente.setData_nascimento(input.next());
+		
+		System.out.print("CPF: ");
+		paciente.setCpf(input.next());
+		
+		System.out.print("RG: ");
+		paciente.setRg(input.next());					
+		
+		System.out.println("\n                          Endereço\n");
+		
+		System.out.print("Rua: ");
+		endPaciente.setRua(input.next());	
+		
+		System.out.print("Bairro: ");
+		endPaciente.setBairro(input.next());	
+		
+		System.out.print("CEP: ");
+		endPaciente.setCep(input.next());	
+		
+		System.out.print("Cidade: ");
+		endPaciente.setCidade(input.next());	
+		
+		System.out.print("UF: ");
+		endPaciente.setUf(input.next());	
+		
+		System.out.print("Numero: ");
+		endPaciente.setNumero(input.next());	
+		
+		System.out.print("Complemento: ");
+		endPaciente.setComplemento(input.next());		
+
+		System.out.println("\n                          Anamnese");
+		System.out.println("                       Digite [S ou N]\n");
+		
+		System.out.print("Problema com Anestesia? ");
+		anamnese.setProblemaAnestesia(input.nextLine());
+		anamnese.setProblemaAnestesia(input.nextLine());
+		
+		System.out.print("Problema de Hemorragia? ");
+		anamnese.setProblemaHemorragia(input.nextLine());
+		
+		System.out.print("Problema de Febre Reumática? ");
+		anamnese.setFebreReumatica(input.nextLine());
+
+		System.out.print("Problema Renal? ");
+		anamnese.setProblemaRenal(input.nextLine());	
+		
+		System.out.print("Problema Respiratório? ");
+		anamnese.setProblemaRespitorio(input.nextLine());
+		
+		System.out.print("Problema Cardíaco? ");
+		anamnese.setProblemaCardiaco(input.nextLine());
+		
+		System.out.print("Problema Gástrico? ");
+		anamnese.setProblemaGastrico(input.nextLine());
+		
+		System.out.print("Problema com Articulação? ");
+		anamnese.setProblemaArticular(input.nextLine());
+		
+		System.out.print("Antecedentes Familiar, se sim, Quais? ");
+		anamnese.setAntecedenteFamiliar(input.nextLine());
+		
+		System.out.print("Alergias, se sim, Quais? ");
+		anamnese.setAlergia(input.nextLine());
+		
+			
+		System.out.println("\n                        Ficha Clinica\n");	
+	
+		/*System.out.print("CPF do dentista: ");
+		String BuscarDentista = input.next();					
+		for(Dentista buscaDentista : DadosDentista) {			
+			if(buscaDentista.getCpf().equals(BuscarDentista)) { //Se Cpf do dentista for igual o digitado pelo usuario
+			System.out.println("Nome do dentista: " + buscaDentista.getNome()); //mostrar nome do dentista					
+			fichaClinica.setNome_dentista(buscaDentista.getNome()); //adicionar nome do dentista em fichaClinica
+			}
+		}*/
+		
+		System.out.print("Data da consulta (xx/xx/xxxx): ");
+		fichaClinica.setData_consulta(input.next());
+		
+		System.out.print("Data do tratamento (xx/xx/xxxx): ");
+		fichaClinica.setData_tratamento(input.next());
+		
+		System.out.print("Plano do tratamento: ");
+		fichaClinica.setPlano_tratamento(input.next());
+		
+		System.out.print("Digite o orçamento: R$");
+		fichaClinica.setGera_orcamento(input.next());								
+		
+		System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+		System.out.println("==========================================================\n");
+		
+		paciente.setEndereco(endPaciente);
+		paciente.setAnamnese(anamnese);
+		paciente.setFicha_clinica(fichaClinica);
+		repPac.inserir(paciente);
+		
+		return repPac;
+	}
+
+	public static void CaseAgenda() {
+		
+		Agenda agenda = new Agenda();
+		RepositorioAgenda rep = new RepositorioAgendaArrayList();
+		
+		System.out.println("\n==========================================================");
+		System.out.println("XXXXXXXXXXXXXXXXXXXXXXX Agendamento XXXXXXXXXXXXXXXXXXXXXX\n");	
+				 
+/*		System.out.print("CPF do Paciente: ");
+		String BuscarPaciente = input.next();
+		System.out.println("==========================================================");
+		for(Paciente p : DadosPaciente) {
+			if(p.getCpf().equals(BuscarPaciente)) {
+				
+				System.out.println("Nº Prontuário: " + p.getCodigo());						
+				agenda.setCodigo_ficha(p.getCodigo());
+				
+				System.out.println("Nome do paciente: " + p.getNome());
+				agenda.setNome_paciente(p.getNome());						
+				
+				System.out.println("Nome do Dentista: " + p.getFicha_clinica().getNome_dentista());
+				agenda.setNome_dentista(p.getFicha_clinica().getNome_dentista());				
+				}
+		}*/
+				
+		System.out.print("Plano de tratamento: ");
+		agenda.setPlano_tratamento(input.next());
+				
+		System.out.print("Tratamento dentário: ");
+		agenda.setTratamento_dente(input.next());
+			
+		System.out.print("Data de inclusão: ");
+		agenda.setData_inclusao(input.next());
+				
+		System.out.print("Data do agendamento: ");
+		agenda.setData_agenda(input.next());
+				
+		System.out.print("Concluido? ");
+		agenda.setConcluido(input.next());
+				
+		System.out.print("Cancelado? ");
+		agenda.setCancelado(input.next());
+			
+		System.out.print("Reagendado? ");
+		agenda.setReagendado(input.next());								
+					
+		rep.inserir(agenda);
+				
+		System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+		System.out.println("==========================================================\n");
+	}
+}

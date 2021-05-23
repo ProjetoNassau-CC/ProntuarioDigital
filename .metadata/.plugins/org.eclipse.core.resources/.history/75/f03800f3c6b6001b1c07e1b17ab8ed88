@@ -1,0 +1,35 @@
+package dados;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import prontuario.Funcionario;
+import prontuario.RepositorioFuncionario;
+
+public class RepositorioFuncionarioArrayList implements RepositorioFuncionario{
+	Scanner input = new Scanner(System.in);
+	
+	ArrayList<Funcionario> DadosFuncionario = new ArrayList<Funcionario>();
+	
+	public void inserir(Funcionario func){	
+			DadosFuncionario.add(func);		
+	}
+
+	public void procurar(String cpf) {	
+		
+		System.out.println("Digitar o CPF do paciente para buscar o agendamento");
+		System.out.print("\nCPF: ");
+		cpf = input.next();
+		for(Funcionario f : DadosFuncionario) {			
+			if(f.getCpf().equals(cpf)) {
+				System.out.println(f.toString());
+			}
+		}	
+	}
+
+	public void remover(String cpf) {			
+	}				
+	
+}
+
+

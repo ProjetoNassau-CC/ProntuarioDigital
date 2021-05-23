@@ -6,6 +6,13 @@ public class Login {
 	private String usuario;
 	private String senha;
 	private int tipo_usuario;	
+	
+	public Login() {		
+		this.codigo = 0;
+		this.usuario = null;
+		this.senha = null;
+		this.tipo_usuario = 0;
+	}
 
 	public Login(int codigo, String usuario, String senha, int tipo_usuario) {
 		super();
@@ -15,8 +22,7 @@ public class Login {
 		this.tipo_usuario = tipo_usuario;
 	}
 
-	public Login() {		
-	}
+	
 
 	public int getCodigo() {
 		return codigo;

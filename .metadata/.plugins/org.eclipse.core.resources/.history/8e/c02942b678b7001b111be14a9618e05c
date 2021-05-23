@@ -1,0 +1,5 @@
+package prontuario;
+
+public interface RepositorioAgenda {
+
+}

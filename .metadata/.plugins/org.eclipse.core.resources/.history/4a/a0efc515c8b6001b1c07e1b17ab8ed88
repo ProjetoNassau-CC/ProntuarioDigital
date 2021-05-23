@@ -1,0 +1,10 @@
+package dados;
+
+import prontuario.Paciente;
+
+public class RepositorioPacienteArrayList implements RepositorioPacienteArrayList{
+
+			
+	
+
+}

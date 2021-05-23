@@ -1,0 +1,26 @@
+package dados;
+
+import prontuario.Funcionario;
+import prontuario.RepositorioFuncionario;
+
+public class RepositorioRecepcionistaArrayList implements RepositorioFuncionario{
+
+	@Override
+	public void inserir(Funcionario func) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Funcionario procurar(String cpf) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remover(String cpf) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

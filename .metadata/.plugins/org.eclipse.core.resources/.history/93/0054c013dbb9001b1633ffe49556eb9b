@@ -1,0 +1,46 @@
+package dados;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import prontuario.Funcionario;
+import prontuario.Recepcionista;
+import prontuario.RepositorioFuncionario;
+
+public class RepositorioRecepcionistaArrayList implements RepositorioFuncionario{
+	private ArrayList<Recepcionista> DadosRecepcionista;
+		
+	public RepositorioRecepcionistaArrayList() {		
+		DadosRecepcionista = new ArrayList<Recepcionista>();
+	}
+	
+	public void inserir(Funcionario func) {
+		DadosRecepcionista.add((Recepcionista) func);
+	}
+	
+	public Funcionario procurar(String cpf) {
+		Funcionario resultado = null;
+		for(Funcionario f : DadosRecepcionista) {
+			if(f.getCpf().equals(cpf)) {
+				resultado = f;
+			}
+		}
+		return resultado;
+	}
+
+	public void remover(String cpf) {	
+		
+		String mensagem = "Não foi possivel remover o usuario!";
+		Funcionario resultado = null;
+		for(Funcionario f : DadosRecepcionista) {
+			if(f.getCpf().equals(cpf)) {				
+				resultado = f;
+			    mensagem = f.getNome() + " Foi Removido com Sucesso!";									
+			}			
+		}
+		if(resultado != null) {
+			DadosRecepcionista.remove(resultado);				
+		} 					
+		System.out.println(mensagem);		
+	}
+}

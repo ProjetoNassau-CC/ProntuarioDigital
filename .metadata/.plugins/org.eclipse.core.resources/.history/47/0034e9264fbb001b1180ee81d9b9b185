@@ -1,0 +1,53 @@
+package dados;
+
+
+import java.util.ArrayList;
+
+import prontuario.Agenda;
+import prontuario.Funcionario;
+import prontuario.Paciente;
+import prontuario.RepositorioAgenda;
+import prontuario.RepositorioPaciente;
+
+public class RepositorioAgendaArrayList implements RepositorioAgenda{
+	private ArrayList<Agenda> DadosAgenda; //
+		
+	public RepositorioAgendaArrayList() {		
+		DadosAgenda = new ArrayList<Agenda>();
+	}
+	
+	@Override
+	public void inserir(Agenda agenda) {
+		DadosAgenda.add((Agenda) agenda);
+	}
+	
+	@Override
+	public Agenda procurar(String nome) { //perguntar a professora como acessar o ArrayListe de outro repositorio
+		Agenda resultado = null;
+			for(Agenda a : DadosAgenda) {
+				if(a.getNome_paciente().equals(nome)) {
+					resultado = a;
+				}
+			}
+		
+		
+		return resultado;
+	}
+
+	@Override
+	public void remover(String cpf) {			
+		String mensagem = "Não foi possivel remover o usuario, CPF inexistente!";
+		Agenda resultado = null;
+		for(Agenda a : DadosAgenda) {
+			if(f.getCpf().equals(cpf)) {				
+				resultado = f;
+			    mensagem = f.getNome() + " Foi Removido com Sucesso!";									
+			}			
+		}
+		if(resultado != null) {
+			DadosRecepcionista.remove(resultado);				
+		} 					
+		System.out.println(mensagem);	
+
+	}
+}
