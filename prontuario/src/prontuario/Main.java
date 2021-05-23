@@ -115,8 +115,9 @@ public class Main {
 							
 					case 2: //Buscar_Prontuario						
 						System.out.print("Cpf do Paciente: ");
-						System.out.println("\n==========================================================");	
 						String BuscaPaciente = input.next();
+						System.out.println("\n==========================================================");	
+						
 						if(repPac.procurar(BuscaPaciente) != null) {
 							System.out.println(repPac.procurar(BuscaPaciente).toString());
 						} else {
@@ -127,8 +128,8 @@ public class Main {
 					case 3: //Buscar_Agenda			
 						System.out.print("Cpf do Paciente: ");
 						String BuscaAgenda = input.next();
+						System.out.println("\n==========================================================");	
 						if(repAgenda.procurar(BuscaAgenda) != null) {
-							System.out.println("\n==========================================================");	
 							System.out.println(repAgenda.procurar(BuscaAgenda).toString());
 						}else {
 							System.out.println("\nBusca incompleta, CPF não encontrado!");
@@ -218,48 +219,49 @@ public class Main {
 		
 		System.out.print("CRO: ");
 		((Dentista) dentista).setCro(input.nextInt());
-						
-		System.out.print("Nome: ");	
-		((Dentista) dentista).setNome(input.next());
-	
+		
+		input.nextLine();
+		System.out.print("Nome: ");
+		((Dentista) dentista).setNome(input.nextLine());
+		
 		System.out.print("Email: ");		
-		((Dentista) dentista).setEmail(input.next());
-					
+		((Dentista) dentista).setEmail(input.nextLine());
+		
 		System.out.print("celular: ");	
-		((Dentista) dentista).setCel(input.next());
-	
+		((Dentista) dentista).setCel(input.nextLine());
+		
 		System.out.print("Data de nascimento: ");
-		((Dentista) dentista).setData_nascimento(input.next());
+		((Dentista) dentista).setData_nascimento(input.nextLine());
 		
 		System.out.print("CPF: ");	
-		((Dentista) dentista).setCpf(input.next());
+		((Dentista) dentista).setCpf(input.nextLine());
 		
 		System.out.print("RG: ");
-		((Dentista) dentista).setRg(input.next());
+		((Dentista) dentista).setRg(input.nextLine());
 						
 		
-		System.out.println("\n                          Endereço\n");
+		System.out.println("\n=================== Endereço ===================\n");
 		
 		System.out.print("Rua: ");						
-		endDentista.setRua(input.next());	
+		endDentista.setRua(input.nextLine());	
 		
 		System.out.print("Bairro: ");
-		endDentista.setBairro(input.next());	
+		endDentista.setBairro(input.nextLine());	
 		
 		System.out.print("CEP: ");
-		endDentista.setCep(input.next());	
+		endDentista.setCep(input.nextLine());	
 		
 		System.out.print("Cidade: ");
-		endDentista.setCidade(input.next());	
+		endDentista.setCidade(input.nextLine());	
 		
 		System.out.print("UF: ");
-		endDentista.setUf(input.next());	
+		endDentista.setUf(input.nextLine());	
 		
 		System.out.print("Numero: ");
-		endDentista.setNumero(input.next());	
+		endDentista.setNumero(input.nextLine());	
 		
 		System.out.print("Complemento: ");
-		endDentista.setComplemento(input.next());	
+		endDentista.setComplemento(input.nextLine());	
 			
 		System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 		System.out.println("==========================================================\n");	
@@ -281,47 +283,49 @@ public class Main {
 		
 		System.out.print("Codigo: ");
 		((Recepcionista) recepcionista).setCodigo(input.nextInt());				
-						
+		
+		input.nextLine();
 		System.out.print("Nome: ");	
-		((Recepcionista) recepcionista).setNome(input.next());
+		((Recepcionista) recepcionista).setNome(input.nextLine());
 	
 		System.out.print("Email: ");		
-		((Recepcionista) recepcionista).setEmail(input.next());
+		((Recepcionista) recepcionista).setEmail(input.nextLine());
 					
 		System.out.print("celular: ");	
-		((Recepcionista) recepcionista).setCel(input.next());
+		((Recepcionista) recepcionista).setCel(input.nextLine());
 	
 		System.out.print("Data de nascimento: ");
-		((Recepcionista) recepcionista).setData_nascimento(input.next());
+		((Recepcionista) recepcionista).setData_nascimento(input.nextLine());
 		
 		System.out.print("CPF: ");	
-		((Recepcionista) recepcionista).setCpf(input.next());
+		((Recepcionista) recepcionista).setCpf(input.nextLine());
 		
 		System.out.print("Ramal: ");
-		((Recepcionista) recepcionista).setRamal(input.next());
+		((Recepcionista) recepcionista).setRamal(input.nextLine());
 		
 		System.out.println("\n                          Endereço\n");
 		
+		
 		System.out.print("Rua: ");						
-		endRecepcionista.setRua(input.next());	
+		endRecepcionista.setRua(input.nextLine());	
 		
 		System.out.print("Bairro: ");
-		endRecepcionista.setBairro(input.next());	
+		endRecepcionista.setBairro(input.nextLine());	
 		
 		System.out.print("CEP: ");
-		endRecepcionista.setCep(input.next());	
+		endRecepcionista.setCep(input.nextLine());	
 		
 		System.out.print("Cidade: ");
-		endRecepcionista.setCidade(input.next());	
+		endRecepcionista.setCidade(input.nextLine());	
 		
 		System.out.print("UF: ");
-		endRecepcionista.setUf(input.next());	
+		endRecepcionista.setUf(input.nextLine());	
 		
 		System.out.print("Numero: ");
-		endRecepcionista.setNumero(input.next());	
+		endRecepcionista.setNumero(input.nextLine());	
 		
 		System.out.print("Complemento: ");
-		endRecepcionista.setComplemento(input.next());
+		endRecepcionista.setComplemento(input.nextLine());
 		
 		System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 		System.out.println("==========================================================\n");	
@@ -345,54 +349,55 @@ public class Main {
 		System.out.println("                      Dados do Paciente\n");				
 		
 		System.out.print("Nº Prontuário: ");
-		paciente.setCodigo(input.nextInt());				
-	
+		paciente.setCodigo(input.nextInt());	
+		
+		input.nextLine();
 		System.out.print("Nome: ");
-		paciente.setNome(input.next());
+		paciente.setNome(input.nextLine());
 	
 		System.out.print("Email: ");
-		paciente.setEmail(input.next());
+		paciente.setEmail(input.nextLine());
 						
 		System.out.print("Celular: ");
-		paciente.setCel(input.next());
+		paciente.setCel(input.nextLine());
 		
 		System.out.print("Data de Nascimento: ");
-		paciente.setData_nascimento(input.next());
+		paciente.setData_nascimento(input.nextLine());
 		
 		System.out.print("CPF: ");
-		paciente.setCpf(input.next());
+		paciente.setCpf(input.nextLine());
 		
 		System.out.print("RG: ");
-		paciente.setRg(input.next());					
+		paciente.setRg(input.nextLine());					
 		
 		System.out.println("\n                          Endereço\n");
 		
 		System.out.print("Rua: ");
-		endPaciente.setRua(input.next());	
+		endPaciente.setRua(input.nextLine());	
 		
 		System.out.print("Bairro: ");
-		endPaciente.setBairro(input.next());	
+		endPaciente.setBairro(input.nextLine());	
 		
 		System.out.print("CEP: ");
-		endPaciente.setCep(input.next());	
+		endPaciente.setCep(input.nextLine());	
 		
 		System.out.print("Cidade: ");
-		endPaciente.setCidade(input.next());	
+		endPaciente.setCidade(input.nextLine());	
 		
 		System.out.print("UF: ");
-		endPaciente.setUf(input.next());	
+		endPaciente.setUf(input.nextLine());	
 		
 		System.out.print("Numero: ");
-		endPaciente.setNumero(input.next());	
+		endPaciente.setNumero(input.nextLine());	
 		
 		System.out.print("Complemento: ");
-		endPaciente.setComplemento(input.next());		
+		endPaciente.setComplemento(input.nextLine());		
 
 		System.out.println("\n                          Anamnese");
 		System.out.println("                       Digite [S ou N]\n");
 		
+		
 		System.out.print("Problema com Anestesia? ");
-		anamnese.setProblemaAnestesia(input.nextLine());
 		anamnese.setProblemaAnestesia(input.nextLine());
 		
 		System.out.print("Problema de Hemorragia? ");
@@ -423,21 +428,22 @@ public class Main {
 		anamnese.setAlergia(input.nextLine());
 		
 		System.out.println("\n                        Ficha Clinica\n");	
-	
+		
+
 		System.out.print("Nome do dentista: ");					
-		fichaClinica.setNome_dentista(input.next());	
+		fichaClinica.setNome_dentista(input.nextLine());	
 		
 		System.out.print("Data da consulta (xx/xx/xxxx): ");
-		fichaClinica.setData_consulta(input.next());
+		fichaClinica.setData_consulta(input.nextLine());
 		
 		System.out.print("Data do tratamento (xx/xx/xxxx): ");
-		fichaClinica.setData_tratamento(input.next());
+		fichaClinica.setData_tratamento(input.nextLine());
 		
 		System.out.print("Plano do tratamento: ");
-		fichaClinica.setPlano_tratamento(input.next());
+		fichaClinica.setPlano_tratamento(input.nextLine());
 		
 		System.out.print("Digite o orçamento: R$");
-		fichaClinica.setGera_orcamento(input.next());								
+		fichaClinica.setGera_orcamento(input.nextLine());								
 		
 		System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 		System.out.println("==========================================================\n");
