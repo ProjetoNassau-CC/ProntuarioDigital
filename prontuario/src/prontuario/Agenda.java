@@ -9,9 +9,7 @@ public class Agenda {
 	private String tratamento_dente;
 	private String data_inclusao;
 	private String data_agenda;
-	private String concluido;
-	private String cancelado;
-	private String reagendado;
+	private String status;
 	
 	public Agenda() {
 
@@ -22,15 +20,12 @@ public class Agenda {
 		this.tratamento_dente = null;
 		this.data_inclusao = null;
 		this.data_agenda = null;
-		this.concluido = null;
-		this.cancelado = null;
-		this.reagendado = null;
+		this.status = null;
 		
 	}
 		
 	public Agenda(String nome_dentista, String nome_paciente, String cpf, String plano_tratamento,
-			String tratamento_dente, String data_inclusao, String data_agenda, String concluido, String cancelado,
-			String reagendado) {
+			String tratamento_dente, String data_inclusao, String data_agenda, String status) {
 
 		this.nome_dentista = nome_dentista;
 		this.nome_paciente = nome_paciente;	
@@ -39,9 +34,7 @@ public class Agenda {
 		this.tratamento_dente = tratamento_dente;
 		this.data_inclusao = data_inclusao;
 		this.data_agenda = data_agenda;
-		this.concluido = concluido;
-		this.cancelado = cancelado;
-		this.reagendado = reagendado;
+		this.status = status;
 	}
 
 	public void setNome_dentista(String nome_dentista) {
@@ -86,24 +79,13 @@ public class Agenda {
 	public void setData_agenda(String data_agenda) {
 		this.data_agenda = data_agenda;
 	}
-	public String getConcluido() {
-		return concluido;
+	public String getStatus() {
+		return status;
 	}
-	public void setConcluido(String concluido) {
-		this.concluido = concluido;
+	public void setStatus(String status) {
+		this.status = status;
 	}
-	public String getCancelado() {
-		return cancelado;
-	}
-	public void setCancelado(String cancelado) {
-		this.cancelado = cancelado;
-	}
-	public String getReagendado() {
-		return reagendado;
-	}
-	public void setReagendado(String reagendado) {
-		this.reagendado = reagendado;
-	}
+
 
 	public String toString() {
 		return  "\n                        Agendamento\n"
@@ -114,9 +96,7 @@ public class Agenda {
 				+ "\nTratamento do dente: " + tratamento_dente
 				+ "\nData de inclusao: " + data_inclusao
 				+ "\nData do agendamento: " + data_agenda
-				+ "\nConcluido: " + concluido
-				+ "\nCancelado: " + cancelado
-				+ "\nReagendado: " + reagendado;
+				+ "\nStatus: " + status;
 	}	
 	
 

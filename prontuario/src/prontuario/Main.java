@@ -327,7 +327,6 @@ public class Main {
 		System.out.print("Complemento: ");
 		endRecepcionista.setComplemento(input.nextLine());
 		
-		System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 		System.out.println("==========================================================\n");	
 		
 		recepcionista.setEndereco(endRecepcionista);
@@ -445,7 +444,6 @@ public class Main {
 		System.out.print("Digite o orçamento: R$");
 		fichaClinica.setGera_orcamento(input.nextLine());								
 		
-		System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 		System.out.println("==========================================================\n");
 		
 		paciente.setEndereco(endPaciente);
@@ -462,38 +460,42 @@ public class Main {
 		System.out.println("\n==========================================================");
 		System.out.println("XXXXXXXXXXXXXXXXXXXXXXX Agendamento XXXXXXXXXXXXXXXXXXXXXX\n");	
 		
-			
+		input.nextLine();
 		System.out.print("Nome do paciente: " );
-		agenda.setNome_paciente(input.next());
+		agenda.setNome_paciente(input.nextLine());
 				
 		System.out.print("CPF: ");
-		agenda.setCpf(input.next());
+		agenda.setCpf(input.nextLine());
 						
 		System.out.print("Nome do Dentista: ");
-		agenda.setNome_dentista(input.next());
+		agenda.setNome_dentista(input.nextLine());
 				
 		System.out.print("Plano de tratamento: ");
-		agenda.setPlano_tratamento(input.next());
+		agenda.setPlano_tratamento(input.nextLine());
 				
 		System.out.print("Tratamento dentário: ");
-		agenda.setTratamento_dente(input.next());
+		agenda.setTratamento_dente(input.nextLine());
 			
 		System.out.print("Data de inclusão: ");
-		agenda.setData_inclusao(input.next());
-				
-		System.out.print("Data do agendamento: ");
-		agenda.setData_agenda(input.next());
-				
-		System.out.print("Concluido? ");
-		agenda.setConcluido(input.next());
-				
-		System.out.print("Cancelado? ");
-		agenda.setCancelado(input.next());
+		agenda.setData_inclusao(input.nextLine());
 			
-		System.out.print("Reagendado? ");
-		agenda.setReagendado(input.next());			
+		System.out.print("Data do agendamento: ");
+		agenda.setData_agenda(input.nextLine());
 		
-		System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+		System.out.println("(CC) - Concluído | (RD) - Reagendado | (CL) - Cancelado");
+		System.out.print("Status do Atendimento: ");
+		
+		agenda.setStatus(input.nextLine());
+		
+		if(agenda.getStatus().equalsIgnoreCase("cc")) {
+			agenda.setStatus("Concluído");
+		}
+		else if(agenda.getStatus().equalsIgnoreCase("rd")) {
+			agenda.setStatus("Reagendado");
+		}else {
+			agenda.setStatus("Cancelado");
+		}
+
 		System.out.println("==========================================================\n");
 		repAgenda.inserir(agenda);
 		return repAgenda;
