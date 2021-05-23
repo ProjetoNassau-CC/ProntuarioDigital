@@ -1,0 +1,41 @@
+package dados;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import prontuario.Dentista;
+import prontuario.Funcionario;
+import prontuario.RepositorioFuncionario;
+
+public class RepositorioDentistaArrayList implements RepositorioFuncionario{
+	Scanner input = new Scanner(System.in);
+	ArrayList<Dentista> DadosDentista = new ArrayList<Dentista>();
+	
+	@Override
+	public void inserir(Funcionario func) {
+		DadosDentista.add((Dentista) func);		
+	}
+
+	@Override
+	public Funcionario procurar(String cpf) {		
+		Funcionario resultado = null;
+		
+		System.out.print("CPF: ");
+		cpf = input.next();
+		for(Dentista d : DadosDentista) {
+			if(d.getCpf().equals(cpf)) {
+				resultado = d;
+			}		
+		}
+		return resultado;
+	}
+
+	@Override
+	public void remover(String cpf) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+
+

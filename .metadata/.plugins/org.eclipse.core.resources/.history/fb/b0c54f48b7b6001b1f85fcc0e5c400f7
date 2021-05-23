@@ -1,0 +1,8 @@
+package prontuario;
+
+public interface RepositorioPacienteArrayList {
+	
+	abstract void inserir(Paciente pac);
+	abstract Paciente procurar(String nome);
+	abstract void remover(String nome);
+}

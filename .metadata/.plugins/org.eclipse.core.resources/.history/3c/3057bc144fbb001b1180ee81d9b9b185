@@ -1,0 +1,36 @@
+package dados;
+
+
+import java.util.ArrayList;
+
+import prontuario.Agenda;
+import prontuario.Paciente;
+import prontuario.RepositorioAgenda;
+import prontuario.RepositorioPaciente;
+
+public class RepositorioAgendaArrayList implements RepositorioAgenda{
+	private ArrayList<Agenda> DadosAgenda; //
+		
+	public RepositorioAgendaArrayList() {		
+		DadosAgenda = new ArrayList<Agenda>();
+	}
+	
+	@Override
+	public void inserir(Agenda agenda) {
+		DadosAgenda.add((Agenda) agenda);
+	}
+	
+	@Override
+	public Agenda procurar(String nome) { //perguntar a professora como acessar o ArrayListe de outro repositorio
+		Agenda resultado = null;
+
+		
+		
+		return resultado;
+	}
+
+	@Override
+	public void remover(String cpf) {	
+
+	}
+}

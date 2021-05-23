@@ -2,9 +2,9 @@ package prontuario;
 
 public class Agenda {
 	
-	private int codigo_ficha;
 	private String nome_dentista;
-	private String nome_paciente;	
+	private String nome_paciente;
+	private String cpf;
 	private String plano_tratamento;
 	private String tratamento_dente;
 	private String data_inclusao;
@@ -12,14 +12,29 @@ public class Agenda {
 	private String concluido;
 	private String cancelado;
 	private String reagendado;
+	
+	public Agenda() {
+
+		this.nome_dentista = null;
+		this.nome_paciente = null;
+		this.cpf = null;
+		this.plano_tratamento = null;
+		this.tratamento_dente = null;
+		this.data_inclusao = null;
+		this.data_agenda = null;
+		this.concluido = null;
+		this.cancelado = null;
+		this.reagendado = null;
 		
-	public Agenda(int codigo_ficha, String nome_dentista, String nome_paciente, String plano_tratamento,
+	}
+		
+	public Agenda(String nome_dentista, String nome_paciente, String cpf, String plano_tratamento,
 			String tratamento_dente, String data_inclusao, String data_agenda, String concluido, String cancelado,
 			String reagendado) {
-	
-		this.codigo_ficha = codigo_ficha;
+
 		this.nome_dentista = nome_dentista;
-		this.nome_paciente = nome_paciente;		
+		this.nome_paciente = nome_paciente;	
+		this.cpf = cpf;
 		this.plano_tratamento = plano_tratamento;
 		this.tratamento_dente = tratamento_dente;
 		this.data_inclusao = data_inclusao;
@@ -28,16 +43,7 @@ public class Agenda {
 		this.cancelado = cancelado;
 		this.reagendado = reagendado;
 	}
-	
-	public Agenda() {		
-	}
 
-	public int getCodigo_ficha() {
-		return codigo_ficha;
-	}
-	public void setCodigo_ficha(int codigo_ficha) {
-		this.codigo_ficha = codigo_ficha;
-	}
 	public void setNome_dentista(String nome_dentista) {
 		this.nome_dentista = nome_dentista;
 	}
@@ -49,6 +55,12 @@ public class Agenda {
 	}
 	public void setNome_paciente(String nome_paciente) {
 		this.nome_paciente = nome_paciente;
+	}	
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 	public String getNome_dentista() {
 		return nome_dentista;
@@ -94,9 +106,10 @@ public class Agenda {
 	}
 
 	public String toString() {
-		return "Nº Prontuario: " + codigo_ficha
+		return  "\n                        Agendamento\n"
+				+ "\nNome do paciente: " + nome_paciente	
+				+ "\nCPF: " + cpf 
 				+ "\nNome do dentista: " + nome_dentista
-				+ "\nNome do paciente: " + nome_paciente			
 				+ "\nPlano de tratamento: " + plano_tratamento
 				+ "\nTratamento do dente: " + tratamento_dente
 				+ "\nData de inclusao: " + data_inclusao

@@ -1,0 +1,23 @@
+package dados;
+
+import prontuario.Paciente;
+
+public class RepositorioPaciente {
+
+	public RepositorioPaciente() {
+		
+	}
+	public void inserir(Paciente func){		
+		
+		
+	}
+
+	public Paciente procurar(String nome) {
+		return null;		
+	}
+
+	public void remover(String nome) {			
+	}				
+	
+
+}

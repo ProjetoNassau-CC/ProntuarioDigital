@@ -1,0 +1,28 @@
+package dados;
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import prontuario.Dentista;
+import prontuario.Funcionario;
+import prontuario.RepositorioFuncionario;
+
+public class RepositorioDentistaArrayList implements RepositorioFuncionario{
+	Scanner input = new Scanner(System.in);
+		ArrayList<Dentista> DadosDentista;
+	
+	public void inserir(Funcionario func) {
+		DadosDentista.add((Dentista) func);
+	}
+	
+	public Funcionario procurar(String cpf) {		
+		return null;
+	}
+
+	public void remover(String cpf) {		
+	}
+
+}
+
+

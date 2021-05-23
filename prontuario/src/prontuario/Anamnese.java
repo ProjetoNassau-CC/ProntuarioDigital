@@ -13,6 +13,19 @@ public class Anamnese {
 	private String antecedenteFamiliar;
 	private String alergia;
 	
+	public Anamnese() {
+		this.problemaAnestesia = null;
+		this.problemaHemorragia = null;
+		this.febreReumatica = null;
+		this.problemaRenal = null;
+		this.problemaRespitorio = null;
+		this.problemaArticular = null;
+		this.problemaCardiaco = null;
+		this.problemaGastrico = null;
+		this.antecedenteFamiliar = null;
+		this.alergia = null;		
+	}
+	
 	public Anamnese(String problemaAnestesia, String problemaHemorragia, String febreReumatica,
 			String problemaRenal, String problemaRespitorio, String problemaArticular,
 			String problemaCardiaco, String problemaGastrico, String antecedenteFamiliar, String alergia) {
@@ -26,9 +39,6 @@ public class Anamnese {
 		this.problemaGastrico = problemaGastrico;
 		this.antecedenteFamiliar = antecedenteFamiliar;
 		this.alergia = alergia;
-	}
-
-	public Anamnese() {		
 	}
 
 	public String getProblemaAnestesia() {

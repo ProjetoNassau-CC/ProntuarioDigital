@@ -1,0 +1,31 @@
+package dados;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import prontuario.Funcionario;
+import prontuario.RepositorioFuncionario;
+
+public class RepositorioDentista implements RepositorioFuncionario{
+
+	@Override
+	public void inserir(Funcionario func) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void procurar(String cpf) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remover(String cpf) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+
+

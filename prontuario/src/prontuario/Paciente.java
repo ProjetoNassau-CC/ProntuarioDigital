@@ -8,7 +8,6 @@ public class Paciente {
 	protected int codigo;
 	private String nome;
 	private String email;
-	private String tel;
 	private String cel;	
 	private String data_nascimento;
 	private String cpf;
@@ -17,13 +16,25 @@ public class Paciente {
 	private Anamnese anamnese;
 	private Ficha_clinica ficha_clinica ;
 	
-	public Paciente(int codigo, String nome, String email, String tel, String cel,
+	public Paciente() {		
+		this.codigo = 0;
+		this.nome = null;
+		this.email = null;
+		this.cel = null;		
+		this.data_nascimento = null;
+		this.cpf = null;
+		this.rg = null;
+		this.endereco = null;		
+		this.anamnese = null;
+		this.ficha_clinica = null;
+	}
+	
+	public Paciente(int codigo, String nome, String email, String cel,
 			String data_nascimento, String cpf, String rg, Endereco endereco, 
 			Anamnese anamnese, Ficha_clinica ficha_clinica ) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.email = email;
-		this.tel = tel;
 		this.cel = cel;		
 		this.data_nascimento = data_nascimento;
 		this.cpf = cpf;
@@ -33,10 +44,6 @@ public class Paciente {
 		this.ficha_clinica = ficha_clinica ;
 	}
 	
-	public Paciente() {		
-	}
-
-
 	public int getCodigo() {
 		return codigo;
 	}
@@ -59,14 +66,6 @@ public class Paciente {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getTel() {
-		return tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
 	}
 
 	public String getCel() {
@@ -130,7 +129,6 @@ public class Paciente {
 				+  "\nNº Prontuário: " + codigo
 				+ "\nNome: " + nome 
 				+ "\nEmail: " + email
-				+ "\nTelefone: " + tel
 				+ "\nCelular: " + cel 
 				+ "\nData de nascimento: " + data_nascimento
 				+ "\nCpf: " + cpf

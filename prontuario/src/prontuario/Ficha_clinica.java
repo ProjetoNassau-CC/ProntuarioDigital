@@ -8,6 +8,15 @@ public class Ficha_clinica {
 	private String plano_tratamento;
 	private String data_tratamento;
 	private String gera_orcamento;
+	
+	public Ficha_clinica() {	
+		this.paciente = null;
+		this.nome_dentista = null;
+		this.data_consulta = null;
+		this.plano_tratamento = null;
+		this.data_tratamento = null;
+		this.gera_orcamento = null;
+	}
 
 	public Ficha_clinica(Paciente paciente, String nome_dentista, String data_consulta,
 			String plano_tratamento, String data_tratamento, String gera_orcamento) {
@@ -18,10 +27,7 @@ public class Ficha_clinica {
 		this.plano_tratamento = plano_tratamento;
 		this.data_tratamento = data_tratamento;
 		this.gera_orcamento = gera_orcamento;
-	}	
-	
-	public Ficha_clinica() {		
-	}	
+	}
 	
 	public String getNome_dentista() {
 		return nome_dentista;

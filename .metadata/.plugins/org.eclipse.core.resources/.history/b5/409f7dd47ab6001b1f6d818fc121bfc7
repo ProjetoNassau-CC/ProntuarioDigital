@@ -1,0 +1,9 @@
+package prontuario;
+
+public interface RepositorioDentista {
+	
+	abstract void inserir(Funcionario f);
+	abstract Funcionario procurar(String nome);
+	abstract void remover(String nome);
+	
+}

@@ -1,0 +1,56 @@
+package dados;
+
+import java.util.ArrayList;
+
+import prontuario.Paciente;
+import prontuario.RepositorioPaciente;
+
+public class RepositorioPacienteArrayList implements RepositorioPaciente{
+	private ArrayList<Paciente> DadosPaciente;
+		
+	public RepositorioPacienteArrayList() {		
+		DadosPaciente = new ArrayList<Paciente>();
+	}
+	
+	public void inserir(Paciente pac) {
+		DadosPaciente.add((Paciente) pac);
+	}
+	
+	public Paciente procurar(String cpf) {
+		Funcionario resultado = null;
+		for(Funcionario f : DadosPaciente) {
+			if(f.getCpf().equals(cpf)) {
+				resultado = f;
+			}
+		}
+		return resultado;
+	}
+
+	public void remover(String cpf) {	
+		
+		String mensagem = "Não foi possivel remover o usuario!";
+		Funcionario resultado = null;
+		for(Funcionario f : DadosPaciente) {
+			if(f.getCpf().equals(cpf)) {				
+				resultado = f;
+			    mensagem = f.getNome() + " Foi Removido com Sucesso!";									
+			}			
+		}
+		if(resultado != null) {
+			DadosPaciente.remove(resultado);				
+		} 					
+		System.out.println(mensagem);		
+	}
+
+	@Override
+	public void inserir(Paciente pac) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Paciente procurar(String nome) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
