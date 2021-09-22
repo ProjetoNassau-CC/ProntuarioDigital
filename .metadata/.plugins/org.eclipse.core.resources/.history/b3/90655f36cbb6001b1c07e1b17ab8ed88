@@ -1,9 +1,0 @@
-package prontuario;
-
-public interface RepositorioFuncionario {
-	
-	abstract void inserir(Funcionario func);
-	abstract void procurar();
-	abstract void remover(String cpf);
-	
-}

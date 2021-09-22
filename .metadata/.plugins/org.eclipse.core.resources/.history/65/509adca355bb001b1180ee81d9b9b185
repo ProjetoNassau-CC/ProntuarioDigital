@@ -1,8 +1,0 @@
-package prontuario;
-
-public interface RepositorioAgenda {
-	
-	abstract void inserir(Agenda agenda);
-	abstract Agenda procurar(String nome);
-	abstract void remover(String cpf);
-}

@@ -3,6 +3,7 @@ package prontuario;
 import java.util.Locale;
 import java.util.Scanner;
 
+import conexao.Conexao;
 import dados.RepositorioAgendaArrayList;
 import dados.RepositorioDentistaArrayList;
 import dados.RepositorioRecepcionistaArrayList;
@@ -13,6 +14,7 @@ public class Main {
 	static Scanner input = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		Conexao conexao = new Conexao();
 		Locale.setDefault(Locale.US);
 		int opcao1;
 		int opcao2;
