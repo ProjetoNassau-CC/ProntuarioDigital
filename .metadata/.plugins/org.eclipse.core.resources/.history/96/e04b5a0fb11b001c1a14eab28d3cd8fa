@@ -1,0 +1,48 @@
+package modeloDAO;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import conexao.Conexao;
+import prontuario.Dentista;
+import prontuario.Endereco;
+import prontuario.Recepcionista;
+
+public class CrudFuncionarios {
+	
+	Conexao conex = new Conexao();
+Recepcionista recepcionista = new Recepcionista();
+
+
+public void InserirDentista(Dentista dentista) {
+	
+	conex.conexao();
+	Endereco end = new Endereco();
+	try {
+		String sql = "INSERT INTO funcionario(nome,email,celular,datanasc,cpf,rg,rua,bairro,cep,cidade,uf,numero,complemento,funcao,cro,ramal) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		PreparedStatement stmt = conex.con.prepareStatement(sql);
+		stmt.setString(1, dentista.getNome());
+			stmt.setString(2, dentista.getEmail());
+			stmt.setString(3, dentista.getCel());
+			stmt.setString(4, dentista.getData_nascimento());
+			stmt.setString(5, dentista.getCpf());
+			stmt.setString(6, dentista.getRg());
+			stmt.setString(7, end.getRua());
+			stmt.setString(8, end.getBairro());
+			stmt.setString(9, end.getCep());
+			stmt.setString(10, end.getCidade());
+			stmt.setString(11, end.getUf());
+			stmt.setString(12, end.getNumero());
+			stmt.setString(13, end.getComplemento());
+			stmt.setString(14, "Dentista");
+			stmt.setInt(15, dentista.getCro());
+			stmt.setString(16, "");
+			stmt.execute();
+			System.out.println("cadastrado com sucesso");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

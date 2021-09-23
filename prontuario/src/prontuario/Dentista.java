@@ -4,17 +4,19 @@ package prontuario;
 public class Dentista extends Funcionario {
 	
 	private int cro;
-	private String rg;
+
+
+	
 
 	public Dentista() {
 		super();
 		this.cro = 0;
-		this.rg = null;
+	
 	}
 	
 	public Dentista(int codigo, String nome, String email, String cel,
 			String data_nascimento, String cpf, String rg,  Endereco endereco, int cro) {
-		super(codigo, nome, email, cel, data_nascimento, cpf, endereco);
+		super(codigo, nome, email, cel, data_nascimento, cpf,rg, endereco);
 	
 		this.cro = cro;		
 	}	
@@ -27,19 +29,13 @@ public class Dentista extends Funcionario {
 		this.cro = cro;	
 	}
 	
-	public String getRg() {				
-		return rg;
-	}
-	
-	public void setRg(String rg) {
-		this.rg = rg;
-	}
+
+
 	
 	public String toString() {
 		return 	"                          Dentista\n" 
 				+ "\nCRO: "+ cro
 				+ super.toString()
-				+ "\nRg: "+ rg
 				+ getEndereco().toString();
 		
 

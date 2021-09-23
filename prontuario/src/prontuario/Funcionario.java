@@ -9,6 +9,10 @@ public class Funcionario {
 	private Endereco endereco;
 	private String data_nascimento;
 	private String cpf;
+	private String rg;
+	
+
+	private String funcao;
 	
 	public Funcionario() {	
 		this.codigo = 0;
@@ -17,11 +21,12 @@ public class Funcionario {
 		this.cel = null;
 		this.endereco = null;
 		this.data_nascimento = null;
-		this.cpf = null;		
+		this.cpf = null;	
+		this.rg = null;
 	}
 	
 	public Funcionario(int codigo, String nome, String email, String cel,
-			String data_nascimento, String cpf, Endereco endereco) {
+			String data_nascimento, String cpf,String rg, Endereco endereco) {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.email = email;
@@ -29,6 +34,7 @@ public class Funcionario {
 		this.endereco = endereco;
 		this.data_nascimento = data_nascimento;
 		this.cpf = cpf;
+		this.rg = rg;
 	}
 	
 	public int getCodigo() {
@@ -86,6 +92,20 @@ public class Funcionario {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	public String getFuncao() {
+		return funcao;
+	}
+
+	public void setFuncao(String funcao) {
+		this.funcao = funcao;
+	}
+	public String getRg() {
+		return rg;
+	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
 
 	public String toString() {
 		return  "\nCodigo: " + codigo				
@@ -93,7 +113,8 @@ public class Funcionario {
 				+ "\nEmail: " + email
 				+ "\nCelular: " + cel
 				+ "\nData de nascimento: "	+ data_nascimento 
-				+ "\nCpf: " + cpf;
+				+ "\nCpf: " + cpf
+				+ "\nRg: " + rg;
 	}
 	
 }

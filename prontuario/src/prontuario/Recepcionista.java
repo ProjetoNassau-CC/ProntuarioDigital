@@ -10,8 +10,8 @@ public class Recepcionista extends Funcionario {
 	}
 	
 	public Recepcionista(int codigo, String nome, String email, String cel,
-			String data_nascimento, String cpf, String Ramal, Endereco endereco) {
-		super(codigo, nome, email, cel, data_nascimento, cpf, endereco);
+			String data_nascimento, String cpf,String rg, String Ramal, Endereco endereco) {
+		super(codigo, nome, email, cel, data_nascimento, cpf,rg, endereco);
 	}
 
 	public String getRamal() {
