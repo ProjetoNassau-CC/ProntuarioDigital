@@ -1,0 +1,171 @@
+package modeloDAO;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import conexao.Conexao;
+import prontuario.Dentista;
+import prontuario.Endereco;
+import prontuario.Recepcionista;
+
+public class CrudFuncionarios {
+	
+	
+Recepcionista recepcionista = new Recepcionista();
+PreparedStatement stmt;
+
+public void inserirDentista(Dentista d) {
+	Conexao conex = new Conexao();
+	
+	conex.conexao();
+	try {
+		String sql = "INSERT INTO funcionario(nome,email,celular,datanasc,cpf,rg,rua,bairro,cep,cidade,uf,numero,complemento,funcao,cro,ramal) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		PreparedStatement stmt = conex.con.prepareStatement(sql);
+			stmt.setString(1, d.getNome());
+			stmt.setString(2, d.getEmail());
+			stmt.setString(3, d.getCel());
+			stmt.setString(4, d.getData_nascimento());
+			stmt.setString(5, d.getCpf());
+			stmt.setString(6, d.getRg());
+			stmt.setString(7, d.getEndereco().getRua());
+			stmt.setString(8,	d.getEndereco().getBairro());
+			stmt.setString(9, d.getEndereco().getCep());
+			stmt.setString(10, d.getEndereco().getCidade());
+			stmt.setString(11, d.getEndereco().getUf());
+			stmt.setString(12, d.getEndereco().getNumero());
+			stmt.setString(13, d.getEndereco().getComplemento());
+			stmt.setString(14, d.getFuncao());
+			stmt.setInt(15, d.getCro());
+			stmt.setString(16, "");
+			stmt.execute();
+			System.out.println("cadastrado com sucesso");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+public void inserirRecepcionista(Recepcionista r) {
+	Conexao conex = new Conexao();
+	
+	conex.conexao();
+	try {
+		String sql = "INSERT INTO funcionario(nome,email,celular,datanasc,cpf,rg,rua,bairro,cep,cidade,uf,numero,complemento,funcao,cro,ramal) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		PreparedStatement stmt = conex.con.prepareStatement(sql);
+		stmt.setString(1, r.getNome());
+			stmt.setString(2, r.getEmail());
+			stmt.setString(3, r.getCel());
+			stmt.setString(4, r.getData_nascimento());
+			stmt.setString(5, r.getCpf());
+			stmt.setString(6, r.getRg());
+			stmt.setString(7, r.getEndereco().getRua());
+			stmt.setString(8,	r.getEndereco().getBairro());
+			stmt.setString(9, r.getEndereco().getCep());
+			stmt.setString(10, r.getEndereco().getCidade());
+			stmt.setString(11, r.getEndereco().getUf());
+			stmt.setString(12, r.getEndereco().getNumero());
+			stmt.setString(13, r.getEndereco().getComplemento());
+			stmt.setString(14, r.getFuncao());
+			stmt.setInt(15, 0);
+			stmt.setString(16, r.getRamal());
+			stmt.execute();
+			System.out.println("cadastrado com sucesso");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+public Dentista consultar(String cpf) {
+	try {
+	Conexao conex = new Conexao();
+	conex.conexao();
+	Dentista dentista = new Dentista();
+	Endereco endDentista = new Endereco();
+	String sql = "select * from funcionario where cpf = ?";
+	PreparedStatement stmt = conex.con.prepareStatement(sql);
+	stmt.setString(1,cpf);
+	
+	ResultSet rs = stmt.executeQuery();
+	//verifica se a consulta encontrou um funcionario com o CPF informado.
+	if(rs.next()) { 
+		dentista.setCodigo(rs.getInt("codigo"));
+		dentista.setNome(rs.getString("nome"));
+		dentista.setEmail(rs.getString("email"));
+		dentista.setCel(rs.getString("celular"));
+		dentista.setData_nascimento(rs.getString("datanasc"));
+		dentista.setCpf(rs.getString("cpf"));
+		dentista.setRg(rs.getString("rg"));
+		endDentista.setRua(rs.getString("rua"));
+		endDentista.setBairro(rs.getString("bairro"));
+		endDentista.setCep(rs.getString("cep"));
+		endDentista.setCidade(rs.getString("cidade"));
+		endDentista.setUf(rs.getString("uf"));
+		endDentista.setNumero(rs.getString("numero"));
+		endDentista.setComplemento(rs.getString("complemento"));
+		dentista.setEndereco(endDentista);
+		dentista.setFuncao(rs.getString("funcao"));
+		dentista.setCro(rs.getInt("cro"));
+		return dentista;
+	}else {
+		
+		return null;
+	}
+	
+	
+}catch (Exception e) {
+}
+	return null;
+}
+
+
+
+
+public void remover(Dentista dentista) {
+	Conexao conex = new Conexao();
+	conex.conexao();
+	String sql = "delete from funcionario where  cpf = ?";
+	try {
+		PreparedStatement stmt = conex.con.prepareStatement(sql);
+		stmt.setString(1,dentista.getCpf());
+		stmt.executeUpdate();
+		System.out.println("excluido com sucesso");
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+
+public void Editar(Dentista dentista) {
+	Conexao conex = new Conexao();
+	conex.conexao();
+	
+	String sql = "update funcionario set nome = ?, email =?, celular = ?,datanasc = ?,rg = ?, cro =?, rua = ?, bairro = ?, cep = ?, cidade = ?, uf =?, numero = ?, complemento = ? where cpf = ?;";
+	try {
+		PreparedStatement stmt = conex.con.prepareStatement(sql);
+		stmt.setString(1, dentista.getNome());
+		stmt.setString(2, dentista.getEmail());
+		stmt.setString(3, dentista.getCel());
+		stmt.setString(4, dentista.getData_nascimento());
+		stmt.setString(5, dentista.getCpf());
+		stmt.setString(6, dentista.getRg());
+		stmt.setInt(7, dentista.getCro());
+		stmt.setString(8,dentista.getEndereco().getRua());
+		stmt.setString(9,dentista.getEndereco().getBairro());
+		stmt.setString(10,dentista.getEndereco().getCep());
+		stmt.setString(11,dentista.getEndereco().getCidade());
+		stmt.setString(12,dentista.getEndereco().getUf());
+		stmt.setString(13,dentista.getEndereco().getNumero());
+		stmt.setString(14,dentista.getEndereco().getComplemento());
+		stmt.setString(15, dentista.getCpf());
+		
+		stmt.executeLargeUpdate();
+		System.out.println("dados alterados com sucesso");
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+
+}
+

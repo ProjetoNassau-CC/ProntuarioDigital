@@ -2,12 +2,15 @@ package conexao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Conexao {
 
+
+public class Conexao {
+	public PreparedStatement st;
 	public Statement stm;
 	public ResultSet rs;
 	private String driver = "com.mysql.jdbc.Driver";

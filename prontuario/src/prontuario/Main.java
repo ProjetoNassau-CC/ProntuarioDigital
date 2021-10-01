@@ -25,6 +25,7 @@ public class Main {
 		RepositorioFuncionario repRecepcionista = new RepositorioRecepcionistaArrayList();
 		RepositorioPaciente repPac = new RepositorioPacienteArrayList();
 		RepositorioAgenda repAgenda = new RepositorioAgendaArrayList();
+		CrudFuncionarios crud = new CrudFuncionarios();
 		
 		TelaLogin();
 		
@@ -73,6 +74,7 @@ public class Main {
 					+ "\n4- Remover Funcionario"
 					+ "\n5- Remover Prontuario"
 					+ "\n6- Remover Agendamento"
+					+ "\n7- Editar Dados - Dentista"
 					+ "\n0- Voltar"
 					
 					+ "\n\nO que deseja fazer? ");					
@@ -94,24 +96,26 @@ public class Main {
 						if(escolhaBusca.equalsIgnoreCase("d")) {
 							System.out.print("Cpf: ");
 							String BuscaFunc = input.next();
+							System.out.println(crud.consultaDentista(BuscaFunc));
+					
 							
+							/*
 							if(repDentista.procurar(BuscaFunc) != null) {
 								System.out.println("==========================================================\n");	
 								System.out.println(repDentista.procurar(BuscaFunc).toString());		
 							} else {
 								System.out.println("\nBusca incompleta, CPF não encontrado!");
-							}
+							}*/
 							
 						} else if(escolhaBusca.equalsIgnoreCase("r")) {
 							System.out.print("Cpf: ");
-							System.out.println("==========================================================\n");	
 							String BuscaFunc = input.next();	
-							
-							if(repRecepcionista.procurar(BuscaFunc) != null) {
+							System.out.println(crud.consultaRecepcionista(BuscaFunc));
+							/*if(repRecepcionista.procurar(BuscaFunc) != null) {
 								System.out.println(repRecepcionista.procurar(BuscaFunc).toString());
 							} else {
 								System.out.println("\nBusca incompleta, CPF não encontrado!");
-							}
+							}*/
 							
 						} else {
 							System.out.println("\nFunção não reconhecida!");
@@ -151,16 +155,24 @@ public class Main {
 						
 						System.out.print("\n\nFunção: ");
 						String escolhaRemove = input.next();							
-						
+					
+						Dentista dent = new Dentista();
+						Recepcionista rec = new Recepcionista();
 						if(escolhaRemove.equalsIgnoreCase("d")) {	
-							System.out.print("Cpf: ");						
-							String RemoveFunc = input.next();
-							repDentista.remover(RemoveFunc);
+							System.out.print("Cpf: ");	
+							
+							((Dentista) dent).setCpf(input.next());
+							crud.removerDentista(dent);
+							
+							//String RemoveFunc = input.next();
+							//repDentista.remover(RemoveFunc);
 							
 						} else if(escolhaRemove.equalsIgnoreCase("r")) {							
-							System.out.print("Cpf: ");						
-							String RemoveFunc = input.next();
-							repRecepcionista.remover(RemoveFunc);		
+							System.out.print("Cpf: ");		
+							((Recepcionista) rec).setCpf(input.next());
+							crud.removerRecepcionista(rec);
+							//String RemoveFunc = input.next();
+							//repRecepcionista.remover(RemoveFunc);		
 							
 						}else {
 							System.out.println("\nFunção não reconhecida!");
@@ -179,6 +191,10 @@ public class Main {
 						String RemoverAgenda = input.next();
 						
 						repAgenda.remover(RemoverAgenda);
+						break;
+						
+					case 7: 
+						EditarDentista();
 						break;
 					}
 				}while(opcao2 != 0);
@@ -210,6 +226,68 @@ public class Main {
 		}while(condicao != true);			
 		
 		
+	}
+	
+	public static void EditarDentista() {
+		
+	
+		CrudFuncionarios crud = new CrudFuncionarios();
+		Funcionario dentista = new Dentista();
+		Endereco endDentista = new Endereco();	
+		
+		System.out.print("CRO: ");
+		((Dentista) dentista).setCro(input.nextInt());
+		
+		input.nextLine();
+		System.out.print("Nome: ");
+		((Dentista) dentista).setNome(input.nextLine());
+		
+		System.out.print("Email: ");		
+		((Dentista) dentista).setEmail(input.nextLine());
+		
+		System.out.print("celular: ");	
+		((Dentista) dentista).setCel(input.nextLine());
+		
+		System.out.print("Data de nascimento: ");
+		((Dentista) dentista).setData_nascimento(input.nextLine());
+		
+		System.out.print("CPF: ");	
+		((Dentista) dentista).setCpf(input.nextLine());
+		
+		
+		System.out.print("RG: ");
+		((Dentista) dentista).setRg(input.nextLine());
+						
+	
+		
+		System.out.println("\n=================== Endereço ===================\n");
+		
+		System.out.print("Rua: ");						
+		endDentista.setRua(input.nextLine());	
+		
+		System.out.print("Bairro: ");
+		endDentista.setBairro(input.nextLine());	
+		
+		System.out.print("CEP: ");
+		endDentista.setCep(input.nextLine());	
+		
+		System.out.print("Cidade: ");
+		endDentista.setCidade(input.nextLine());	
+		
+		System.out.print("UF: ");
+		endDentista.setUf(input.nextLine());	
+		
+		System.out.print("Numero: ");
+		endDentista.setNumero(input.nextLine());	
+		
+		System.out.print("Complemento: ");
+		endDentista.setComplemento(input.nextLine());	
+		dentista.setEndereco(endDentista);
+		
+		System.out.print("Codigo: ");	
+		((Dentista) dentista).setCodigo(input.nextInt());
+
+		crud.Editar((Dentista) dentista);
 	}
 	public static void inserirFuncionarioRecepcionista() {
 		CrudFuncionarios crud = new CrudFuncionarios();
@@ -263,8 +341,8 @@ public class Main {
 		System.out.print("Ramal: ");
 		((Recepcionista) recepcionista ).setRamal(input.nextLine());
 		
-		System.out.print("Função: ");	
-		recepcionista.setFuncao(input.nextLine());
+		/*System.out.print("Função: ");	
+		recepcionista.setFuncao(input.nextLine());*/
 		System.out.println("==========================================================\n");	
 		
 		recepcionista.setEndereco(endRecepcionista);
@@ -323,8 +401,8 @@ public class Main {
 		System.out.print("Complemento: ");
 		endDentista.setComplemento(input.nextLine());	
 		
-		System.out.print("Função: ");	
-		dentista.setFuncao(input.nextLine());
+		/*System.out.print("Função: ");	
+		dentista.setFuncao(input.nextLine());*/
 		System.out.println("==========================================================\n");	
 		
 		dentista.setEndereco(endDentista);
