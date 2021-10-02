@@ -30,6 +30,18 @@ public class Paciente {
 	}
 	
 	public Paciente(int codigo, String nome, String email, String cel,
+			String data_nascimento, String cpf, String rg, Endereco endereco) {
+		this.codigo = codigo;
+		this.nome = nome;
+		this.email = email;
+		this.cel = cel;		
+		this.data_nascimento = data_nascimento;
+		this.cpf = cpf;
+		this.rg = rg;
+		this.endereco = endereco;
+	};
+	
+	public Paciente(int codigo, String nome, String email, String cel,
 			String data_nascimento, String cpf, String rg, Endereco endereco, 
 			Anamnese anamnese, Ficha_clinica ficha_clinica ) {
 		this.codigo = codigo;
@@ -126,15 +138,15 @@ public class Paciente {
 	
 	public String toString() {
 		return  "                          Paciente\n" 
-				+  "\nNº Prontuário: " + codigo
+				+  "\nNº Codigo: " + codigo
 				+ "\nNome: " + nome 
 				+ "\nEmail: " + email
 				+ "\nCelular: " + cel 
 				+ "\nData de nascimento: " + data_nascimento
 				+ "\nCpf: " + cpf
 				+ "\nRg: " + rg
-				+ endereco.toString() 
-				+ anamnese.toString() 
-				+ ficha_clinica.toString();
+				+ endereco.toString() ;
+				//+ anamnese.toString() 
+				//+ ficha_clinica.toString();
 	}	
 }

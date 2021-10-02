@@ -1,0 +1,39 @@
+package modeloDAO;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import conexao.Conexao;
+import prontuario.Anamnese;
+
+public class CrudAnamnese {
+	/*
+	public void inserirAnamnese(Anamnese anamnese) {
+		Conexao conex = new Conexao();
+		
+		conex.conexao();
+		try {
+			String sql = "INSERT INTO anamnese (nome,cpf,anestesia,hemoragia,febrereumatica,renal,respiratorio,cardiaco,gastrico,articulacao,antecedentesFamiliares,arlegia) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+			PreparedStatement stmt = conex.con.prepareStatement(sql);
+				stmt.setString(1, anamnese.getNome());
+				stmt.setString(2, pac.getEmail());
+				stmt.setString(3, pac.getCel());
+				stmt.setString(4, pac.getData_nascimento());
+				stmt.setString(5, pac.getCpf());
+				stmt.setString(6, pac.getRg());
+				stmt.setString(7, pac.getEndereco().getRua());
+				stmt.setString(8,	pac.getEndereco().getBairro());
+				stmt.setString(9, pac.getEndereco().getCep());
+				stmt.setString(10, pac.getEndereco().getCidade());
+				stmt.setString(11, pac.getEndereco().getUf());
+				stmt.setString(12, pac.getEndereco().getNumero());
+				stmt.setString(13, pac.getEndereco().getComplemento());
+				stmt.execute();
+				System.out.println("cadastrado com sucesso");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+*/
+}

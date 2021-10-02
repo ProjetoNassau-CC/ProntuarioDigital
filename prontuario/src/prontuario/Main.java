@@ -9,7 +9,7 @@ import dados.RepositorioDentistaArrayList;
 import dados.RepositorioRecepcionistaArrayList;
 import modeloDAO.CrudFuncionarios;
 import dados.RepositorioPacienteArrayList;
-
+import modeloDAO.CrudPaciente;
 public class Main {
 	
 	static Scanner input = new Scanner(System.in);
@@ -26,10 +26,12 @@ public class Main {
 		RepositorioPaciente repPac = new RepositorioPacienteArrayList();
 		RepositorioAgenda repAgenda = new RepositorioAgendaArrayList();
 		CrudFuncionarios crud = new CrudFuncionarios();
-		
+		CrudPaciente crudp = new CrudPaciente();
+		Paciente pac = new Paciente();
 		TelaLogin();
 		
 		do {
+		
 			System.out.println(
 					  "\n=========================================================="
 					+ "\n=-=-=-=-=-=-=-=-=-= Painel de Controle =-=-=-=-=-=-=-=-=-=\n"
@@ -56,7 +58,9 @@ public class Main {
 				break;
 				
 			case 3: //Inserir_Paciente
-				repPac = CasePaciente(repPac);
+				
+				inserirPaciente();
+				//repPac = CasePaciente(repPac);
 				break;
 				
 			case 4:	//Inserir_Agendamento		
@@ -75,6 +79,8 @@ public class Main {
 					+ "\n5- Remover Prontuario"
 					+ "\n6- Remover Agendamento"
 					+ "\n7- Editar Dados - Dentista"
+					+ "\n8- Editar Dados - Recepcionista"
+					+ "\n9- Editar Dados - Paciente"
 					+ "\n0- Voltar"
 					
 					+ "\n\nO que deseja fazer? ");					
@@ -87,10 +93,10 @@ public class Main {
 						System.out.println(	
 								  "\n=========================================================="
 								+ "\n=-=-=-=-=-=-=-=-=-= Buscar Funcionario =-=-=-=-=-=-=-=-=-=\n"
-								+ "\n         Escolha a funÁ„o que vocÍ quer buscar!"
+								+ "\n         Escolha a fun√ß√£o que voc√™ quer buscar!"
 								+ "\n             Dentista [D]  Recepcionista[R]");
 						
-						System.out.print("\n\nFunÁ„o: ");
+						System.out.print("\n\nFun√ß√£o: ");
 						String escolhaBusca = input.next();
 						
 						if(escolhaBusca.equalsIgnoreCase("d")) {
@@ -104,7 +110,7 @@ public class Main {
 								System.out.println("==========================================================\n");	
 								System.out.println(repDentista.procurar(BuscaFunc).toString());		
 							} else {
-								System.out.println("\nBusca incompleta, CPF n„o encontrado!");
+								System.out.println("\nBusca incompleta, CPF n√£o encontrado!");
 							}*/
 							
 						} else if(escolhaBusca.equalsIgnoreCase("r")) {
@@ -114,25 +120,29 @@ public class Main {
 							/*if(repRecepcionista.procurar(BuscaFunc) != null) {
 								System.out.println(repRecepcionista.procurar(BuscaFunc).toString());
 							} else {
-								System.out.println("\nBusca incompleta, CPF n„o encontrado!");
+								System.out.println("\nBusca incompleta, CPF n√£o encontrado!");
 							}*/
 							
 						} else {
-							System.out.println("\nFunÁ„o n„o reconhecida!");
+							System.out.println("\nFun√ß√£o n√£o reconhecida!");
 						}
 						break;
 					
 							
 					case 2: //Buscar_Prontuario						
+						Paciente paci = new Paciente();
 						System.out.print("Cpf do Paciente: ");
-						String BuscaPaciente = input.next();
-						System.out.println("\n==========================================================");	
+					String buscaPaci = input.next();
+						//	paci.setCpf(input.next());
+						crudp.consultapac(buscaPaci);
+						/*
+						   if(repPac.procurar(BuscaPaciente) != null) {
+	                            System.out.println(repPac.procurar(BuscaPaciente).toString());
+	                        } else {
+	                            System.out.println("\nBusca incompleta, CPF nÔøΩo encontrado!");
+	                        }*/
 						
-						if(repPac.procurar(BuscaPaciente) != null) {
-							System.out.println(repPac.procurar(BuscaPaciente).toString());
-						} else {
-							System.out.println("\nBusca incompleta, CPF n„o encontrado!");
-						}	
+						
 						break;
 						
 					case 3: //Buscar_Agenda			
@@ -142,7 +152,7 @@ public class Main {
 						if(repAgenda.procurar(BuscaAgenda) != null) {
 							System.out.println(repAgenda.procurar(BuscaAgenda).toString());
 						}else {
-							System.out.println("\nBusca incompleta, CPF n„o encontrado!");
+							System.out.println("\nBusca incompleta, CPF n√£o encontrado!");
 						}
 						break;
 						
@@ -150,10 +160,10 @@ public class Main {
 						System.out.print(	
 								  "\n=========================================================="
 								+ "\n=-=-=-=-=-=-=-=-=-= Buscar Funcionario =-=-=-=-=-=-=-=-=-=\n"
-								+ "\n         Escolha a funÁ„o que vocÍ quer remover!          "
+								+ "\n         Escolha a fun√ß√£o que voc√™ quer remover!          "
 								+ "\n             Dentista [D]  Recepcionista[R]");
 						
-						System.out.print("\n\nFunÁ„o: ");
+						System.out.print("\n\nFun√ß√£o: ");
 						String escolhaRemove = input.next();							
 					
 						Dentista dent = new Dentista();
@@ -175,15 +185,17 @@ public class Main {
 							//repRecepcionista.remover(RemoveFunc);		
 							
 						}else {
-							System.out.println("\nFunÁ„o n„o reconhecida!");
+							System.out.println("\nFun√ß√£o n√£o reconhecida!");
 						}
 						break;
 					
 					case 5:	//Remover_Prontuario
+						
 						System.out.print("Cpf do Paciente: ");
-						String RemovePac = input.next();
-										
-						repPac.remover(RemovePac);
+						pac.setCpf( input.next());
+							crudp.removerPaciente(pac);	
+						//String RemovePac = input.next();
+						//repPac.remover(RemovePac);
 						break;		
 						
 					case 6: //Remover_Agenda
@@ -196,6 +208,11 @@ public class Main {
 					case 7: 
 						EditarDentista();
 						break;
+					case 8:
+						EditarRecepcionista();
+						break;
+					case 9:
+						EditarPaciente();
 					}
 				}while(opcao2 != 0);
 			}
@@ -203,10 +220,13 @@ public class Main {
 		input.close();
 	}	
 	
+	
+	
+	
 	public static void TelaLogin(){
 		boolean condicao = false;
 		do {			
-			System.out.println("=-=-=-=-=-=-=-=-=-=-= FaÁa seu Login =-=-=-=-=-=-=-=-=-=-=\n");
+			System.out.println("=-=-=-=-=-=-=-=-=-=-= Fa√ßa seu Login =-=-=-=-=-=-=-=-=-=-=\n");
 	
 			System.out.print("Login: ");
 			String login = input.next();
@@ -227,6 +247,123 @@ public class Main {
 		
 		
 	}
+	
+	
+	public static void inserirPaciente() {
+		CrudPaciente crudp = new CrudPaciente();
+		Paciente paciente = new Paciente();
+		Endereco endPaciente = new Endereco();	
+		
+		input.nextLine();
+		System.out.print("Nome: ");
+		paciente.setNome(input.nextLine());
+		
+		System.out.print("Email: ");		
+		paciente.setEmail(input.nextLine());
+		
+		System.out.print("celular: ");	
+		paciente.setCel(input.nextLine());
+		
+		System.out.print("Data de nascimento: ");
+		paciente.setData_nascimento(input.nextLine());
+		
+		System.out.print("CPF: ");	
+		paciente.setCpf(input.nextLine());
+		
+		System.out.print("RG: ");
+		paciente.setRg(input.nextLine());
+						
+		
+		System.out.println("\n=================== Endere√ßo ===================\n");
+		
+		System.out.print("Rua: ");						
+		endPaciente.setRua(input.nextLine());	
+		
+		System.out.print("Bairro: ");
+		endPaciente.setBairro(input.nextLine());	
+		
+		System.out.print("CEP: ");
+		endPaciente.setCep(input.nextLine());	
+		
+		System.out.print("Cidade: ");
+		endPaciente.setCidade(input.nextLine());	
+		
+		System.out.print("UF: ");
+		endPaciente.setUf(input.nextLine());	
+		
+		System.out.print("Numero: ");
+		endPaciente.setNumero(input.nextLine());	
+		
+		System.out.print("Complemento: ");
+		endPaciente.setComplemento(input.nextLine());		
+		
+		paciente.setEndereco(endPaciente);
+		crudp.inserirPaciente(paciente);
+	
+	}
+	
+	
+	public static void EditarPaciente() {
+		
+		
+		CrudPaciente crudp = new CrudPaciente();
+		Paciente paciente = new Paciente();
+		Endereco endPac = new Endereco();	
+		
+		
+		
+		input.nextLine();
+		System.out.print("Nome: ");
+		paciente.setNome(input.nextLine());
+		
+		System.out.print("Email: ");		
+		paciente.setEmail(input.nextLine());
+		
+		System.out.print("celular: ");	
+		paciente.setCel(input.nextLine());
+		
+		System.out.print("Data de nascimento: ");
+		paciente.setData_nascimento(input.nextLine());
+		
+		System.out.print("CPF: ");	
+		paciente.setCpf(input.nextLine());
+		
+		
+		System.out.print("RG: ");
+		paciente.setRg(input.nextLine());
+						
+	
+		
+		System.out.println("\n=================== Endere√ßo ===================\n");
+		
+		System.out.print("Rua: ");						
+		endPac.setRua(input.nextLine());	
+		
+		System.out.print("Bairro: ");
+		endPac.setBairro(input.nextLine());	
+		
+		System.out.print("CEP: ");
+		endPac.setCep(input.nextLine());	
+		
+		System.out.print("Cidade: ");
+		endPac.setCidade(input.nextLine());	
+		
+		System.out.print("UF: ");
+		endPac.setUf(input.nextLine());	
+		
+		System.out.print("Numero: ");
+		endPac.setNumero(input.nextLine());	
+		
+		System.out.print("Complemento: ");
+		endPac.setComplemento(input.nextLine());	
+		paciente.setEndereco(endPac);
+		
+		System.out.print("Codigo: ");	
+		paciente.setCodigo(input.nextInt());
+
+		crudp.EditarPaciente(paciente);
+	}
+	
 	
 	public static void EditarDentista() {
 		
@@ -260,7 +397,7 @@ public class Main {
 						
 	
 		
-		System.out.println("\n=================== EndereÁo ===================\n");
+		System.out.println("\n=================== Endere√ßo ===================\n");
 		
 		System.out.print("Rua: ");						
 		endDentista.setRua(input.nextLine());	
@@ -287,7 +424,7 @@ public class Main {
 		System.out.print("Codigo: ");	
 		((Dentista) dentista).setCodigo(input.nextInt());
 
-		crud.Editar((Dentista) dentista);
+		crud.EditarDentista((Dentista) dentista);
 	}
 	public static void inserirFuncionarioRecepcionista() {
 		CrudFuncionarios crud = new CrudFuncionarios();
@@ -315,7 +452,7 @@ public class Main {
 		((Recepcionista) recepcionista ).setRg(input.nextLine());
 						
 		
-		System.out.println("\n=================== EndereÁo ===================\n");
+		System.out.println("\n=================== Endere√ßo ===================\n");
 		
 		System.out.print("Rua: ");						
 		endRecepcionista.setRua(input.nextLine());	
@@ -341,12 +478,73 @@ public class Main {
 		System.out.print("Ramal: ");
 		((Recepcionista) recepcionista ).setRamal(input.nextLine());
 		
-		/*System.out.print("FunÁ„o: ");	
-		recepcionista.setFuncao(input.nextLine());*/
-		System.out.println("==========================================================\n");	
-		
 		recepcionista.setEndereco(endRecepcionista);
 		crud.inserirRecepcionista((Recepcionista)recepcionista);
+		
+	}
+	
+	
+	
+	
+	
+	
+	public static void EditarRecepcionista() {
+		CrudFuncionarios crud = new CrudFuncionarios();
+		Funcionario recepcionista = new Recepcionista();
+		Endereco endRecepcionista = new Endereco();	
+		
+		
+		input.nextLine();
+		System.out.print("Nome: ");
+		((Recepcionista) recepcionista ).setNome(input.nextLine());
+		
+		System.out.print("Email: ");		
+		((Recepcionista) recepcionista ).setEmail(input.nextLine());
+		
+		System.out.print("celular: ");	
+		((Recepcionista) recepcionista ).setCel(input.nextLine());
+		
+		System.out.print("Data de nascimento: ");
+		((Recepcionista) recepcionista ).setData_nascimento(input.nextLine());
+		
+		System.out.print("CPF: ");	
+		((Recepcionista) recepcionista ).setCpf(input.nextLine());
+		
+		System.out.print("RG: ");
+		((Recepcionista) recepcionista ).setRg(input.nextLine());
+						
+		
+		System.out.println("\n=================== Endere√ßo ===================\n");
+		
+		System.out.print("Rua: ");						
+		endRecepcionista.setRua(input.nextLine());	
+		
+		System.out.print("Bairro: ");
+		endRecepcionista.setBairro(input.nextLine());	
+		
+		System.out.print("CEP: ");
+		endRecepcionista.setCep(input.nextLine());	
+		
+		System.out.print("Cidade: ");
+		endRecepcionista.setCidade(input.nextLine());	
+		
+		System.out.print("UF: ");
+		endRecepcionista.setUf(input.nextLine());	
+		
+		System.out.print("Numero: ");
+		endRecepcionista.setNumero(input.nextLine());	
+		
+		System.out.print("Complemento: ");
+		endRecepcionista.setComplemento(input.nextLine());
+		recepcionista.setEndereco(endRecepcionista);
+		
+		System.out.print("Ramal: ");
+		((Recepcionista) recepcionista ).setRamal(input.nextLine());
+		
+		System.out.print("Codigo: ");
+		((Recepcionista) recepcionista ).setCodigo(input.nextInt());
+		
+		crud.EditarRecepcionista((Recepcionista)recepcionista);
 		
 	}
 	
@@ -378,7 +576,7 @@ public class Main {
 		((Dentista) dentista).setRg(input.nextLine());
 						
 		
-		System.out.println("\n=================== EndereÁo ===================\n");
+		System.out.println("\n=================== Endere√ßo ===================\n");
 		
 		System.out.print("Rua: ");						
 		endDentista.setRua(input.nextLine());	
@@ -399,11 +597,7 @@ public class Main {
 		endDentista.setNumero(input.nextLine());	
 		
 		System.out.print("Complemento: ");
-		endDentista.setComplemento(input.nextLine());	
-		
-		/*System.out.print("FunÁ„o: ");	
-		dentista.setFuncao(input.nextLine());*/
-		System.out.println("==========================================================\n");	
+		endDentista.setComplemento(input.nextLine());		
 		
 		dentista.setEndereco(endDentista);
 		crud.inserirDentista((Dentista)dentista);
@@ -442,7 +636,7 @@ public class Main {
 		((Dentista) dentista).setRg(input.nextLine());
 						
 		
-		System.out.println("\n=================== EndereÁo ===================\n");
+		System.out.println("\n=================== Endere√ßo ===================\n");
 		
 		System.out.print("Rua: ");						
 		endDentista.setRua(input.nextLine());	
@@ -505,7 +699,7 @@ public class Main {
 		System.out.print("Ramal: ");
 		((Recepcionista) recepcionista).setRamal(input.nextLine());
 		
-		System.out.println("\n                          EndereÁo\n");
+		System.out.println("\n                          Endere√ßo\n");
 		
 		
 		System.out.print("Rua: ");						
@@ -544,12 +738,12 @@ public class Main {
 	    Ficha_clinica fichaClinica = new Ficha_clinica();
 	        
 		System.out.println("\n==========================================================");
-		System.out.println("XXXXXXXXXXXXXXXXXXXXXXX Prontu·rio XXXXXXXXXXXXXXXXXXXXXXX\n");	
+		System.out.println("XXXXXXXXXXXXXXXXXXXXXXX Prontu√°rio XXXXXXXXXXXXXXXXXXXXXXX\n");	
 		
 		
 		System.out.println("                      Dados do Paciente\n");				
 		
-		System.out.print("N∫ Prontu·rio: ");
+		System.out.print("N¬∫ Prontu√°rio: ");
 		paciente.setCodigo(input.nextInt());	
 		
 		input.nextLine();
@@ -571,7 +765,7 @@ public class Main {
 		System.out.print("RG: ");
 		paciente.setRg(input.nextLine());					
 		
-		System.out.println("\n                          EndereÁo\n");
+		System.out.println("\n                          Endere√ßo\n");
 		
 		System.out.print("Rua: ");
 		endPaciente.setRua(input.nextLine());	
@@ -604,22 +798,22 @@ public class Main {
 		System.out.print("Problema de Hemorragia? ");
 		anamnese.setProblemaHemorragia(input.nextLine());
 		
-		System.out.print("Problema de Febre Reum·tica? ");
+		System.out.print("Problema de Febre Reum√°tica? ");
 		anamnese.setFebreReumatica(input.nextLine());
 
 		System.out.print("Problema Renal? ");
 		anamnese.setProblemaRenal(input.nextLine());	
 		
-		System.out.print("Problema RespiratÛrio? ");
+		System.out.print("Problema Respirat√≥rio? ");
 		anamnese.setProblemaRespitorio(input.nextLine());
 		
-		System.out.print("Problema CardÌaco? ");
+		System.out.print("Problema Card√≠aco? ");
 		anamnese.setProblemaCardiaco(input.nextLine());
 		
-		System.out.print("Problema G·strico? ");
+		System.out.print("Problema G√°strico? ");
 		anamnese.setProblemaGastrico(input.nextLine());
 		
-		System.out.print("Problema com ArticulaÁ„o? ");
+		System.out.print("Problema com Articula√ß√£o? ");
 		anamnese.setProblemaArticular(input.nextLine());
 		
 		System.out.print("Antecedentes Familiar, se sim, Quais? ");
@@ -643,7 +837,7 @@ public class Main {
 		System.out.print("Plano do tratamento: ");
 		fichaClinica.setPlano_tratamento(input.nextLine());
 		
-		System.out.print("Digite o orÁamento: R$");
+		System.out.print("Digite o or√ßamento: R$");
 		fichaClinica.setGera_orcamento(input.nextLine());								
 		
 		System.out.println("==========================================================\n");
@@ -675,22 +869,22 @@ public class Main {
 		System.out.print("Plano de tratamento: ");
 		agenda.setPlano_tratamento(input.nextLine());
 				
-		System.out.print("Tratamento dent·rio: ");
+		System.out.print("Tratamento dent√°rio: ");
 		agenda.setTratamento_dente(input.nextLine());
 			
-		System.out.print("Data de inclus„o: ");
+		System.out.print("Data de inclus√£o: ");
 		agenda.setData_inclusao(input.nextLine());
 			
 		System.out.print("Data do agendamento: ");
 		agenda.setData_agenda(input.nextLine());
 		
-		System.out.println("(CC) - ConcluÌdo | (RD) - Reagendado | (CL) - Cancelado");
+		System.out.println("(CC) - Conclu√≠do | (RD) - Reagendado | (CL) - Cancelado");
 		System.out.print("Status do Atendimento: ");
 		
 		agenda.setStatus(input.nextLine());
 		
 		if(agenda.getStatus().equalsIgnoreCase("cc")) {
-			agenda.setStatus("ConcluÌdo");
+			agenda.setStatus("Conclu√≠do");
 		}
 		else if(agenda.getStatus().equalsIgnoreCase("rd")) {
 			agenda.setStatus("Reagendado");

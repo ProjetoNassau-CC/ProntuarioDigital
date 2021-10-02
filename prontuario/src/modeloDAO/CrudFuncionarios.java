@@ -222,12 +222,21 @@ public void removerDentista(Dentista dentista) {
 	
 }
 
-public void Editar(Dentista dentista) {
+public void EditarDentista(Dentista dentista) {
 	Conexao conex = new Conexao();
 	conex.conexao();
 	
 	String sql = "update funcionario set nome = ?, email =?, celular = ?,datanasc = ?,cpf = ?,rg = ?, cro =?, rua = ?, bairro = ?, cep = ?, cidade = ?, uf =?, numero = ?, complemento = ? where codigo = ?;";
+	String consultaFuncao = "select * from funcionario where codigo = ? and funcao = ?";
+	PreparedStatement stm;
 	try {
+		stm = conex.con.prepareStatement(consultaFuncao);
+		stm.setInt(1,dentista.getCodigo());
+		stm.setString(2,"Dentista");
+		ResultSet rs = stm.executeQuery();
+		if(rs.next()) { 
+			dentista.setCodigo(rs.getInt("codigo"));
+			dentista.setFuncao(rs.getString("funcao"));
 		PreparedStatement stmt = conex.con.prepareStatement(sql);
 		stmt.setString(1, dentista.getNome());
 		stmt.setString(2, dentista.getEmail());
@@ -244,9 +253,53 @@ public void Editar(Dentista dentista) {
 		stmt.setString(13,dentista.getEndereco().getNumero());
 		stmt.setString(14,dentista.getEndereco().getComplemento());
 		stmt.setInt(15, dentista.getCodigo());
-		
 		stmt.executeLargeUpdate();
 		System.out.println("dados alterados com sucesso");
+		}else {
+			System.out.println("Cpf informado não pertence a um dentista");
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
+
+public void EditarRecepcionista(Recepcionista recepcionista) {
+	Conexao conex = new Conexao();
+	conex.conexao();
+	
+	String sql = "update funcionario set nome = ?, email =?, celular = ?,datanasc = ?,cpf = ?,rg = ?, ramal =?, rua = ?, bairro = ?, cep = ?, cidade = ?, uf =?, numero = ?, complemento = ? where codigo = ?;";
+	String consultaFuncao = "select * from funcionario where codigo = ? and funcao = ?";
+	PreparedStatement stm;
+	try {
+		stm = conex.con.prepareStatement(consultaFuncao);
+		stm.setInt(1,recepcionista.getCodigo());
+		stm.setString(2,"Recepcionista");
+		ResultSet rs = stm.executeQuery();
+		if(rs.next()) { 
+			recepcionista.setCodigo(rs.getInt("codigo"));
+			recepcionista.setFuncao(rs.getString("funcao"));
+		PreparedStatement stmt = conex.con.prepareStatement(sql);
+		stmt.setString(1, recepcionista.getNome());
+		stmt.setString(2, recepcionista.getEmail());
+		stmt.setString(3, recepcionista.getCel());
+		stmt.setString(4, recepcionista.getData_nascimento());
+		stmt.setString(5, recepcionista.getCpf());
+		stmt.setString(6, recepcionista.getRg());
+		stmt.setString(7, recepcionista.getRamal());
+		stmt.setString(8,recepcionista.getEndereco().getRua());
+		stmt.setString(9,recepcionista.getEndereco().getBairro());
+		stmt.setString(10,recepcionista.getEndereco().getCep());
+		stmt.setString(11,recepcionista.getEndereco().getCidade());
+		stmt.setString(12,recepcionista.getEndereco().getUf());
+		stmt.setString(13,recepcionista.getEndereco().getNumero());
+		stmt.setString(14,recepcionista.getEndereco().getComplemento());
+		stmt.setInt(15, recepcionista.getCodigo());
+		stmt.executeLargeUpdate();
+		System.out.println("dados alterados com sucesso");
+		}else {
+			System.out.println("Cpf informado não pertence a um Recepcionista");
+		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
