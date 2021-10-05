@@ -14,7 +14,7 @@ public class Conexao {
 	public Statement stm;
 	public ResultSet rs;
 	private String driver = "com.mysql.jdbc.Driver";
-	private String caminho = "jdbc:mysql://localhost/prontuariodigital";
+	private String caminho = "jdbc:mysql://localhost/odontosmile";
 	private String usuario = "root";
 	private String senha = "moraes18";
 	public Connection con;
@@ -36,6 +36,17 @@ public class Conexao {
 		}catch (SQLException ex) {
 			System.out.println("erro ao desconectar banco de dados");
 		}
+	}
+	
+	public void executaSql(String sql) {
+		try {
+			stm =  con.createStatement(rs.TYPE_SCROLL_INSENSITIVE,rs.CONCUR_READ_ONLY);
+			rs = stm.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	/*

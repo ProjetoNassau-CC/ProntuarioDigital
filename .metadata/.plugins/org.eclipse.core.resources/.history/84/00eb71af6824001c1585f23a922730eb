@@ -1,0 +1,125 @@
+package modeloDAO;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import conexao.Conexao;
+import prontuario.Agenda;
+import prontuario.Endereco;
+import prontuario.Paciente;
+
+public class CrudAgenda {
+
+	
+	
+	
+	
+	public void inserirAgenda(Agenda agenda) {
+		Conexao conex = new Conexao();
+		conex.conexao();
+		try {
+			String sql = "INSERT INTO agenda(nomePaciente,cpf,nomeDentista,plano,tratamentoDente,Datainclusao,DataAgenda,Situacao) VALUES (?,?,?,?,?,?,?,?)";
+			
+		
+			PreparedStatement stmt = conex.con.prepareStatement(sql);
+				
+				stmt.setString(1, agenda.getNome_paciente());
+				stmt.setString(2, agenda.getCpf());
+				stmt.setString(3, agenda.getNome_dentista());
+				stmt.setString(4, agenda.getPlano_tratamento());
+				stmt.setString(5, agenda.getTratamento_dente());
+				stmt.setString(6, agenda.getData_inclusao());
+				stmt.setString(7, agenda.getData_agenda());
+				stmt.setString(8,	agenda.getStatus());
+				stmt.execute();
+				System.out.println("Agendamento marcado  com sucesso");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+
+	public void EditarAgenda(Agenda agenda) {
+		Conexao conex = new Conexao();
+		conex.conexao();
+		
+		String sql = "update paciente set  nomeDentista = ?,plano = ?,tratamentoDente= ?, DataAgendada = ?, situacao = ? where cpf= ?;";
+		String consultaFuncao = "select * from agenda where cpf = ?";
+		PreparedStatement stm;
+		try {
+			stm = conex.con.prepareStatement(consultaFuncao);
+			stm.setString(1,agenda.getCpf());
+			ResultSet rs = stm.executeQuery();
+			if(rs.next()) { 
+				agenda.setCpf(rs.getString("cpf"));
+			PreparedStatement stmt = conex.con.prepareStatement(sql);
+			stmt.setString(1, agenda.getNome_dentista());
+			stmt.setString(2, agenda.getPlano_tratamento());
+			stmt.setString(3, agenda.getTratamento_dente());
+			stmt.setString(4, agenda.getData_agenda());
+			stmt.setString(5,	agenda.getStatus());
+			stmt.executeLargeUpdate();
+			System.out.println("dados alterados com sucesso");
+			
+			} else {
+				System.out.println(" Não foi possivel alterar os dados pois o código informado não está cadastrado no sistema.");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+	public Agenda consultaAgendamento(String data) {
+		try {
+		Conexao conex = new Conexao();
+		conex.conexao();
+		Agenda agenda = new Agenda();
+
+		String sql = "select * from agenda where dataAgendada = ?";
+		PreparedStatement stmt = conex.con.prepareStatement(sql);
+		stmt.setString(1,data);
+
+		ResultSet rs = stmt.executeQuery();
+		//verifica se a consulta encontrou um funcionario com o CPF informado.
+		if(rs.next()) { 
+			agenda.setNome_paciente(rs.getString("nomePaciente"));
+			agenda.setCpf(rs.getString("cpf"));
+			agenda.setNome_dentista(rs.getString("nomeDentista"));
+			agenda.setPlano_tratamento(rs.getString("plano"));
+			agenda.setData_inclusao(rs.getString("datainclusao"));
+			agenda.setData_agenda(rs.getString("dataAgendada"));
+			agenda.setStatus(rs.getString("situação"));
+			
+			
+			return agenda;
+				
+		}else {
+			return null;
+			
+		}
+		
+		
+	}catch (Exception e) {
+	}
+	return null;
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
+}
+	
+	
+

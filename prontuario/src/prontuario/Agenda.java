@@ -10,7 +10,6 @@ public class Agenda {
 	private String data_inclusao;
 	private String data_agenda;
 	private String status;
-	
 	public Agenda() {
 
 		this.nome_dentista = null;
@@ -21,12 +20,12 @@ public class Agenda {
 		this.data_inclusao = null;
 		this.data_agenda = null;
 		this.status = null;
-		
+	
 	}
 		
 	public Agenda(String nome_dentista, String nome_paciente, String cpf, String plano_tratamento,
 			String tratamento_dente, String data_inclusao, String data_agenda, String status) {
-
+	
 		this.nome_dentista = nome_dentista;
 		this.nome_paciente = nome_paciente;	
 		this.cpf = cpf;

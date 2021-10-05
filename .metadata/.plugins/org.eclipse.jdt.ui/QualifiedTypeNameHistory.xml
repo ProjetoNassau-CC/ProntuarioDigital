@@ -7,7 +7,6 @@
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="prontuario.RepositorioAgenda"/>
     <fullyQualifiedTypeName name="dados.RepositorioAgendaArrayList"/>
-    <fullyQualifiedTypeName name="prontuario.Agenda"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
     <fullyQualifiedTypeName name="java.awt.List"/>
     <fullyQualifiedTypeName name="prontuario.Recepcionista"/>
@@ -19,4 +18,10 @@
     <fullyQualifiedTypeName name="prontuario.Endereco"/>
     <fullyQualifiedTypeName name="prontuario.Anamnese"/>
     <fullyQualifiedTypeName name="prontuario.Paciente"/>
+    <fullyQualifiedTypeName name="prontuario.Usuario"/>
+    <fullyQualifiedTypeName name="modeloDAO.CrudUsuario"/>
+    <fullyQualifiedTypeName name="conexao.Conexao"/>
+    <fullyQualifiedTypeName name="prontuario.Agenda"/>
+    <fullyQualifiedTypeName name="modeloDAO.CrudAgenda"/>
+    <fullyQualifiedTypeName name="prontuario.Ficha_clinica"/>
 </qualifiedTypeNameHistroy>

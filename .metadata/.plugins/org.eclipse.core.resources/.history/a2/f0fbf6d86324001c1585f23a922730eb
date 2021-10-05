@@ -1,0 +1,45 @@
+package modeloDAO;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import conexao.Conexao;
+import prontuario.Agenda;
+import prontuario.Paciente;
+
+public class CrudAgenda {
+
+	
+	
+	
+	
+	public void inserirAgenda(Agenda agenda) {
+		Conexao conex = new Conexao();
+		conex.conexao();
+		try {
+			String sql = "INSERT INTO agenda(nomePaciente,cpf,nomeDentista,plano,tratamentoDente,Datainclusao,DataAgenda,Situacao) VALUES (?,?,?,?,?,?,?,?)";
+			
+		
+			PreparedStatement stmt = conex.con.prepareStatement(sql);
+				
+				stmt.setString(1, agenda.getNome_paciente());
+				stmt.setString(2, agenda.getCpf());
+				stmt.setString(3, agenda.getNome_dentista());
+				stmt.setString(4, agenda.getPlano_tratamento());
+				stmt.setString(5, agenda.getTratamento_dente());
+				stmt.setString(6, agenda.getData_inclusao());
+				stmt.setString(7, agenda.getData_agenda());
+				stmt.setString(8,	agenda.getStatus());
+				stmt.execute();
+				System.out.println("Agendamento marcado  com sucesso");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+}
+	
+	
+

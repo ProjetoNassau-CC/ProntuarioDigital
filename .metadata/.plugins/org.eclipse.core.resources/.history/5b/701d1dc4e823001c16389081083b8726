@@ -1,0 +1,39 @@
+package modeloDAO;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import conexao.Conexao;
+import prontuario.Usuario;
+
+public class CrudUsuario {
+
+	Usuario usuario = new Usuario();
+	
+	Conexao conex = new Conexao();
+	public void SalvarUsuario(Usuario usu) {
+		conex.conexao();
+		try {
+			String sql = "INSERT INTO usuario(usuario,senha,tipo) VALUES (?,?,?)";
+			PreparedStatement stmt = conex.con.prepareStatement(sql);
+				stmt.setString(1, usu.getNomeUsuario());
+				stmt.setString(2, usu.getSenhaUsuario());
+				stmt.setString(3, usu.getTipoUsuario());
+				stmt.execute();
+				System.out.println("Usuario cadastrado com sucesso");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				
+			}
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+}

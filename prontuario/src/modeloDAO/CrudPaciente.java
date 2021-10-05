@@ -43,7 +43,7 @@ public class CrudPaciente {
 		}
 	
 	
-	public void EditarPaciente(Paciente paciente) {
+	public void EditarPaciente(Paciente pac) {
 		Conexao conex = new Conexao();
 		conex.conexao();
 		
@@ -52,31 +52,31 @@ public class CrudPaciente {
 		PreparedStatement stm;
 		try {
 			stm = conex.con.prepareStatement(consultaFuncao);
-			stm.setInt(1,paciente.getCodigo());
+			stm.setInt(1,pac.getCodigo());
+	
 			ResultSet rs = stm.executeQuery();
 			if(rs.next()) { 
-			paciente.setCodigo(rs.getInt("codigo"));
+				pac.setCodigo(rs.getInt("codigo"));
 
 			PreparedStatement stmt = conex.con.prepareStatement(sql);
-			stmt.setString(1, paciente.getNome());
-			stmt.setString(2, paciente.getEmail());
-			stmt.setString(3, paciente.getCel());
-			stmt.setString(4, paciente.getData_nascimento());
-			stmt.setString(5, paciente.getCpf());
-			stmt.setString(6, paciente.getRg());
-			stmt.setString(7,paciente.getEndereco().getRua());
-			stmt.setString(8,paciente.getEndereco().getBairro());
-			stmt.setString(9,paciente.getEndereco().getCep());
-			stmt.setString(10,paciente.getEndereco().getCidade());
-			stmt.setString(11,paciente.getEndereco().getUf());
-			stmt.setString(12,paciente.getEndereco().getNumero());
-			stmt.setString(13,paciente.getEndereco().getComplemento());
-			stmt.setInt(14, paciente.getCodigo());
+			stmt.setString(1, pac.getNome());
+			stmt.setString(2, pac.getEmail());
+			stmt.setString(3, pac.getCel());
+			stmt.setString(4, pac.getData_nascimento());
+			stmt.setString(5, pac.getCpf());
+			stmt.setString(6, pac.getRg());
+			stmt.setString(7,pac.getEndereco().getRua());
+			stmt.setString(8,pac.getEndereco().getBairro());
+			stmt.setString(9,pac.getEndereco().getCep());
+			stmt.setString(10,pac.getEndereco().getCidade());
+			stmt.setString(11,pac.getEndereco().getUf());
+			stmt.setString(12,pac.getEndereco().getNumero());
+			stmt.setString(13,pac.getEndereco().getComplemento());
+			stmt.setInt(14, pac.getCodigo());
 			stmt.executeLargeUpdate();
 			System.out.println("dados alterados com sucesso");
-			
-			} else {
-				System.out.println(" Não foi possivel alterar os dados pois o código informado não está cadastrado no sistema.");
+			}else {
+				System.out.println("Dados informado não encontra-se cadastrado no sistema");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -142,7 +142,7 @@ public class CrudPaciente {
 			endpaciente.setComplemento(rs.getString("complemento"));
 			paciente.setEndereco(endpaciente);
 			System.out.println(paciente.toString());
-				//return paciente;
+				
 		}else {
 			System.out.println("dados informado o cpf não pertence a um paciente");
 			
@@ -151,7 +151,7 @@ public class CrudPaciente {
 		
 	}catch (Exception e) {
 	}
-		//return null;
+	
 		
 	}
 }

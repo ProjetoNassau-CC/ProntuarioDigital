@@ -136,6 +136,13 @@ public class Paciente {
 		this.anamnese = anamnese;
 	}
 	
+	
+	public String retornanome() {
+		return     nome ;
+				
+	}
+	
+	
 	public String toString() {
 		return  "                          Paciente\n" 
 				+  "\nNº Codigo: " + codigo

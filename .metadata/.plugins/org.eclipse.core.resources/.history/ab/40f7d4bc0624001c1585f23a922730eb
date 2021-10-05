@@ -1,0 +1,70 @@
+package modeloDAO;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import conexao.Conexao;
+import prontuario.Endereco;
+import prontuario.Paciente;
+import prontuario.Usuario;
+
+public class CrudUsuario {
+
+	
+	
+	Conexao conex = new Conexao();
+	public void SalvarUsuario(Usuario usu) {
+		conex.conexao();
+		try {
+			String sql = "INSERT INTO usuario(usuario,senha,tipo) VALUES (?,?,?)";
+			PreparedStatement stmt = conex.con.prepareStatement(sql);
+				stmt.setString(1, usu.getNomeUsuario());
+				stmt.setString(2, usu.getSenhaUsuario());
+				stmt.setString(3, usu.getTipoUsuario());
+				stmt.execute();
+				System.out.println("Usuario cadastrado com sucesso");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				
+			}
+		}
+		
+	public void consultaUsuario(String usuario) {
+		try {
+		Conexao conex = new Conexao();
+		conex.conexao();
+		Usuario usu = new Usuario();
+	
+		String sql = "select * from usuario where usuario = ?";
+		PreparedStatement stmt = conex.con.prepareStatement(sql);
+		stmt.setString(1,usuario);
+
+		ResultSet rs = stmt.executeQuery();
+		//verifica se a consulta encontrou um funcionario com o CPF informado.
+		if(rs.next()) { 
+			usu.setCodigoUsuario(rs.getInt("codigo"));
+			usu.setNomeUsuario(rs.getString("usuario"));
+			usu.setTipoUsuario(rs.getString("tipo"));
+		
+			
+			System.out.println(usu.toString());
+				
+		}else {
+			System.out.println("Usuario não cadastrado!!");
+			
+		}
+		
+		
+	}catch (Exception e) {
+	}
+	}
+		
+	}
+	
+	
+	
+	
+	
+	
+
