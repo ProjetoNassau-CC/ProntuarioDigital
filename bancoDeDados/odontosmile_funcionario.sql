@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
--- Host: localhost    Database: prontuariodigital
+-- Host: localhost    Database: odontosmile
 -- ------------------------------------------------------
 -- Server version	8.0.25
 
@@ -16,29 +16,41 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `fichaclinica`
+-- Table structure for table `funcionario`
 --
 
-DROP TABLE IF EXISTS `fichaclinica`;
+DROP TABLE IF EXISTS `funcionario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `fichaclinica` (
-  `paciente` varchar(60) NOT NULL,
-  `nomeDentista` varchar(60) NOT NULL,
-  `dataConsulta` varchar(10) NOT NULL,
-  `planoTratamento` varchar(40) NOT NULL,
-  `dataTratamento` varchar(10) NOT NULL,
-  `gerarOcamento` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `funcionario` (
+  `codigo` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(60) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `celular` varchar(14) NOT NULL,
+  `datanasc` varchar(10) NOT NULL,
+  `cpf` varchar(14) NOT NULL,
+  `rg` varchar(9) NOT NULL,
+  `rua` varchar(40) NOT NULL,
+  `bairro` varchar(20) NOT NULL,
+  `cep` varchar(12) NOT NULL,
+  `cidade` varchar(20) NOT NULL,
+  `uf` varchar(3) NOT NULL,
+  `numero` varchar(10) NOT NULL,
+  `complemento` varchar(20) NOT NULL,
+  `funcao` varchar(20) NOT NULL,
+  `cro` int NOT NULL,
+  `ramal` varchar(20) NOT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `fichaclinica`
+-- Dumping data for table `funcionario`
 --
 
-LOCK TABLES `fichaclinica` WRITE;
-/*!40000 ALTER TABLE `fichaclinica` DISABLE KEYS */;
-/*!40000 ALTER TABLE `fichaclinica` ENABLE KEYS */;
+LOCK TABLES `funcionario` WRITE;
+/*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +62,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-21 21:59:30
+-- Dump completed on 2021-10-05 19:22:54

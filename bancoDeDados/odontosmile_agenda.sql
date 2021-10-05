@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.25, for Win64 (x86_64)
 --
--- Host: localhost    Database: prontuariodigital
+-- Host: localhost    Database: odontosmile
 -- ------------------------------------------------------
 -- Server version	8.0.25
 
@@ -23,15 +23,17 @@ DROP TABLE IF EXISTS `agenda`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `agenda` (
-  `nomeDentista` varchar(60) NOT NULL,
+  `codigoAgenda` int NOT NULL AUTO_INCREMENT,
   `nomePaciente` varchar(60) NOT NULL,
-  `cpf` varchar(60) NOT NULL,
-  `planoTratamento` varchar(40) NOT NULL,
-  `tratamentoDente` varchar(15) NOT NULL,
-  `dataInclusao` varchar(10) NOT NULL,
-  `dataAgenda` varchar(10) NOT NULL,
-  `situacao` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `cpf` varchar(14) NOT NULL,
+  `nomeDentista` varchar(60) NOT NULL,
+  `plano` varchar(20) NOT NULL,
+  `tratamentoDente` varchar(60) NOT NULL,
+  `datainclusao` varchar(10) NOT NULL,
+  `dataAgendada` varchar(10) NOT NULL,
+  `situacao` varchar(40) NOT NULL,
+  PRIMARY KEY (`codigoAgenda`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +42,7 @@ CREATE TABLE `agenda` (
 
 LOCK TABLES `agenda` WRITE;
 /*!40000 ALTER TABLE `agenda` DISABLE KEYS */;
+INSERT INTO `agenda` VALUES (1,'1','1','1','1','1','1','1','1'),(4,'alex','2222','jose','unimed','restauração','04/10/2021','06/10/2021','remarcado');
 /*!40000 ALTER TABLE `agenda` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-21 21:59:29
+-- Dump completed on 2021-10-05 19:22:53
